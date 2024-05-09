@@ -1,0 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ci.yml                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
+#    Updated: 2024/05/09 19:17:48 by umeneses         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Starting github actions
+        uses: actions/checkout@v2
+      
+      - name: Setting up C Compiler
+        uses: actions/setup-cmake@v2
+        with:
+          compiler: cc
+      
+      - name: Running Makefile
+        run: make
+      
+      - name: Running tests
+        run: make test
