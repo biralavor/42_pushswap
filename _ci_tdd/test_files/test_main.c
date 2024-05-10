@@ -6,13 +6,12 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/10 11:41:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:09:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <assert.h>
 #include "../src/main.c"
-#include "../headers/push_swap.h"
 
 void test_add()
 {
