@@ -27,5 +27,8 @@ jobs:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4
       
-      - name: Running Makefile Tester
-        run: make && ./push_swap
+      - name: Running Push_Swap Makefile
+        run: make
+
+      - name: Running Tester
+        run: ./tester
