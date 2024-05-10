@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: test
+name: tester_program
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./_ci_tdd
+        working-directory: ./_ci_tdd/
     steps:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4
