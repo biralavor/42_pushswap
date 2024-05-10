@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/10 11:13:38 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/10 12:57:38 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,7 +159,7 @@ $(NAME):			libft_lib $(OBJS_FILES)
 					@$(COMP_EXE)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"
-					$(call header)
+					$(call project_title)
 					@printf "$(YELLOW)"
 					$(call instructions)
 					@printf "$(RESET)"
