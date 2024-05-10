@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:52:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/04/25 18:52:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:20:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 char	*ft_dec_to_binary(int number)
 {
 	int		char_pos;
-	int		index;
 	char	*binary;
 
 	char_pos = 0;
-	index = 0;
 	binary = ft_calloc((32 + 1), sizeof(char));
 	if (binary == NULL)
 		ft_error_msg("Memory alllocation failed\n");
