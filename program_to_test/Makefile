@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/10 12:57:38 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/10 15:54:55 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ LIBS					= $(LIBFT)
 
 NAME					= push_swap
 
-SRC_FILES				= main.c
+SRC_FILES				= push_main.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
 
@@ -57,7 +57,7 @@ OBJS_ALL				= $(OBJS_FILES)
 
 NAME_BONUS				= push_swap_bonus
 
-SRC_FILES_BONUS			= main_bonus.c
+SRC_FILES_BONUS			= 
 
 SRC_BONUS_ALL			= $(addprefix $(SRC_SV_BONUS_D), $(SRC_FILES_BONUS))
 
@@ -86,8 +86,8 @@ define	project_title
 		@echo "__  /_/ / /_/ /_(__  )_  / / /    _(__  )__ |/ |/ // /_/ /__  /_/ / "
 		@echo "_  .___/\__,_/ /____/ /_/ /_/     /____/ ____/|__/ \__,_/ _  .___/  "
 		@echo "/_/                                                       /_/       "
-		@echo "                                                                    "
-		@echo "#############                                         ##############"
+		@echo "           ________         ____        ___      __     _           "
+		@echo "_________./        \._____./    \.____./   \.__./  \.__/ \._swapswap"
 		@echo "                                                                    "
 		@printf "$(RESET)"
 endef
