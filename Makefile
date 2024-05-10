@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/09 18:46:02 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/10 11:13:38 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ HEADERS					= ./headers/ $(HEADERS_ADDED)
 # **************************************************************************** #
 
 LIBFT					= $(addprefix $(LIBFT_D), libft.a)
-LIBS					= $(LIBFT_D)libft.a
+LIBS					= $(LIBFT)
 
 NAME					= push_swap
 
@@ -151,7 +151,9 @@ all: 				$(NAME)
 $(BUILD_D)%.o:		%.c
 					@$(MKDIR) $(dir $@)
 					@$(COMP_OBJS)
+					@printf "$(CYAN)"
 					@echo "Compiling: $(notdir $<)"
+					@printf "$(RESET)"
 
 $(NAME):			libft_lib $(OBJS_FILES)
 					@$(COMP_EXE)
