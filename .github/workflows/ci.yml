@@ -28,4 +28,4 @@ jobs:
         uses: actions/checkout@v4.1.4
       
       - name: Running Makefile Tester
-        run: make && ./pushswap
+        run: make && ./push_swap
