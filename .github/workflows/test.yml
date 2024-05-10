@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-name: CI
+name: test
 
 on:
   push:
@@ -19,16 +19,17 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: _ci_tdd/test_files
     steps:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4
-      
-      - name: Running Push_Swap Makefile
-        run: make
 
-      - name: Running Tester
-        run: ./tester
+      - name: Set up CUnit
+        run: sudo apt-get update && sudo apt-get install -y libcunit1 libcunit1-doc libcunit1-dev
+
+      - name: Running Tester Makefile
+        run: make

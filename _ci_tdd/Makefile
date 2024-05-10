@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/10 13:01:01 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/10 17:56:12 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,26 +26,26 @@ RESET			:= \033[0m
 #								PATHS										   #
 # **************************************************************************** #
 
-TEST_D					= ./test_files/
-BUILD_D					= ./test_build/
-PUSH_SWAP_D				= ../
-HEADERS_ADDED			= ../headers/
-HEADERS					= $(TEST_D) $(HEADERS_ADDED)
+TEST_D				= ./test_files/
+BUILD_D				= ./test_build/
+PUSH_SWAP_D			= ../program_to_test/
+HEADERS_ADDED		= $(PUSH_SWAP_D)headers/
+HEADERS				= $(TEST_D) $(HEADERS_ADDED)
 
 # **************************************************************************** #
 #								FILES										   #
 # **************************************************************************** #
 
-PUSH_SWAP				= $(addprefix $(PUSH_SWAP_D), push_swap)
-LIBS					= $(PUSH_SWAP_D)
+PUSH_SWAP			= $(addprefix $(PUSH_SWAP_D), push_swap)
+LIBS				= $(PUSH_SWAP_D)
 
-NAME					= tester
+NAME				= push_swap.tests
 
-SRC_FILES				= test_main.c
+SRC_FILES			= test_main.c
 
-SRC_FILES_ALL			= $(addprefix $(TEST_D), $(SRC_FILES))
+SRC_FILES_ALL		= $(addprefix $(TEST_D), $(SRC_FILES))
 
-OBJ_FILES				= $(addprefix $(BUILD_D), $(SRC_FILES_ALL:%.c=%.o))
+OBJ_FILES			= $(addprefix $(BUILD_D), $(SRC_FILES_ALL:%.c=%.o))
 
 # **************************************************************************** #
 #								COMMANDS									   #
@@ -59,31 +59,32 @@ MV_OBJS				= find . -type f \( -name '.o' -o -name '.a'\) -exec mv {} \
 #								COMPILATION									   #
 # **************************************************************************** #
 
-AUTHOR			= umeneses
-CC				= cc
-CFLAGS			= -I.
-CPPFLAGS		= $(addprefix -I, $(HEADERS)) -MMD -MP
-LDFLAGS			= $(addprefix -L, $(dir $(LIBS)))
-LDLIBS			= -lpush_swap
-COMP_OBJS		= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE		= $(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(LDFLAGS) $(LDLIBS)
+AUTHOR				= umeneses
+CC					= cc
+CFLAGS				= -I .
+CPPFLAGS			= $(addprefix -I, $(SRC_FILES))
+LDFLAGS				= $(addprefix -L, $(dir $(LIBS)))
+LDLIBS				= -lft
+COMP_OBJS			= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMP_EXE			= $(CC) -o $(NAME) $(OBJ_FILES) -I . -I $(PUSH_SWAP_D) $(SRC_FILES_ALL) -L$(PUSH_SWAP_D) $(LDLIBS)
 
 # **************************************************************************** #
 #								TARGETS										   #
 # **************************************************************************** #
 
-all: 				push_swap $(NAME)
+all: 				fclean push_swap
 
 $(BUILD_D)%.o:		%.c
 					@$(MKDIR) $(dir $@)
-					@$(COMP_OBJS)
+					$(COMP_OBJS)
 					@echo "Compiling: $(notdir $<)"
 
 $(NAME):			$(OBJ_FILES)
-					@$(COMP_EXE)
+					$(COMP_EXE)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"
 					@printf "$(RESET)"
+					@./$(NAME)
 
 push_swap:
 					@printf "$(YELLOW)"

@@ -6,28 +6,41 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/10 13:09:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:30:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <assert.h>
-#include "../src/main.c"
+#include "minunit.h"
+#include "../../program_to_test/src/push_main.c"
 
-void test_add()
+MU_TEST(test_pushadd_5plus3)
 {
-	assert(add(5, 3) == 8);
-	ft_printf("add function test passed\n");
+	// ARRANGE
+	int	actual_result;
+	int	expected_result = 8;
+
+	// ACT
+	actual_result = push_add(5, 3);
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
 }
 
-void test_subtract()
+MU_TEST(test_pushsubtract_5minus3)
 {
-	assert(subtract(5, 3) == 2);
-	ft_printf("subtract function test passed\n");
+	// ARRANGE
+	int	actual_result;
+	int	expected_result = 2;
+
+	// ACT
+	actual_result = push_subtract(5, 3);
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
 }
 
-int main()
+MU_TEST_SUITE(first_tests_suite)
 {
-	test_add();
-	test_subtract();
-	return 0;
+	MU_RUN_TEST(test_pushadd_5plus3);
+	MU_RUN_TEST(test_pushsubtract_5minus3);
 }
