@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/10 17:30:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:36:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ MU_TEST(test_pushadd_5plus3)
 {
 	// ARRANGE
 	int	actual_result;
-	int	expected_result = 8;
+	int	expected_result = 9;
 
 	// ACT
-	actual_result = push_add(5, 3);
+	actual_result = push_add(5, 4);
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
