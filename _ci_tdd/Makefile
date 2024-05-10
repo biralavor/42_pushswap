@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/10 11:36:02 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/10 13:01:01 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ HEADERS					= $(TEST_D) $(HEADERS_ADDED)
 PUSH_SWAP				= $(addprefix $(PUSH_SWAP_D), push_swap)
 LIBS					= $(PUSH_SWAP_D)
 
-NAME					= test
+NAME					= tester
 
 SRC_FILES				= test_main.c
 
