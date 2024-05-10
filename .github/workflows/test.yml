@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: _ci_tdd/test_files
+        working-directory: ./_ci_tdd
     steps:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4

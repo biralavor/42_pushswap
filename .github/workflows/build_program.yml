@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: program_to_test/src
+        working-directory: ./program_to_test/
     steps:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4
