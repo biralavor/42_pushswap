@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Starting github actions
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.4
       
       - name: Running Makefile Tester
         run: make test
