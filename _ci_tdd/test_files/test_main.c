@@ -6,18 +6,19 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/10 19:36:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/13 11:29:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
+#include "push_swap.h"
 #include "../../program_to_test/src/push_main.c"
 
-MU_TEST(test_pushadd_5plus3)
+MU_TEST(test_pushadd_5plus4)
 {
 	// ARRANGE
 	int	actual_result;
-	int	expected_result = 9;
+	int	expected_result = 10;
 
 	// ACT
 	actual_result = push_add(5, 4);
@@ -41,6 +42,6 @@ MU_TEST(test_pushsubtract_5minus3)
 
 MU_TEST_SUITE(first_tests_suite)
 {
-	MU_RUN_TEST(test_pushadd_5plus3);
+	MU_RUN_TEST(test_pushadd_5plus4);
 	MU_RUN_TEST(test_pushsubtract_5minus3);
 }
