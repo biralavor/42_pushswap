@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/13 15:34:21 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/13 15:50:32 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ LIBS				= $(LIBFT_D)libft.a $(PUSH_SWAP_D)
 
 NAME				= push_swap.tests
 
-SRC_FILES			= test_main_v2.c
+SRC_FILES			= test_main_my_own.c
 
 SRC_FILES_ALL		= $(addprefix $(TEST_D), $(SRC_FILES))
 

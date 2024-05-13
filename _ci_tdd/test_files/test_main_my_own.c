@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main_v2.c                                     :+:      :+:    :+:   */
+/*   test_main_my_own.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/13 15:35:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:58:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,13 @@ void	test_pushsubtract_5minus3()
 
 int main(void)
 {
+	int	index;
+
+	index = 0;
+	ft_printf("\033[0;36m");
+	ft_printf("Runing test [%d] test_pushadd_5plus4\n", ++index);
 	test_pushadd_5plus4();
+	ft_printf("Runing test [%d] test_pushsubtract_5minus3\n", ++index);
 	test_pushsubtract_5minus3();
 	ft_printf("All tests passed\n");
 	return (0);
