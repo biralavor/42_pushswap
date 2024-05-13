@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/13 15:50:32 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/13 16:31:04 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,11 +77,11 @@ all: 				$(NAME)
 
 $(BUILD_D)%.o:		%.c
 					@$(MKDIR) $(dir $@)
-					$(COMP_OBJS)
+					@$(COMP_OBJS)
 					@echo "Compiling: $(notdir $<)"
 
 $(NAME):			fclean push_swap $(OBJ_FILES)
-					$(COMP_EXE)
+					@$(COMP_EXE)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"
 					@printf "$(RESET)"
