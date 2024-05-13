@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/13 14:49:27 by umeneses         ###   ########.fr       */
+/*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
+/*   Updated: 2024/05/13 14:50:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "../libs/libft/includes/libft.h"
+int	push_add(int a, int b)
+{
+	return (a + b);
+}
 
-int	push_add(int a, int b);
-int push_subtract(int a, int b);
-
-#endif
+int push_subtract(int a, int b)
+{
+	return (a - b);
+}

@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/13 12:55:59 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/13 14:55:25 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ LIBS					= $(LIBFT)
 NAME					= push_swap
 
 SRC_FILES				= push_main.c
+SRC_FILES				+= push_functions.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
 
@@ -139,9 +140,8 @@ CFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
 LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
 LDLIBS		= -lft -ldl
-PRODUCTION	= -DPRODUCTION
 COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(LDFLAGS) $(OBJS_FILES) $(LDLIBS) $(PRODUCTION) -o $(NAME)
+COMP_EXE	= $(CC) $(LDFLAGS) $(OBJS_FILES) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
