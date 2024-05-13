@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/13 12:51:30 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/13 15:34:21 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ RESET			:= \033[0m
 TEST_D				= ./test_files/
 BUILD_D				= ./test_build/
 PUSH_SWAP_D			= ../program_to_test/
+LIBFT_D				= $(PUSH_SWAP_D)libs/libft/
 HEADERS_ADDED		= $(PUSH_SWAP_D)headers/
 HEADERS				= $(TEST_D) $(HEADERS_ADDED)
 
@@ -37,11 +38,11 @@ HEADERS				= $(TEST_D) $(HEADERS_ADDED)
 # **************************************************************************** #
 
 PUSH_SWAP			= $(addprefix $(PUSH_SWAP_D), push_swap)
-LIBS				= $(PUSH_SWAP_D)
+LIBS				= $(LIBFT_D)libft.a $(PUSH_SWAP_D)
 
 NAME				= push_swap.tests
 
-SRC_FILES			= test_main.c
+SRC_FILES			= test_main_v2.c
 
 SRC_FILES_ALL		= $(addprefix $(TEST_D), $(SRC_FILES))
 
@@ -64,10 +65,9 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g3
 CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
 LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
-LDLIBS		= -lft -ldl -lcunit
-TESTING		= -DTESTING
+LDLIBS		= -lft -ldl
 COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) $(TESTING) -o $(NAME)
+COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
