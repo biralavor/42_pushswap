@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/10 15:54:55 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/13 12:55:59 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,14 +133,15 @@ endef
 #								COMPILATION									   #
 # **************************************************************************** #
 
-AUTHOR			= umeneses
-CC				= cc
-CFLAGS			= -Wall -Wextra -Werror -g3
-CPPFLAGS		= $(addprefix -I, $(HEADERS)) -MMD -MP
-LDFLAGS			= $(addprefix -L, $(dir $(LIBS)))
-LDLIBS			= -lft -ldl
-COMP_OBJS		= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE		= $(CC) $(LDFLAGS) $(OBJS_FILES) $(LDLIBS) -o $(NAME)
+AUTHOR		= umeneses
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -g3
+CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
+LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
+LDLIBS		= -lft -ldl
+PRODUCTION	= -DPRODUCTION
+COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMP_EXE	= $(CC) $(LDFLAGS) $(OBJS_FILES) $(LDLIBS) $(PRODUCTION) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
