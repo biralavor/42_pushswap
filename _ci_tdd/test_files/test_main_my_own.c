@@ -6,12 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/13 15:58:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:00:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <assert.h>
 #include "push_swap.h"
 #include "../../program_to_test/src/push_functions.c"
 
