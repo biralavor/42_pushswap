@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/10 17:56:12 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/13 12:51:30 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,27 +59,28 @@ MV_OBJS				= find . -type f \( -name '.o' -o -name '.a'\) -exec mv {} \
 #								COMPILATION									   #
 # **************************************************************************** #
 
-AUTHOR				= umeneses
-CC					= cc
-CFLAGS				= -I .
-CPPFLAGS			= $(addprefix -I, $(SRC_FILES))
-LDFLAGS				= $(addprefix -L, $(dir $(LIBS)))
-LDLIBS				= -lft
-COMP_OBJS			= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE			= $(CC) -o $(NAME) $(OBJ_FILES) -I . -I $(PUSH_SWAP_D) $(SRC_FILES_ALL) -L$(PUSH_SWAP_D) $(LDLIBS)
+AUTHOR		= umeneses
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -g3
+CPPFLAGS	= $(addprefix -I, $(HEADERS)) -MMD -MP
+LDFLAGS		= $(addprefix -L, $(dir $(LIBS)))
+LDLIBS		= -lft -ldl -lcunit
+TESTING		= -DTESTING
+COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) $(TESTING) -o $(NAME)
 
 # **************************************************************************** #
 #								TARGETS										   #
 # **************************************************************************** #
 
-all: 				fclean push_swap
+all: 				$(NAME)
 
 $(BUILD_D)%.o:		%.c
 					@$(MKDIR) $(dir $@)
 					$(COMP_OBJS)
 					@echo "Compiling: $(notdir $<)"
 
-$(NAME):			$(OBJ_FILES)
+$(NAME):			fclean push_swap $(OBJ_FILES)
 					$(COMP_EXE)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"

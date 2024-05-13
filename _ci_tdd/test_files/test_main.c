@@ -6,13 +6,16 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/13 11:29:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:45:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minunit.h"
-#include "push_swap.h"
-#include "../../program_to_test/src/push_main.c"
+#ifndef TESTING
+
+# include "minunit.h"
+# include "push_swap.h"
+
+# include "../../program_to_test/src/push_main.c"
 
 MU_TEST(test_pushadd_5plus4)
 {
@@ -40,8 +43,17 @@ MU_TEST(test_pushsubtract_5minus3)
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
-MU_TEST_SUITE(first_tests_suite)
+MU_TEST_SUITE(first_tests)
 {
 	MU_RUN_TEST(test_pushadd_5plus4);
 	MU_RUN_TEST(test_pushsubtract_5minus3);
 }
+
+int	main(void)
+{
+	MU_RUN_SUITE(first_tests);
+	MU_REPORT();
+	return (MU_EXIT_CODE);
+}
+
+#endif
