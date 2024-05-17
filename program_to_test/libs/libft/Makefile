@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/26 20:31:36 by umeneses          #+#    #+#              #
-#    Updated: 2024/04/25 18:55:07 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/14 13:59:45 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ FILES				+= ft_lstlast_t_list.c
 FILES				+= ft_lstmap_t_list.c
 FILES				+= ft_lstnew_t_list.c
 FILES				+= ft_lstsize_int.c
+FILES				+= ft_lstend_void.c
 # ****** bonus libft functions ****** #
 FILES				+= ft_printf.c
 FILES				+= ft_printf_placeholder.c

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:30:01 by umeneses          #+#    #+#             */
-/*   Updated: 2024/04/25 19:36:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:55:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 
 typedef struct lib_s_list
 {
+	struct lib_s_list	*prev;
 	void				*content;
 	struct lib_s_list	*next;
 }						t_list;
@@ -106,17 +107,18 @@ char			**ft_split(char const *s, char c);
 char			*ft_strtrim(char const *s1, char const *set);
 /* libft Mandatory Part 2 Functions */
 
-t_list			*ft_lstnew_t_list(void *content);
-void			ft_lstadd_front_void(t_list **lst, t_list *new);
-int				ft_lstsize_int(t_list *lst);
-t_list			*ft_lstlast_t_list(t_list *lst);
 void			ft_lstadd_back_void(t_list **lst, t_list *new);
-void			ft_lstdelone_void(t_list *lst, void (*del)(void*));
+void			ft_lstadd_front_void(t_list **lst, t_list *new);
 void			ft_lstclear_void(t_list **lst, void (*del)(void *));
+void			ft_lstdelone_void(t_list *lst, void (*del)(void*));
+t_list			*ft_lstend_void(t_list *list, void *value);
 void			ft_lstiter_void(t_list *lst, void (*f)(void *));
+t_list			*ft_lstlast_t_list(t_list *lst);
 t_list			*ft_lstmap_t_list(t_list *lst, void *(*f)(void *), \
 					void (*del)(void *));
-/* libft Bonus Functions */
+t_list			*ft_lstnew_t_list(void *content);
+int				ft_lstsize_int(t_list *lst);
+/* libft Bonus Functions - linked list */
 
 int				ft_printf(const char *format, ...);
 int				ft_printf_placeholder(char format, va_list ptr);
