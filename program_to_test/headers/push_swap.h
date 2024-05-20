@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/14 11:36:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:34:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 typedef struct s_stack_a
 {
-	int				nbr;
-	struct stack_a	*prev;
-	struct stack_a	*next;
-}					t_stack_a;
+	int					nbr;
+	struct s_stack_a	*prev;
+	struct s_stack_a	*next;
+}						t_stack_a;
 
 typedef struct s_stack_b
 {
@@ -29,6 +29,9 @@ typedef struct s_stack_b
 	struct stack_b	*prev;
 	struct stack_b	*next;
 }					t_stack_b;
+
+t_stack_a	*ft_lstend_int(t_stack_a *list, int value);
+/* new functions for psuh to be added in LIBFT */
 
 void	swap_a(t_stack_a **stack_a);
 void	swap_b(t_stack_a **stack_b);
