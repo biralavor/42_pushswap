@@ -6,20 +6,20 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/20 12:34:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:53:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_a	*ft_lstend_int(t_stack_a *list, int value)
+t_stack	*ft_lstend_int(t_stack *list, int value)
 {
-	t_stack_a	*new_end_node;
-	t_stack_a	*current_node;
+	t_stack	*new_end_node;
+	t_stack	*current_node;
 
 	if (list == NULL)
 		return (NULL);
-	new_end_node = (t_stack_a *)ft_calloc(1, sizeof(t_stack_a));
+	new_end_node = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (new_end_node == NULL)
 		ft_error_msg("Memory allocation failed\n");
 	new_end_node->nbr = value;
@@ -35,16 +35,16 @@ t_stack_a	*ft_lstend_int(t_stack_a *list, int value)
 	return (list);
 }
 
-void	swap_a(t_stack_a **stack_a)
+void	ft_swap(t_stack **stack)
 {
-	t_stack_a	*first;
-	t_stack_a	*last;
-	int			temp;
+	t_stack	*first;
+	t_stack	*last;
+	int		temp;
 
-	if(*stack_a == NULL || (*stack_a)->next == NULL)
+	if(*stack == NULL || (*stack)->next == NULL)
 		return ;	
-	first = *stack_a;
-	last = *stack_a;
+	first = *stack;
+	last = *stack;
 	temp = 0;
 	while (last->next != NULL)
 	{
