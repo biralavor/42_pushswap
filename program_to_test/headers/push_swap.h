@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/20 12:50:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:52:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ typedef struct s_stack
 t_stack	*ft_lstend_int(t_stack *list, int value);
 /* new functions for psuh to be added in LIBFT */
 
-void	swap(t_stack **stack);
-void	swap_ab(t_stack **stack_a, t_stack **stack_b);
-void	push(t_stack **stack_a, t_stack **stack_b);
-void	rotate_a(t_stack **stack);
-void	double_rotate_ab(t_stack **stack_a, t_stack **stack_b);
-void	reverse_rotate(t_stack **stack);
-void	double_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
+void	ft_swap(t_stack **stack);
+void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b);
+void	ft_push(t_stack **stack_a, t_stack **stack_b);
+void	ft_rotate_a(t_stack **stack);
+void	ft_double_rotate_ab(t_stack **stack_a, t_stack **stack_b);
+void	ft_reverse_rotate(t_stack **stack);
+void	ft_double_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 /* initial push_swap functions */
 
 bool	is_sorted(t_stack *stack);
