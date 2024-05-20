@@ -6,53 +6,60 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/20 13:13:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:54:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_stack	*ft_lst_init(int value)
+{
+	t_stack *new_node;
+
+	new_node = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	if (new_node == NULL)
+		ft_error_msg("Memory allocation failed\n");
+	new_node->nbr = value;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
+}
+
 t_stack	*ft_lstend_int(t_stack *list, int value)
 {
-	t_stack	*new_end_node;
 	t_stack	*current_node;
+	t_stack	*new_end;
 
-	if (list == NULL)
-		return (NULL);
-	new_end_node = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	if (new_end_node == NULL)
-		ft_error_msg("Memory allocation failed\n");
-	new_end_node->nbr = value;
-	new_end_node->next = NULL;
+	if (list == NULL || list->next == NULL)
+		ft_lst_init(value);
 	current_node = list;
 	while (current_node->next != NULL)
-	{
-		current_node->prev = current_node;
 		current_node = current_node->next;
-	}
-	current_node->next = new_end_node;
-	list = current_node;
+	new_end = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	if (new_end == NULL)
+		ft_error_msg("Memory allocation failed\n");
+	new_end->nbr = value;
+	new_end->prev = current_node;
+	new_end->next = NULL;
+	current_node->next = new_end;
 	return (list);
 }
 
 void	ft_swap(t_stack **stack)
 {
 	t_stack	*first;
-	t_stack	*last;
+	t_stack	*second;
 	int		temp;
 
 	if(*stack == NULL || (*stack)->next == NULL)
 		return ;	
 	first = *stack;
-	last = *stack;
+	second = *stack;
+	second = second->next;
 	temp = first->nbr;
-	while (last->next != NULL)
-	{
-		last->prev = last;
-		last = last->next;
-	}
-	first->nbr = last->nbr;
-	last->nbr = temp;
+	first->nbr = second->nbr;
+	first->next->nbr = temp;
+	*stack = first;
 }
 
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
