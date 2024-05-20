@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/20 12:34:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:47:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,12 @@ t_stack_a	*ft_lstend_int(t_stack_a *list, int value);
 /* new functions for psuh to be added in LIBFT */
 
 void	swap_a(t_stack_a **stack_a);
-void	swap_b(t_stack_a **stack_b);
+
 void	swap_ab(t_stack_a **stack_a, t_stack_b **stack_b);
 void	push_a(t_stack_a **stack_a, t_stack_b **stack_b);
-void	push_b(t_stack_a **stack_a, t_stack_b **stack_b);
 void	rotate_a(t_stack_a **stack_a);
-void	rotate_b(t_stack_b **stack_b);
 void	double_rotate_ab(t_stack_a **stack_a, t_stack_b **stack_b);
 void	reverse_rotate_a(t_stack_a **stack_a);
-void	reverse_rotate_b(t_stack_b **stack_b);
 void	double_reverse_rotate_ab(t_stack_a **stack_a, t_stack_b **stack_b);
 /* initial push_swap functions */
 
