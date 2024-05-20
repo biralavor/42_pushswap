@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/20 12:53:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:13:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,27 @@ void	ft_swap(t_stack **stack)
 		return ;	
 	first = *stack;
 	last = *stack;
-	temp = 0;
+	temp = first->nbr;
 	while (last->next != NULL)
 	{
 		last->prev = last;
 		last = last->next;
 	}
-	temp = first->nbr;
 	first->nbr = last->nbr;
 	last->nbr = temp;
 }
+
+void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_swap(stack_a);
+	ft_swap(stack_b);
+}
+
+
+
+
+
+
 
 int	push_add(int a, int b)
 {
