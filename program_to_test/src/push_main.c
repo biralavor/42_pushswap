@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/17 17:54:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/20 10:39:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(void)
 		ft_error_msg("Memory allocation failed\n");
 	new_node->content = add_one_ptr;
 	new_node->next = NULL;
-	ft_lstend_void(&new_node, add_two_ptr);
+	ft_lstend_void(new_node, add_two_ptr);
 	t_list	*temp_node;
 	temp_node = new_node;
 	while (temp_node != NULL)
