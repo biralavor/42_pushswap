@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/21 10:06:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:41:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ t_stack	*ft_lstend_int(t_stack *list, int value)
 	t_stack	*current_node;
 	t_stack	*new_end;
 
-	if (list == NULL || list->next == NULL)
-		ft_lst_init(value);
+	if ((list == NULL) || (ft_lstsize_int((t_list *)list) == 1))
+	{
+		list = ft_lst_init(value);
+		return (list);
+	}
 	current_node = list;
 	while (current_node->next != NULL)
 		current_node = current_node->next;
@@ -74,7 +77,6 @@ void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
 	stack_a = &a;
 	stack_b = &b;
 }
-
 
 
 
