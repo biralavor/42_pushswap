@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ci.yml                                             :+:      :+:    :+:    #
+#    tester_program.yml                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/09 19:17:48 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/21 10:18:51 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,13 @@ name: tester_program
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
+    - 'feature/**'
   pull_request:
-    branches: [ main ]
+    branches:
+    - main
+    - 'feature/**'
 
 jobs:
   test:
@@ -28,8 +32,18 @@ jobs:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4
 
-      - name: Set up CUnit
+      - name: Setup CUnit
         run: sudo apt-get update && sudo apt-get install -y libcunit1 libcunit1-doc libcunit1-dev
 
       - name: Running Tester Makefile
         run: make
+        
+      - name: Setup Valgrind
+        run: sudo apt-get update | sudo apt-get install -y valgrind
+      
+      - name: Running Valgrind
+        run: valgrind --leak-check=full ./push_swap.tests
+
+
+# :: github actions documentation ::
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
