@@ -6,13 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/21 10:05:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:20:15 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
 #include "../../program_to_test/src/push_functions.c"
+
 
 MU_TEST(test_ft_swap_ab)
 {
@@ -87,6 +88,25 @@ MU_TEST(test_ft_swap)
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
+MU_TEST(test_lst_init)
+{
+	// ARRANGE
+	int	expected_result = 11;
+	int	actual_result;
+	t_stack	*stack;
+
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack->next = NULL;
+	stack->prev = NULL;
+
+	// ACT
+	stack = ft_lst_init(expected_result);
+	actual_result = stack->nbr;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+}
+
 MU_TEST(test_pushadd_5plus4)
 {
 	// ARRANGE
@@ -113,6 +133,12 @@ void test_pushsubtract_5minus3()
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
+MU_TEST_SUITE(linked_list_tests)
+{
+	MU_RUN_TEST(test_lst_init);
+
+}
+
 MU_TEST_SUITE(swap_tests)
 {
 	MU_RUN_TEST(test_ft_swap);
@@ -129,6 +155,7 @@ int main(void)
 {
 	MU_RUN_SUITE(testing_the_tester);
 	MU_RUN_SUITE(swap_tests);
+	MU_RUN_SUITE(linked_list_tests);
 	MU_REPORT();
 	return (0);
 }
