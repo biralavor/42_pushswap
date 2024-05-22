@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 10:22:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:27:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ MU_TEST(test_ft_swap)
 	stack = ft_lst_addto_end(stack, bottom);
 	ft_swap(&stack);
 	actual_result = stack->nbr;
-	ft_printf("stack size = %d\n", ft_lstsize_int((t_list *)stack));
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
@@ -108,7 +107,7 @@ MU_TEST(test_lst_goto_end)
 	// stack = ft_lst_goto_end(stack);
 	ft_printf("stack [0] = %d\n", stack->nbr);
 	// ft_printf("stack [1] = %d\n", stack->next->nbr);
-
+	ft_printf("addto_end size = %d\n", ft_lstsize_int((t_list *)stack));
 	actual_result = ft_lst_goto_end(stack)->nbr;
 	expected_result = bottom;
 
@@ -120,6 +119,7 @@ MU_TEST(test_lst_addto_end)
 {
 	// ARRANGE
 	int top = 11;
+	int bottom = 22;
 	int expected_result;
 	int actual_result;
 	t_stack *stack;
@@ -127,11 +127,12 @@ MU_TEST(test_lst_addto_end)
 	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	stack->prev = NULL;
 	stack->next = NULL;
-	expected_result = top;
+	expected_result = bottom;
 
 	// ACT
-	stack = ft_lst_addto_end(stack, top);
-	actual_result = stack->nbr;
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, bottom);
+	actual_result = stack->next->nbr;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
