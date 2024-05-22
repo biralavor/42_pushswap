@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 10:39:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:26:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,29 @@ t_stack	*ft_lst_init(int value)
 	return (new_node);
 }
 
-t_stack	*ft_lst_addto_end(t_stack *list, int value)
-{
-	t_stack	*new_end;
-
-	if (!list)
-	{
-		list = ft_lst_init(value);
-		return (list);
-	}
-	if (!value)
-		return (NULL);
-	new_end = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	if (new_end == NULL)
-		ft_error_msg("Memory allocation failed\n");
-	new_end->nbr = value;
-	new_end->prev = list;
-	new_end->next = NULL;
-	list = ft_lst_goto_end(list);
-	list->next = new_end;
-	return (list);
-}
-
 t_stack *ft_lst_goto_end(t_stack *list)
 {
 	if (!list)
 		return (NULL);
 	while (list && (list->next != NULL))
 		list = list->next;
+	return (list);
+}
+
+t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new)
+{
+	t_stack	*temp;
+
+	if (!list)
+	{
+		list = new;
+		return (list);
+	}
+	if (!new)
+		return (list);
+	temp = ft_lst_goto_end(list);
+	temp->next = new;
+	new->prev = temp;
 	return (list);
 }
 

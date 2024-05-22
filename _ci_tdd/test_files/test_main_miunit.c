@@ -6,14 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 10:36:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:23:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
 #include "../../program_to_test/src/push_functions.c"
-
 
 MU_TEST(test_ft_swap_ab)
 {
@@ -44,13 +43,13 @@ MU_TEST(test_ft_swap_ab)
 
 	// ACT
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, second_a);
-	stack_a = ft_lst_addto_end(stack_a, third_a);
-	stack_a = ft_lst_addto_end(stack_a, bottom_a);
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lst_addto_end(stack_b, second_b);
-	stack_b = ft_lst_addto_end(stack_b, third_b);
-	stack_b = ft_lst_addto_end(stack_b, bottom_b);
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
 	ft_swap_ab(&stack_a, &stack_b);
 	actual_result_a = stack_a->nbr;
 	actual_result_b = stack_b->nbr;
@@ -77,13 +76,38 @@ MU_TEST(test_ft_swap)
 	expected_result = second;
 
 	// ACT
-	stack = ft_lst_addto_end(stack, top);
-	stack = ft_lst_addto_end(stack, second);
-	stack = ft_lst_addto_end(stack, third);
-	stack = ft_lst_addto_end(stack, bottom);
-	ft_printf("swap size = %d\n", ft_lstsize_int((t_list *)stack));
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(stack, ft_lst_init(third));
+	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+
 	ft_swap(&stack);
 	actual_result = stack->nbr;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+}
+
+MU_TEST(test_lst_addto_end)
+{
+	// ARRANGE
+	int top = 11;
+	int	middle = 22;
+	int bottom = 33;
+	int expected_result;
+	int actual_result;
+	t_stack *stack;
+
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack->prev = NULL;
+	stack->next = NULL;
+	expected_result = bottom;
+
+	// ACT
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
+	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	actual_result = stack->next->next->nbr;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
@@ -104,32 +128,9 @@ MU_TEST(test_lst_goto_end)
 
 	// ACT
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, bottom);
+	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
 	actual_result = ft_lst_goto_end(stack)->nbr;
 	expected_result = bottom;
-
-	// ASSERT
-	mu_assert_int_eq(expected_result, actual_result);
-}
-
-MU_TEST(test_lst_addto_end)
-{
-	// ARRANGE
-	int top = 11;
-	int bottom = 22;
-	int expected_result;
-	int actual_result;
-	t_stack *stack;
-
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->prev = NULL;
-	stack->next = NULL;
-	expected_result = bottom;
-
-	// ACT
-	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, bottom);
-	actual_result = stack->next->nbr;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
@@ -180,30 +181,30 @@ void test_pushsubtract_5minus3()
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
-MU_TEST_SUITE(swap_tests)
-{
-	MU_RUN_TEST(test_ft_swap);
-	MU_RUN_TEST(test_ft_swap_ab);
-}
-
-MU_TEST_SUITE(linked_list_tests)
-{
-	MU_RUN_TEST(test_lst_goto_end);
-	MU_RUN_TEST(test_lst_addto_end);
-	MU_RUN_TEST(test_lst_init);
-}
-
 MU_TEST_SUITE(testing_the_tester)
 {
 	MU_RUN_TEST(test_pushadd_5plus4);
 	MU_RUN_TEST(test_pushsubtract_5minus3);
 }
 
+MU_TEST_SUITE(linked_list_tests)
+{
+	MU_RUN_TEST(test_lst_init);
+	MU_RUN_TEST(test_lst_goto_end);
+	MU_RUN_TEST(test_lst_addto_end);
+}
+
+MU_TEST_SUITE(swap_tests)
+{
+	MU_RUN_TEST(test_ft_swap);
+	MU_RUN_TEST(test_ft_swap_ab);
+}
+
 int main(void)
 {
 	MU_RUN_SUITE(testing_the_tester);
-	MU_RUN_SUITE(swap_tests);
 	MU_RUN_SUITE(linked_list_tests);
+	MU_RUN_SUITE(swap_tests);
 	MU_REPORT();
 	return (0);
 }
