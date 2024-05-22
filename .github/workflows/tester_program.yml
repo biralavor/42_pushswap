@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/22 12:38:51 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/22 12:43:08 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ jobs:
 
       - name: Install Python
         uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.10'
       
       - name: Setup Norminette
         run: sudo apt-get install -y norminette
