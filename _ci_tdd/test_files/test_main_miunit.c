@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 10:27:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:36:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ MU_TEST(test_ft_swap)
 	stack = ft_lst_addto_end(stack, second);
 	stack = ft_lst_addto_end(stack, third);
 	stack = ft_lst_addto_end(stack, bottom);
+	ft_printf("swap size = %d\n", ft_lstsize_int((t_list *)stack));
 	ft_swap(&stack);
 	actual_result = stack->nbr;
 
@@ -104,10 +105,6 @@ MU_TEST(test_lst_goto_end)
 	// ACT
 	stack = ft_lst_init(top);
 	stack = ft_lst_addto_end(stack, bottom);
-	// stack = ft_lst_goto_end(stack);
-	ft_printf("stack [0] = %d\n", stack->nbr);
-	// ft_printf("stack [1] = %d\n", stack->next->nbr);
-	ft_printf("addto_end size = %d\n", ft_lstsize_int((t_list *)stack));
 	actual_result = ft_lst_goto_end(stack)->nbr;
 	expected_result = bottom;
 
