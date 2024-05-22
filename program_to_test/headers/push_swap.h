@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:01:30 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:35:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,5 @@ void	ft_double_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 bool	is_sorted(t_stack *stack);
 /* validation functions */
 
-int	push_add(int a, int b);
-int push_subtract(int a, int b);
-/* tester functions */
 
 #endif

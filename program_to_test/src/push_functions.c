@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:32:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:34:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,4 @@ void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
 	ft_swap(&b);
 	stack_a = &a;
 	stack_b = &b;
-}
-
-
-
-
-
-
-int	push_add(int a, int b)
-{
-	return (a + b);
-}
-
-int	push_subtract(int a, int b)
-{
-	return (a - b);
 }

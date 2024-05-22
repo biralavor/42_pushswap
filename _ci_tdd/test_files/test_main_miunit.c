@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:23:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:34:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,38 +155,6 @@ MU_TEST(test_lst_init)
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
-MU_TEST(test_pushadd_5plus4)
-{
-	// ARRANGE
-	int	actual_result;
-	int	expected_result = 9;
-
-	// ACT
-	actual_result = push_add(5, 4);
-
-	// ASSERT
-	mu_assert_int_eq(expected_result, actual_result);
-}
-
-void test_pushsubtract_5minus3()
-{
-	// ARRANGE
-	int	actual_result;
-	int	expected_result = 2;
-
-	// ACT
-	actual_result = push_subtract(5, 3);
-
-	// ASSERT
-	mu_assert_int_eq(expected_result, actual_result);
-}
-
-MU_TEST_SUITE(testing_the_tester)
-{
-	MU_RUN_TEST(test_pushadd_5plus4);
-	MU_RUN_TEST(test_pushsubtract_5minus3);
-}
-
 MU_TEST_SUITE(linked_list_tests)
 {
 	MU_RUN_TEST(test_lst_init);
@@ -202,7 +170,6 @@ MU_TEST_SUITE(swap_tests)
 
 int main(void)
 {
-	MU_RUN_SUITE(testing_the_tester);
 	MU_RUN_SUITE(linked_list_tests);
 	MU_RUN_SUITE(swap_tests);
 	MU_REPORT();
