@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:47:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:17:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,109 @@
 #include "push_swap.h"
 #include "../../program_to_test/src/ft_linkedlist.c"
 #include "../../program_to_test/src/ft_swap.c"
+#include "../../program_to_test/src/ft_push.c"
+
+MU_TEST(test_ft_push_b)
+{
+	// ARRANGE
+	int	top_a = 11;
+	int	second_a = 22;
+	int	third_a = 33;
+	int	bottom_a = 44;
+	int	top_b = 999;
+	int	second_b = 888;
+	int	third_b = 777;
+	int	bottom_b = 555;
+	int	actual_result_a;
+	int	actual_result_b;
+	int	expected_result_a;
+	int	expected_result_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack_a->next = NULL;
+	stack_b->next = NULL;
+	stack_a->prev = NULL;
+	stack_b->prev = NULL;
+	expected_result_a = second_a;
+	expected_result_b = top_a;
+
+	// ACT
+	stack_a = ft_lst_init(top_a);
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_b = ft_lst_init(top_b);
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	ft_push_b(&stack_a, &stack_b);
+	actual_result_a = stack_a->nbr;
+	actual_result_b = stack_b->nbr;
+	ft_printf("stack_A nbr: %d\n", stack_a->nbr);
+	while (stack_a->next != NULL)
+	{
+		stack_a = stack_a->next;
+		ft_printf("stack_A nbr: %d\n", stack_a->nbr);
+	}
+	ft_printf("stack_B nbr: %d\n", stack_b->nbr);
+	while (stack_b->next != NULL)
+	{
+		stack_b = stack_b->next;
+		ft_printf("stack_B nbr: %d\n", stack_b->nbr);
+	}
+
+	// ASSERT
+	mu_assert_int_eq(expected_result_a, actual_result_a);
+	mu_assert_int_eq(expected_result_b, actual_result_b);
+}
+
+MU_TEST(test_ft_push_a)
+{
+	// ARRANGE
+	int	top_a = 11;
+	int	second_a = 22;
+	int	third_a = 33;
+	int	bottom_a = 44;
+	int	top_b = 999;
+	int	second_b = 888;
+	int	third_b = 777;
+	int	bottom_b = 555;
+	int	actual_result_a;
+	int	actual_result_b;
+	int	expected_result_a;
+	int	expected_result_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack_a->next = NULL;
+	stack_b->next = NULL;
+	stack_a->prev = NULL;
+	stack_b->prev = NULL;
+	expected_result_a = top_b;
+	expected_result_b = second_b;
+
+	// ACT
+	stack_a = ft_lst_init(top_a);
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_b = ft_lst_init(top_b);
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	ft_push_a(&stack_a, &stack_b);
+	actual_result_a = stack_a->nbr;
+	actual_result_b = stack_b->nbr;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result_a, actual_result_a);
+	mu_assert_int_eq(expected_result_b, actual_result_b);
+}
 
 MU_TEST(test_ft_swap_ab)
 {
@@ -114,6 +217,57 @@ MU_TEST(test_lst_addto_end)
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
+MU_TEST(test_lst_delat_begin)
+{
+	// ARRANGE
+	int top = 11;
+	int	middle = 22;
+	int bottom = 33;
+	int expected_result;
+	int actual_result;
+	t_stack *stack;
+
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack->prev = NULL;
+	stack->next = NULL;
+	expected_result = middle;
+
+	// ACT
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
+	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_delat_begin(stack);
+	actual_result = stack->nbr;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+}
+
+MU_TEST(test_lst_addto_begin)
+{
+	// ARRANGE
+	int top = 11;
+	int	middle = 22;
+	int bottom = 33;
+	int expected_result;
+	int actual_result;
+	t_stack *stack;
+
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack->prev = NULL;
+	stack->next = NULL;
+	expected_result = bottom;
+
+	// ACT
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
+	stack = ft_lst_addto_begin(stack, ft_lst_init(bottom));
+	actual_result = stack->nbr;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+}
+
 MU_TEST(test_lst_goto_end)
 {
 	// ARRANGE
@@ -161,6 +315,8 @@ MU_TEST_SUITE(linked_list_tests)
 	MU_RUN_TEST(test_lst_init);
 	MU_RUN_TEST(test_lst_goto_end);
 	MU_RUN_TEST(test_lst_addto_end);
+	MU_RUN_TEST(test_lst_addto_begin);
+	MU_RUN_TEST(test_lst_delat_begin);
 }
 
 MU_TEST_SUITE(swap_tests)
@@ -169,10 +325,17 @@ MU_TEST_SUITE(swap_tests)
 	MU_RUN_TEST(test_ft_swap_ab);
 }
 
+MU_TEST_SUITE(push_tests)
+{
+	MU_RUN_TEST(test_ft_push_a);
+	MU_RUN_TEST(test_ft_push_b);
+}
+
 int main(void)
 {
 	MU_RUN_SUITE(linked_list_tests);
 	MU_RUN_SUITE(swap_tests);
+	MU_RUN_SUITE(push_tests);
 	MU_REPORT();
 	return (0);
 }

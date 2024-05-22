@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:46:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:58:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,27 @@ t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new)
 	temp->next = new;
 	new->prev = temp;
 	return (list);
+}
+
+t_stack *ft_lst_addto_begin(t_stack *list, t_stack *new)
+{
+	if (!list)
+	{
+		list = new;
+		return (list);
+	}
+	if (!new)
+		return (list);
+	new->next = list;
+	return (new);
+}
+
+t_stack *ft_lst_delat_begin(t_stack *list)
+{
+	t_stack *temp;
+	if (!list)
+		return (NULL);
+	temp = list->next;
+	free(list);
+	return (temp);
 }
