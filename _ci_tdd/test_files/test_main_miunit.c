@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 14:33:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:04:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,32 @@ MU_TEST(test_lst_addto_end)
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
+MU_TEST(test_lst_delat_begin)
+{
+	// ARRANGE
+	int top = 11;
+	int	middle = 22;
+	int bottom = 33;
+	int expected_result;
+	int actual_result;
+	t_stack *stack;
+
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack->prev = NULL;
+	stack->next = NULL;
+	expected_result = middle;
+
+	// ACT
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
+	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_delat_begin(stack);
+	actual_result = stack->nbr;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+}
+
 MU_TEST(test_lst_addto_begin)
 {
 	// ARRANGE
@@ -245,6 +271,7 @@ MU_TEST_SUITE(linked_list_tests)
 	MU_RUN_TEST(test_lst_goto_end);
 	MU_RUN_TEST(test_lst_addto_end);
 	MU_RUN_TEST(test_lst_addto_begin);
+	MU_RUN_TEST(test_lst_delat_begin);
 }
 
 MU_TEST_SUITE(swap_tests)
