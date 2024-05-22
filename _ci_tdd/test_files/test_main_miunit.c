@@ -6,13 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:34:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:47:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
-#include "../../program_to_test/src/push_functions.c"
+#include "../../program_to_test/src/ft_linkedlist.c"
+#include "../../program_to_test/src/ft_swap.c"
 
 MU_TEST(test_ft_swap_ab)
 {

@@ -1,55 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_functions.c                                   :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:34:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:48:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*ft_lst_init(int value)
-{
-	t_stack	*new_node;
-
-	new_node = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	if (new_node == NULL)
-		ft_error_msg("Memory allocation failed\n");
-	new_node->nbr = value;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return (new_node);
-}
-
-t_stack	*ft_lst_goto_end(t_stack *list)
-{
-	if (!list)
-		return (NULL);
-	while (list && (list->next != NULL))
-		list = list->next;
-	return (list);
-}
-
-t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new)
-{
-	t_stack	*temp;
-
-	if (!list)
-	{
-		list = new;
-		return (list);
-	}
-	if (!new)
-		return (list);
-	temp = ft_lst_goto_end(list);
-	temp->next = new;
-	new->prev = temp;
-	return (list);
-}
 
 void	ft_swap(t_stack **stack)
 {
