@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:26:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:32:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*ft_lst_init(int value)
 {
-	t_stack *new_node;
+	t_stack	*new_node;
 
 	new_node = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (new_node == NULL)
@@ -25,7 +25,7 @@ t_stack	*ft_lst_init(int value)
 	return (new_node);
 }
 
-t_stack *ft_lst_goto_end(t_stack *list)
+t_stack	*ft_lst_goto_end(t_stack *list)
 {
 	if (!list)
 		return (NULL);
@@ -53,7 +53,7 @@ t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new)
 
 void	ft_swap(t_stack **stack)
 {
-	int		temp;
+	int	temp;
 
 	if(*stack == NULL || (*stack)->next == NULL)
 		return ;	
@@ -64,8 +64,8 @@ void	ft_swap(t_stack **stack)
 
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
 	a = *stack_a;
 	b = *stack_b;
@@ -85,7 +85,7 @@ int	push_add(int a, int b)
 	return (a + b);
 }
 
-int push_subtract(int a, int b)
+int	push_subtract(int a, int b)
 {
 	return (a - b);
 }
