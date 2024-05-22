@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/21 15:45:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:16:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,24 @@ MU_TEST(test_ft_swap)
 	expected_result = second;
 
 	// ACT
-	stack = ft_lst_init(top);
+	stack = ft_lstend_int(stack, top);
 	stack = ft_lstend_int(stack, second);
 	stack = ft_lstend_int(stack, third);
 	stack = ft_lstend_int(stack, bottom);
 	ft_swap(&stack);
 	actual_result = stack->nbr;
+	ft_printf("stack size = %d\n", ft_lstsize_int((t_list *)stack));
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
-MU_TEST(test_lstend_int)
+MU_TEST(test_lst_goto_end)
 {
 	// ARRANGE
-	int expected_result = 22;
+	int top = 11;
+	int bottom = 22;
+	int expected_result;
 	int actual_result;
 	t_stack *stack;
 
@@ -100,7 +103,34 @@ MU_TEST(test_lstend_int)
 	stack->next = NULL;
 
 	// ACT
-	stack = ft_lstend_int(stack, expected_result);
+	stack = ft_lst_init(top);
+	stack = ft_lstend_int(stack, bottom);
+	// stack = ft_lst_goto_end(stack);
+	ft_printf("stack [0] = %d\n", stack->nbr);
+	// ft_printf("stack [1] = %d\n", stack->next->nbr);
+
+	actual_result = ft_lst_goto_end(stack)->nbr;
+	expected_result = bottom;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+}
+
+MU_TEST(test_lstend_int)
+{
+	// ARRANGE
+	int top = 11;
+	int expected_result;
+	int actual_result;
+	t_stack *stack;
+
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	stack->prev = NULL;
+	stack->next = NULL;
+	expected_result = top;
+
+	// ACT
+	stack = ft_lstend_int(stack, top);
 	actual_result = stack->nbr;
 
 	// ASSERT
@@ -152,16 +182,17 @@ void test_pushsubtract_5minus3()
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
-MU_TEST_SUITE(linked_list_tests)
-{
-	MU_RUN_TEST(test_lst_init);
-	MU_RUN_TEST(test_lstend_int);
-}
-
 MU_TEST_SUITE(swap_tests)
 {
 	MU_RUN_TEST(test_ft_swap);
 	MU_RUN_TEST(test_ft_swap_ab);
+}
+
+MU_TEST_SUITE(linked_list_tests)
+{
+	MU_RUN_TEST(test_lst_goto_end);
+	MU_RUN_TEST(test_lstend_int);
+	MU_RUN_TEST(test_lst_init);
 }
 
 MU_TEST_SUITE(testing_the_tester)

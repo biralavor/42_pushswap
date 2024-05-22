@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/21 15:41:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:18:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,42 +27,42 @@ t_stack	*ft_lst_init(int value)
 
 t_stack	*ft_lstend_int(t_stack *list, int value)
 {
-	t_stack	*current_node;
 	t_stack	*new_end;
 
-	if ((list == NULL) || (ft_lstsize_int((t_list *)list) == 1))
+	if (!list)
 	{
 		list = ft_lst_init(value);
 		return (list);
 	}
-	current_node = list;
-	while (current_node->next != NULL)
-		current_node = current_node->next;
 	new_end = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (new_end == NULL)
 		ft_error_msg("Memory allocation failed\n");
 	new_end->nbr = value;
-	new_end->prev = current_node;
+	new_end->prev = list;
 	new_end->next = NULL;
-	current_node->next = new_end;
+	list = ft_lst_goto_end(list);
+	list->next = new_end;
+	return (list);
+}
+
+t_stack *ft_lst_goto_end(t_stack *list)
+{
+	if (!list)
+		return (NULL);
+	while (list && (list->next != NULL))
+		list = list->next;
 	return (list);
 }
 
 void	ft_swap(t_stack **stack)
 {
-	t_stack	*first;
-	t_stack	*second;
 	int		temp;
 
 	if(*stack == NULL || (*stack)->next == NULL)
 		return ;	
-	first = *stack;
-	second = *stack;
-	second = second->next;
-	temp = first->nbr;
-	first->nbr = second->nbr;
-	first->next->nbr = temp;
-	*stack = first;
+	temp = (*stack)->nbr;
+	(*stack)->nbr = (*stack)->next->nbr;
+	(*stack)->next->nbr = temp;
 }
 
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
