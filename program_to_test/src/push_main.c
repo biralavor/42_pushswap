@@ -6,38 +6,36 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:13:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:40:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(void)
+int	main(void)
 {
-	int top = 11;
-	int second = 22;
-	int	third = 33;
-	int	fourth = 44;
-	int bottom = 99;
+	int		top;
+	int		second;
+	int		bottom;
 	t_stack	*stack;
-	t_stack	*temp;
 
+	top = 11;
+	second = 22;
+	bottom = 99;
 	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (stack == NULL)
 		ft_error_msg("Memory allocation failed\n");
 	stack->next = NULL;
 	stack = ft_lst_init(top);
 	stack = ft_lst_addto_end(stack, ft_lst_init(second));
-	stack = ft_lst_addto_end(stack, ft_lst_init(third));
-	stack = ft_lst_addto_end(stack, ft_lst_init(fourth));
 	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
-	temp = stack;
-	ft_printf("list size = %d\n", ft_lstsize_int((t_list *)temp));
-	ft_printf("The content is: %d\n", temp->nbr);
-	while (temp->next != NULL)
+	ft_printf("list size = %d\n", ft_lstsize_int((t_list *)stack));
+	ft_printf("The content is: %d\n", stack->nbr);
+	while (stack->next != NULL)
 	{
-		temp = temp->next;
-		ft_printf("The content is: %d\n", temp->nbr);
+		stack = stack->next;
+		ft_printf("The content is: %d\n", stack->nbr);
 	}
+	free(stack);
 	return (0);
 }

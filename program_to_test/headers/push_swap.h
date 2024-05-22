@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 14:59:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:32:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ typedef struct s_stack
 }					t_stack;
 
 t_stack	*ft_lst_init(int value);
-t_stack *ft_lst_goto_end(t_stack *list);
+t_stack	*ft_lst_goto_end(t_stack *list);
 t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new);
-t_stack *ft_lst_addto_begin(t_stack *list, t_stack *new);
-t_stack *ft_lst_delat_begin(t_stack *list);
+t_stack	*ft_lst_addto_begin(t_stack *list, t_stack *new);
+t_stack	*ft_lst_delat_begin(t_stack *list);
 /* new functions for psuh to be added in LIBFT */
 
 void	ft_swap(t_stack **stack);
