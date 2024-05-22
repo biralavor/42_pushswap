@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/22 12:46:50 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/22 12:49:06 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ jobs:
         run: python -m pip install norminette
 
       - name: Running Norminette
-        run: norminette -R CheckForbiddenSourceHeader headers/ libs/ src/
+        run: norminette -R CheckForbiddenSourceHeader ../program_to_test/headers/ ../program_to_test/libs/ ../program_to_test/src/
       
 
 
