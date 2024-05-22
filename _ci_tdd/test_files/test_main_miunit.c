@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 10:16:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:22:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ MU_TEST(test_ft_swap_ab)
 
 	// ACT
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lstend_int(stack_a, second_a);
-	stack_a = ft_lstend_int(stack_a, third_a);
-	stack_a = ft_lstend_int(stack_a, bottom_a);
+	stack_a = ft_lst_addto_end(stack_a, second_a);
+	stack_a = ft_lst_addto_end(stack_a, third_a);
+	stack_a = ft_lst_addto_end(stack_a, bottom_a);
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lstend_int(stack_b, second_b);
-	stack_b = ft_lstend_int(stack_b, third_b);
-	stack_b = ft_lstend_int(stack_b, bottom_b);
+	stack_b = ft_lst_addto_end(stack_b, second_b);
+	stack_b = ft_lst_addto_end(stack_b, third_b);
+	stack_b = ft_lst_addto_end(stack_b, bottom_b);
 	ft_swap_ab(&stack_a, &stack_b);
 	actual_result_a = stack_a->nbr;
 	actual_result_b = stack_b->nbr;
@@ -77,10 +77,10 @@ MU_TEST(test_ft_swap)
 	expected_result = second;
 
 	// ACT
-	stack = ft_lstend_int(stack, top);
-	stack = ft_lstend_int(stack, second);
-	stack = ft_lstend_int(stack, third);
-	stack = ft_lstend_int(stack, bottom);
+	stack = ft_lst_addto_end(stack, top);
+	stack = ft_lst_addto_end(stack, second);
+	stack = ft_lst_addto_end(stack, third);
+	stack = ft_lst_addto_end(stack, bottom);
 	ft_swap(&stack);
 	actual_result = stack->nbr;
 	ft_printf("stack size = %d\n", ft_lstsize_int((t_list *)stack));
@@ -104,7 +104,7 @@ MU_TEST(test_lst_goto_end)
 
 	// ACT
 	stack = ft_lst_init(top);
-	stack = ft_lstend_int(stack, bottom);
+	stack = ft_lst_addto_end(stack, bottom);
 	// stack = ft_lst_goto_end(stack);
 	ft_printf("stack [0] = %d\n", stack->nbr);
 	// ft_printf("stack [1] = %d\n", stack->next->nbr);
@@ -116,7 +116,7 @@ MU_TEST(test_lst_goto_end)
 	mu_assert_int_eq(expected_result, actual_result);
 }
 
-MU_TEST(test_lstend_int)
+MU_TEST(test_lst_addto_end)
 {
 	// ARRANGE
 	int top = 11;
@@ -130,7 +130,7 @@ MU_TEST(test_lstend_int)
 	expected_result = top;
 
 	// ACT
-	stack = ft_lstend_int(stack, top);
+	stack = ft_lst_addto_end(stack, top);
 	actual_result = stack->nbr;
 
 	// ASSERT
@@ -191,7 +191,7 @@ MU_TEST_SUITE(swap_tests)
 MU_TEST_SUITE(linked_list_tests)
 {
 	MU_RUN_TEST(test_lst_goto_end);
-	MU_RUN_TEST(test_lstend_int);
+	MU_RUN_TEST(test_lst_addto_end);
 	MU_RUN_TEST(test_lst_init);
 }
 

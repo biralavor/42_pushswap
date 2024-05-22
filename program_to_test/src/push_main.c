@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/20 15:54:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:23:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int main(void)
 	if (stack == NULL)
 		ft_error_msg("Memory allocation failed\n");
 	stack->next = NULL;
-	stack = ft_lstend_int(stack, top);
-	stack = ft_lstend_int(stack, second);
-	stack = ft_lstend_int(stack, third);
-	stack = ft_lstend_int(stack, fourth);
-	stack = ft_lstend_int(stack, bottom);
+	stack = ft_lst_addto_end(stack, top);
+	stack = ft_lst_addto_end(stack, second);
+	stack = ft_lst_addto_end(stack, third);
+	stack = ft_lst_addto_end(stack, fourth);
+	stack = ft_lst_addto_end(stack, bottom);
 	temp = stack;
 	ft_printf("list size = %d\n", ft_lstsize_int((t_list *)temp));
 	ft_printf("The content is: %d\n", temp->nbr);

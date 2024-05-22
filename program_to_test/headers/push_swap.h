@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 09:58:15 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:21:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-t_stack	*ft_lstend_int(t_stack *list, int value);
+t_stack	*ft_lst_addto_end(t_stack *list, int value);
 t_stack *ft_lst_goto_end(t_stack *list);
 t_stack	*ft_lst_init(int value);
 /* new functions for psuh to be added in LIBFT */
