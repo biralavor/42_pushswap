@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 11:52:34 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 12:25:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:48:30 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	ft_push_a(t_stack **stack_a, t_stack **stack_b)
 	tobe_pushed = (*stack_a)->nbr;
 	(*stack_a)->nbr = (*stack_b)->nbr;
 	temp = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	while ((*stack_b)->next != NULL)
-	{
-		temp->nbr = (*stack_b)->nbr;
-	}
+	temp->nbr = tobe_pushed;
+	temp->next = NULL;
+	*stack_a = ft_lst_addto_begin(*stack_a, temp);
+	// while ((*stack_b)->next != NULL)
+	// {
+	// 	temp->nbr = (*stack_b)->nbr;
+	// }
 	
 }

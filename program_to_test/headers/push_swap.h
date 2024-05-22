@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 11:35:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:32:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new);
-t_stack *ft_lst_goto_end(t_stack *list);
 t_stack	*ft_lst_init(int value);
+t_stack *ft_lst_goto_end(t_stack *list);
+t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new);
+t_stack *ft_lst_addto_begin(t_stack *list, t_stack *new);
 /* new functions for psuh to be added in LIBFT */
 
 void	ft_swap(t_stack **stack);
@@ -40,6 +41,5 @@ void	ft_double_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
 bool	is_sorted(t_stack *stack);
 /* validation functions */
-
 
 #endif
