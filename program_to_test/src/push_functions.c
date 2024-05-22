@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 10:21:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:39:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_stack	*ft_lst_addto_end(t_stack *list, int value)
 		list = ft_lst_init(value);
 		return (list);
 	}
+	if (!value)
+		return (NULL);
 	new_end = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (new_end == NULL)
 		ft_error_msg("Memory allocation failed\n");
