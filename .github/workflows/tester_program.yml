@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/22 12:31:44 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/22 12:38:51 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,12 @@ jobs:
       
       - name: Running Valgrind
         run: valgrind --leak-check=full ./push_swap.tests
+
+      - name: Install Python
+        uses: actions/setup-python@v5.1.0
+      
+      - name: Setup Norminette
+        run: sudo apt-get install -y norminette
 
       - name: Running Norminette
         run: norminette -R CheckForbiddenSourceHeader headers/ libs/ src/
