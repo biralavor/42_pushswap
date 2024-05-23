@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 13:26:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:58:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,43 @@
 #include "../../program_to_test/src/ft_swap.c"
 #include "../../program_to_test/src/ft_push.c"
 #include "../../program_to_test/src/ft_rotate.c"
+
+MU_TEST(test_ft_reverse_rotate)
+{
+	// ARRANGE
+	int		top_a = 11;
+	int		second_a = 22;
+	int		third_a = 33;
+	int		bottom_a = 44;
+	int		actual_result_a;
+	int		expected_result_a;
+	int		actual_size_a;
+	int		expected_size_a;
+	t_stack	*stack_a;
+
+	expected_result_a = bottom_a;
+
+	// ACT
+	stack_a = ft_lst_init(top_a);
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	expected_size_a = ft_lstsize_int((t_list *)stack_a);
+	ft_reverse_rotate(&stack_a);
+	actual_size_a = ft_lstsize_int((t_list *)stack_a);
+	actual_result_a = stack_a->nbr;
+	ft_printf("reverse rotate stack_A nbr: %d\n", stack_a->nbr);
+	while (stack_a->next != NULL)
+	{
+		stack_a = stack_a->next;
+		ft_printf("reverse rotate stack_A nbr: %d\n", stack_a->nbr);
+	}
+
+	// ASSERT
+	mu_assert_int_eq(expected_result_a, actual_result_a);
+	mu_assert_int_eq(expected_size_a, actual_size_a);
+	ft_lstclear_single_ptr(stack_a);
+}
 
 MU_TEST(test_ft_rotate_ab)
 {
@@ -51,18 +88,18 @@ MU_TEST(test_ft_rotate_ab)
 	ft_rotate_ab(&stack_a, &stack_b);
 	actual_result_a = stack_a->nbr;
 	actual_result_b = stack_b->nbr;
-	ft_printf("rotate stack_A nbr: %d\n", stack_a->nbr);
-	while (stack_a->next != NULL)
-	{
-		stack_a = stack_a->next;
-		ft_printf("rotate stack_A nbr: %d\n", stack_a->nbr);
-	}
-	ft_printf("rotate stack_B nbr: %d\n", stack_b->nbr);
-	while (stack_b->next != NULL)
-	{
-		stack_b = stack_b->next;
-		ft_printf("rotate stack_B nbr: %d\n", stack_b->nbr);
-	}
+	// ft_printf("rotate stack_A nbr: %d\n", stack_a->nbr);
+	// while (stack_a->next != NULL)
+	// {
+	// 	stack_a = stack_a->next;
+	// 	ft_printf("rotate stack_A nbr: %d\n", stack_a->nbr);
+	// }
+	// ft_printf("rotate stack_B nbr: %d\n", stack_b->nbr);
+	// while (stack_b->next != NULL)
+	// {
+	// 	stack_b = stack_b->next;
+	// 	ft_printf("rotate stack_B nbr: %d\n", stack_b->nbr);
+	// }
 
 	// ASSERT
 	mu_assert_int_eq(expected_result_a, actual_result_a);
@@ -160,8 +197,7 @@ MU_TEST(test_ft_push_a)
 	expected_result_b = second_b;
 
 	// ACT
-	stack_a = ft_lst_init(to	int		expected_result_b;
-	t_stack	*stp_a);
+	stack_a = ft_lst_init(top_a);
 	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
 	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
 	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
@@ -379,6 +415,7 @@ MU_TEST_SUITE(rotate_tests)
 {
 	MU_RUN_TEST(test_ft_rotate);
 	MU_RUN_TEST(test_ft_rotate_ab);
+	MU_RUN_TEST(test_ft_reverse_rotate);
 }
 
 int main(void)
