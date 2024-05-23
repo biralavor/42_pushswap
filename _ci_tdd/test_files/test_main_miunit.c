@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 14:44:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:00:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,6 +310,46 @@ MU_TEST(test_lst_addto_end)
 	ft_lstclear_single_ptr(stack);
 }
 
+MU_TEST(test_lst_delat_end)
+{
+	// ARRANGE
+	int		top = 11;
+	int		second = 22;
+	int		third = 33;
+	int		bottom = 44;
+	int		expected_result;
+	int		actual_result;
+	int		expected_size;
+	int		actual_size;
+	t_stack	*stack;
+
+	expected_result = third;
+
+	// ACT
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(stack, ft_lst_init(third));
+	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	expected_size = ft_lstsize_int((t_list *)stack) - 1;
+
+	stack = ft_lst_delat_end(stack);
+	actual_size = ft_lstsize_int((t_list *)stack);
+	ft_printf("delat_end stack nbr: %d\n", stack->nbr);
+	while (stack->next != NULL)
+	{
+		actual_result = stack->nbr;
+		stack = stack->next;
+		ft_printf("delat_end stack nbr: %d\n", stack->nbr);
+	}
+	ft_printf("delat_end actual_result: %d\n", actual_result);
+	ft_printf("delat_end expected_result: %d\n", expected_result);
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+	mu_assert_int_eq(expected_size, actual_size);
+	ft_lstclear_single_ptr(stack);
+}
+
 MU_TEST(test_lst_delat_begin)
 {
 	// ARRANGE
@@ -400,6 +440,7 @@ MU_TEST_SUITE(linked_list_tests)
 	MU_RUN_TEST(test_lst_addto_end);
 	MU_RUN_TEST(test_lst_addto_begin);
 	MU_RUN_TEST(test_lst_delat_begin);
+	MU_RUN_TEST(test_lst_delat_end);
 }
 
 MU_TEST_SUITE(swap_tests)
