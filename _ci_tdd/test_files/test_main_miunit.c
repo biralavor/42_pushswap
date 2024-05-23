@@ -6,14 +6,17 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 13:58:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:44:13 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
-#include "../../program_to_test/src/ft_utils.c"
-#include "../../program_to_test/src/ft_linkedlist.c"
+#include "../../program_to_test/src/ft_lst_init.c"
+#include "../../program_to_test/src/ft_lst_goto.c"
+#include "../../program_to_test/src/ft_lst_addition.c"
+#include "../../program_to_test/src/ft_lst_deletes.c"
+#include "../../program_to_test/src/ft_lst_clear.c"
 #include "../../program_to_test/src/ft_swap.c"
 #include "../../program_to_test/src/ft_push.c"
 #include "../../program_to_test/src/ft_rotate.c"
