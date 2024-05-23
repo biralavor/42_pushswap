@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 15:40:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:38:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main(void)
 		stack = stack->next;
 		ft_printf("The content is: %d\n", stack->nbr);
 	}
-	free(stack);
+	ft_lstclear_single_ptr(stack);
 	return (0);
 }

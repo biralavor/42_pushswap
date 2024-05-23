@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/22 15:17:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 09:46:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../../program_to_test/src/ft_linkedlist.c"
 #include "../../program_to_test/src/ft_swap.c"
 #include "../../program_to_test/src/ft_push.c"
+#include "../../program_to_test/src/ft_utils.c"
 
 MU_TEST(test_ft_push_b)
 {
@@ -34,12 +35,6 @@ MU_TEST(test_ft_push_b)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack_a->next = NULL;
-	stack_b->next = NULL;
-	stack_a->prev = NULL;
-	stack_b->prev = NULL;
 	expected_result_a = second_a;
 	expected_result_b = top_a;
 
@@ -71,6 +66,8 @@ MU_TEST(test_ft_push_b)
 	// ASSERT
 	mu_assert_int_eq(expected_result_a, actual_result_a);
 	mu_assert_int_eq(expected_result_b, actual_result_b);
+	ft_lstclear_single_ptr(stack_a);
+	ft_lstclear_single_ptr(stack_b);
 }
 
 MU_TEST(test_ft_push_a)
@@ -91,12 +88,6 @@ MU_TEST(test_ft_push_a)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack_a->next = NULL;
-	stack_b->next = NULL;
-	stack_a->prev = NULL;
-	stack_b->prev = NULL;
 	expected_result_a = top_b;
 	expected_result_b = second_b;
 
@@ -116,6 +107,8 @@ MU_TEST(test_ft_push_a)
 	// ASSERT
 	mu_assert_int_eq(expected_result_a, actual_result_a);
 	mu_assert_int_eq(expected_result_b, actual_result_b);
+	ft_lstclear_single_ptr(stack_a);
+	ft_lstclear_single_ptr(stack_b);
 }
 
 MU_TEST(test_ft_swap_ab)
@@ -136,12 +129,6 @@ MU_TEST(test_ft_swap_ab)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack_a->next = NULL;
-	stack_b->next = NULL;
-	stack_a->prev = NULL;
-	stack_b->prev = NULL;
 	expected_result_a = second_a;
 	expected_result_b = second_b;
 
@@ -161,6 +148,8 @@ MU_TEST(test_ft_swap_ab)
 	// ASSERT
 	mu_assert_int_eq(expected_result_a, actual_result_a);
 	mu_assert_int_eq(expected_result_b, actual_result_b);
+	ft_lstclear_single_ptr(stack_a);
+	ft_lstclear_single_ptr(stack_b);
 }
 
 MU_TEST(test_ft_swap)
@@ -174,9 +163,6 @@ MU_TEST(test_ft_swap)
 	int	expected_result;
 	t_stack	*stack;
 
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->next = NULL;
-	stack->prev = NULL;
 	expected_result = second;
 
 	// ACT
@@ -190,6 +176,7 @@ MU_TEST(test_ft_swap)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
 }
 
 MU_TEST(test_lst_addto_end)
@@ -202,9 +189,6 @@ MU_TEST(test_lst_addto_end)
 	int actual_result;
 	t_stack *stack;
 
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->prev = NULL;
-	stack->next = NULL;
 	expected_result = bottom;
 
 	// ACT
@@ -215,6 +199,7 @@ MU_TEST(test_lst_addto_end)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
 }
 
 MU_TEST(test_lst_delat_begin)
@@ -227,9 +212,6 @@ MU_TEST(test_lst_delat_begin)
 	int actual_result;
 	t_stack *stack;
 
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->prev = NULL;
-	stack->next = NULL;
 	expected_result = middle;
 
 	// ACT
@@ -241,6 +223,7 @@ MU_TEST(test_lst_delat_begin)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
 }
 
 MU_TEST(test_lst_addto_begin)
@@ -253,9 +236,6 @@ MU_TEST(test_lst_addto_begin)
 	int actual_result;
 	t_stack *stack;
 
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->prev = NULL;
-	stack->next = NULL;
 	expected_result = bottom;
 
 	// ACT
@@ -266,6 +246,7 @@ MU_TEST(test_lst_addto_begin)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
 }
 
 MU_TEST(test_lst_goto_end)
@@ -277,10 +258,6 @@ MU_TEST(test_lst_goto_end)
 	int actual_result;
 	t_stack *stack;
 
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->prev = NULL;
-	stack->next = NULL;
-
 	// ACT
 	stack = ft_lst_init(top);
 	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
@@ -289,6 +266,7 @@ MU_TEST(test_lst_goto_end)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
 }
 
 MU_TEST(test_lst_init)
@@ -298,16 +276,13 @@ MU_TEST(test_lst_init)
 	int	actual_result;
 	t_stack	*stack;
 
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	stack->next = NULL;
-	stack->prev = NULL;
-
 	// ACT
 	stack = ft_lst_init(expected_result);
 	actual_result = stack->nbr;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
 }
 
 MU_TEST_SUITE(linked_list_tests)

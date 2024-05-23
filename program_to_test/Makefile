@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/22 11:59:38 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/22 16:10:29 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ LIBS					= $(LIBFT)
 NAME					= push_swap
 
 SRC_FILES				= push_main.c
+SRC_FILES				+= ft_utils.c
 SRC_FILES				+= ft_linkedlist.c
 SRC_FILES				+= ft_swap.c
 SRC_FILES				+= ft_push.c
