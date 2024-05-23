@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 13:17:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:26:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,18 +141,18 @@ MU_TEST(test_ft_push_b)
 MU_TEST(test_ft_push_a)
 {
 	// ARRANGE
-	int	top_a = 11;
-	int	second_a = 22;
-	int	third_a = 33;
-	int	bottom_a = 44;
-	int	top_b = 999;
-	int	second_b = 888;
-	int	third_b = 777;
-	int	bottom_b = 555;
-	int	actual_result_a;
-	int	actual_result_b;
-	int	expected_result_a;
-	int	expected_result_b;
+	int		top_a = 11;
+	int		second_a = 22;
+	int		third_a = 33;
+	int		bottom_a = 44;
+	int		top_b = 999;
+	int		second_b = 888;
+	int		third_b = 777;
+	int		bottom_b = 555;
+	int		actual_result_a;
+	int		actual_result_b;
+	int		expected_result_a;
+	int		expected_result_b;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -160,7 +160,8 @@ MU_TEST(test_ft_push_a)
 	expected_result_b = second_b;
 
 	// ACT
-	stack_a = ft_lst_init(top_a);
+	stack_a = ft_lst_init(to	int		expected_result_b;
+	t_stack	*stp_a);
 	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
 	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
 	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
@@ -182,18 +183,18 @@ MU_TEST(test_ft_push_a)
 MU_TEST(test_ft_swap_ab)
 {
 	// ARRANGE
-	int	top_a = 11;
-	int	second_a = 22;
-	int	third_a = 33;
-	int	bottom_a = 44;
-	int	top_b = 99;
-	int	second_b = 88;
-	int	third_b = 77;
-	int	bottom_b = 55;
-	int	actual_result_a;
-	int	actual_result_b;
-	int	expected_result_a;
-	int	expected_result_b;
+	int		top_a = 11;
+	int		second_a = 22;
+	int		third_a = 33;
+	int		bottom_a = 44;
+	int		top_b = 99;
+	int		second_b = 88;
+	int		third_b = 77;
+	int		bottom_b = 55;
+	int		actual_result_a;
+	int		actual_result_b;
+	int		expected_result_a;
+	int		expected_result_b;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -223,12 +224,12 @@ MU_TEST(test_ft_swap_ab)
 MU_TEST(test_ft_swap)
 {
 	// ARRANGE
-	int	top = 11;
-	int	second = 22;
-	int	third = 33;
-	int	bottom = 99;
-	int	actual_result;
-	int	expected_result;
+	int		top = 11;
+	int		second = 22;
+	int		third = 33;
+	int		bottom = 99;
+	int		actual_result;
+	int		expected_result;
 	t_stack	*stack;
 
 	expected_result = second;
@@ -250,12 +251,12 @@ MU_TEST(test_ft_swap)
 MU_TEST(test_lst_addto_end)
 {
 	// ARRANGE
-	int top = 11;
-	int	middle = 22;
-	int bottom = 33;
-	int expected_result;
-	int actual_result;
-	t_stack *stack;
+	int		top = 11;
+	int		middle = 22;
+	int		bottom = 33;
+	int		expected_result;
+	int		actual_result;
+	t_stack	*stack;
 
 	expected_result = bottom;
 
@@ -273,12 +274,12 @@ MU_TEST(test_lst_addto_end)
 MU_TEST(test_lst_delat_begin)
 {
 	// ARRANGE
-	int top = 11;
-	int	middle = 22;
-	int bottom = 33;
-	int expected_result;
-	int actual_result;
-	t_stack *stack;
+	int		top = 11;
+	int		middle = 22;
+	int		bottom = 33;
+	int		expected_result;
+	int		actual_result;
+	t_stack	*stack;
 
 	expected_result = middle;
 
@@ -297,12 +298,12 @@ MU_TEST(test_lst_delat_begin)
 MU_TEST(test_lst_addto_begin)
 {
 	// ARRANGE
-	int top = 11;
-	int	middle = 22;
-	int bottom = 33;
-	int expected_result;
-	int actual_result;
-	t_stack *stack;
+	int		top = 11;
+	int		middle = 22;
+	int		bottom = 33;
+	int		expected_result;
+	int		actual_result;
+	t_stack	*stack;
 
 	expected_result = bottom;
 
@@ -320,11 +321,11 @@ MU_TEST(test_lst_addto_begin)
 MU_TEST(test_lst_goto_end)
 {
 	// ARRANGE
-	int top = 11;
-	int bottom = 22;
-	int expected_result;
-	int actual_result;
-	t_stack *stack;
+	int		top = 11;
+	int		bottom = 22;
+	int		expected_result;
+	int		actual_result;
+	t_stack	*stack;
 
 	// ACT
 	stack = ft_lst_init(top);
@@ -340,8 +341,8 @@ MU_TEST(test_lst_goto_end)
 MU_TEST(test_lst_init)
 {
 	// ARRANGE
-	int	expected_result = 11;
-	int	actual_result;
+	int		expected_result = 11;
+	int		actual_result;
 	t_stack	*stack;
 
 	// ACT
