@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/22 16:10:29 by umeneses         ###   ########.fr        #
+#    Updated: 2024/05/23 11:48:34 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC_FILES				+= ft_utils.c
 SRC_FILES				+= ft_linkedlist.c
 SRC_FILES				+= ft_swap.c
 SRC_FILES				+= ft_push.c
+SRC_FILES				+= ft_rotate.c
 
 SRC_FILES_ALL			= $(addprefix $(SRC_D), $(SRC_FILES))
 
