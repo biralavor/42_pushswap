@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:48:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 17:09:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:04:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ void	ft_reverse_rotate(t_stack **stack)
 	temp = ft_lst_goto_end(*stack)->nbr;
 	*stack = ft_lst_addto_begin(*stack, ft_lst_init(temp));
 	*stack = ft_lst_delat_end(*stack);
+}
+
+void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b)
+{
+	if (*stack_a == NULL || (*stack_b == NULL)
+		|| ((*stack_a)->next == NULL || (*stack_b)->next == NULL))
+		return ;
+	ft_reverse_rotate(stack_a);
+	ft_reverse_rotate(stack_b);
 }

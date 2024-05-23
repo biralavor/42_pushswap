@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 17:21:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:03:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_push_b(t_stack **stack_a, t_stack **stack_b);
 void	ft_rotate(t_stack **stack);
 void	ft_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_reverse_rotate(t_stack **stack);
-void	ft_double_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
+void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 /* initial push_swap functions */
 
 bool	is_sorted(t_stack *stack);
