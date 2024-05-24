@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 19:03:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/24 11:47:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_stack
 
 t_stack	*ft_lst_init(int value);
 t_stack	*ft_lst_goto_end(t_stack *list);
+t_stack	*ft_lst_goto_head(t_stack *list);
 t_stack	*ft_lst_goto_before_end(t_stack *list);
 t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new);
 t_stack	*ft_lst_addto_begin(t_stack *list, t_stack *new);
