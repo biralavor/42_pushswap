@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 14:29:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:32:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,17 @@ t_stack	*ft_lst_init(int value)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
+}
+
+void	ft_lst_printf_int_content(char *msg, t_stack *list)
+{
+	t_stack	*temp;
+
+	temp = list;
+	ft_printf("%s %d\n", msg, temp->nbr);
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+		ft_printf("%s %d\n", msg, temp->nbr);
+	}
 }

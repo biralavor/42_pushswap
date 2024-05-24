@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/24 11:47:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:44:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_stack	*ft_lst_delat_begin(t_stack *list);
 t_stack	*ft_lst_delat_end(t_stack *list);
 void	ft_lstclear_double_ptr(t_stack **list);
 void	ft_lstclear_single_ptr(t_stack *list);
+void	ft_lst_printf_int_content(char *msg, t_stack *list);
 /* new functions for psuh to be added in LIBFT */
 
 void	ft_swap(t_stack **stack);
