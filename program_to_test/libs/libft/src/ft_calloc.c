@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 18:09:44 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/14 11:42:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:24:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_calloc(size_t n_items, size_t size)
 {
 	void	*result;
-	int		safety_arg;
+	size_t	safety_arg;
 	size_t	int_min;
 
 	int_min = -2147483648;
@@ -24,7 +24,7 @@ void	*ft_calloc(size_t n_items, size_t size)
 	if (n_items == int_min || size == int_min)
 		return (NULL);
 	safety_arg = n_items * size;
-	if (safety_arg != 0 && (safety_arg / n_items) != size)
+	if (safety_arg != 0 && ((safety_arg / n_items) != size))
 		return (NULL);
 	result = malloc(safety_arg);
 	if (!result)
