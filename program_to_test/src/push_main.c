@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/24 18:58:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:40:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(void)
 	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
 	ft_printf("list size = %d\n", ft_lstsize_int((t_list *)stack));
 	ft_lst_printf_int_content("stack is:", stack);
-	// stack = ft_lst_goto_head(stack);
 	ft_lstclear_single_ptr(stack);
 	return (0);
 }
