@@ -12,13 +12,16 @@ Let's suppose that you need to commute from your house to your work by car, but 
 ## Efficiency - The goal, whatever it takes
 You can drive like Mr. Goofy but at crazy mode accelerating a lot, changing lanes every second, hitting brakes... and eventually arriving at work.
 ![Screenshot from 2024-05-28 19-34-53](https://github.com/biralavor/42_pushswap/assets/80487147/1f2185cd-e3bf-4101-bd46-376fc05b07fd)
-Did you make the goal? **Yes**. But probably, you burned some really important resources from your car (gas, oil, brakes, engine), and from yourself (mental health, stress, anxiety, etc...)
+
+### Did you make the goal? **Yes**.
+But probably, you burned some really important resources from your car (gas, oil, brakes, engine), and from yourself (mental health, stress, anxiety, etc...)
 
 ## Efficacy - The goal, with minimal resources
 But you can also goes like the initial state from Mr. Goofy: a pleasant guy which could find another path or even wait with pacience and love the innevitable truth: there is a traffic jam ahead.
 ![Screenshot from 2024-05-28 19-39-16](https://github.com/biralavor/42_pushswap/assets/80487147/230b0780-9505-41fc-b768-865745012a84)
 
-Did you make the goal? **Yes**. But without burning your brain, tires and fuel unnecessarily.
+### Did you make the goal? **Yes**.
+But without burning your brain, tires and fuel unnecessarily.
 
 ## Push_Swap - Which one is required?
 Push Swap is about a program that **sort numbers** from user's input, but also:
