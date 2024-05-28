@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/24 19:21:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:29:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -374,11 +374,7 @@ MU_TEST(test_lst_delat_end)
 
 	stack = ft_lst_delat_end(stack);
 	actual_size = ft_lstsize_int((t_list *)stack);
-	while (stack->next != NULL)
-	{
-		stack = stack->next;
-		actual_result = stack->nbr;
-	}
+	actual_result = ft_lst_goto_end(stack)->nbr;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
