@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/28 18:29:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:36:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ MU_TEST(test_ft_reverse_rotate)
 	ft_reverse_rotate(&stack_a);
 	actual_size_a = ft_lstsize_int((t_list *)stack_a);
 	actual_result_a = stack_a->nbr;
-	while (stack_a->next != NULL)
-		stack_a = stack_a->next;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result_a, actual_result_a);
