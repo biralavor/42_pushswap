@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:10:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/24 19:20:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:16:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_lstclear_single_ptr(t_stack *list)
 
 	if (!list)
 		return ;
-	// list = ft_lst_goto_head(list);
 	temp = NULL;
 	while (list)
 	{
