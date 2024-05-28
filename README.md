@@ -7,8 +7,7 @@ WIP - push swap, a 42 school project
 
 ## Real Case Study
 Let's suppose that you need to commute from your house to your work by car, but here is a traffic jam ahead, like Mr. Goofy from Disney: https://www.youtube.com/watch?v=_Tlk6e61E6w.
-![Screenshot from 2024-05-28 19-34-24](https://github.com/biralavor/42_pushswap/assets/80487147/c1301196-aef0-4c45-8cce-3df89c517b0e)
-
+![Screenshot from 2024-05-28 19-43-27](https://github.com/biralavor/42_pushswap/assets/80487147/b1850197-2313-418f-a358-9bcae563a12c)
 
 ## Efficiency - The goal, whatever it takes
 You can drive like Mr. Goofy but at crazy mode accelerating a lot, changing lanes every second, hitting brakes... and eventually arriving at work.
