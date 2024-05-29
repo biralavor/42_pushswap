@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/24 17:32:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:43:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ t_stack	*ft_lst_init(int value)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
+}
+
+t_stack	*ft_lts_buildstack_argv(t_stack *stack, char **argv)
+{
+	int	userinput;
+	int	index;
+
+	index = 0;
+	while (argv[++index] != NULL)
+	{
+		if (!ft_isdigit(*argv[index]))
+			ft_error_msg("User's input must be numbers only\n");
+		userinput = ft_atoi(argv[index]);
+		stack = ft_lst_addto_end(stack, ft_lst_init(userinput));
+	}
+	return (stack);
 }
 
 void	ft_lst_printf_int_content(char *msg, t_stack *list)

@@ -6,25 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/29 14:43:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:28:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*ft_lts_buildstack_argv(t_stack *stack, char **argv)
-{
-	int		userinput;
-	int		index;
-
-	index = 0;
-	while (argv[++index] != NULL)
-	{
-		userinput = ft_atoi(argv[index]);
-		stack = ft_lst_addto_end(stack, ft_lst_init(userinput));
-	}
-	return (stack);
-}
 
 int	main(int argc, char **argv)
 {
