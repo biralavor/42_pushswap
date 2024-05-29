@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/28 18:46:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:53:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -492,7 +492,25 @@ MU_TEST(test_lst_goto_end)
 	ft_lstclear_single_ptr(stack);
 }
 
-MU_TEST(test_lst_init)
+MU_TEST(test_lst_init_nbr)
+{
+	// ARRANGE
+	int		top = 11;
+	int		expected_result;
+	int		actual_result;
+	t_stack	*stack;
+
+	// ACT
+	stack = ft_lst_init(top);
+	actual_result = stack->nbr;
+	expected_result = top;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+	ft_lstclear_single_ptr(stack);
+}
+
+MU_TEST(test_lst_init_nbr)
 {
 	// ARRANGE
 	int		top = 11;
@@ -512,7 +530,7 @@ MU_TEST(test_lst_init)
 
 MU_TEST_SUITE(linked_list_tests)
 {
-	MU_RUN_TEST(test_lst_init);
+	MU_RUN_TEST(test_lst_init_nbr);
 	MU_RUN_TEST(test_lst_goto_end);
 	MU_RUN_TEST(test_lst_goto_head);
 	MU_RUN_TEST(test_lst_goto_before_end);
