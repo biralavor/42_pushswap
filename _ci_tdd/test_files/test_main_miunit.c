@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 18:49:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/03 19:25:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ MU_TEST(test_buildstack_argv)
 		free(argv_simulation[expected_size]);
 		expected_size--;
 	}
+	free(argv_simulation);
 }
 
 MU_TEST(test_ft_reverse_rotate_ab)
