@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/14 12:23:40 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/03 10:55:20 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,21 @@ COMP_OBJS	= $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) -o $(NAME)
 
 # **************************************************************************** #
+#								DEFINES										   #
+# **************************************************************************** #
+
+define		arguments
+			9 8 7
+endef
+
+define 		bonus
+			@printf "$(YELLOW)"
+			@echo ">>> Checking BONUS"
+			@printf "$(CYAN)"
+			@$(MAKE) -C $(PUSH_SWAP_D) bonus --no-print-directory
+endef
+
+# **************************************************************************** #
 #								TARGETS										   #
 # **************************************************************************** #
 
@@ -80,12 +95,15 @@ $(BUILD_D)%.o:		%.c
 					@$(COMP_OBJS)
 					@echo "Compiling: $(notdir $<)"
 
-$(NAME):			fclean push_swap $(OBJ_FILES)
+$(NAME):			push_swap $(OBJ_FILES)
 					@$(COMP_EXE)
+#					@printf "$(YELLOW)"
+#					@echo ">>> Running PUSH_SWAP with arguments: $(call arguments)"
+#					$(PUSH_SWAP_D)./push_swap $(call arguments)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"
 					@printf "$(RESET)"
-					@./$(NAME)
+					@./$(NAME) 
 
 push_swap:
 					@printf "$(YELLOW)"
