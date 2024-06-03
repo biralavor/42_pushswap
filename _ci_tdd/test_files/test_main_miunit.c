@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 19:25:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/03 19:41:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 #include "../../program_to_test/src/ft_rotate.c"
 
 // TODO: Add tests for the following functions:
-// ft_argv_size
 // ft_is_sign
 // ft_is_space
 // ft_argv_is_duplicated
@@ -49,6 +48,56 @@ MU_TEST(test_buildstack_argv)
 	// ASSERT
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack);
+	while (expected_size >= 0)
+	{
+		free(argv_simulation[expected_size]);
+		expected_size--;
+	}
+	free(argv_simulation);
+}
+
+MU_TEST(test_argv_is_duplicated_false)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		argv_len;
+	int		expected_result;
+	int		actual_result;
+
+	// ACT
+	userinput = "0 1 2 3 4 5 6 7 8";
+	argv_simulation = ft_split(userinput, ' ');
+	argv_len = ft_strlen(userinput) / 2;
+	actual_result = ft_argv_is_duplicated(argv_simulation);
+	expected_result = false;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+	while (argv_len >= 0)
+	{
+		free(argv_simulation[argv_len]);
+		argv_len--;
+	}
+	free(argv_simulation);
+}
+
+MU_TEST(test_argv_size)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		actual_size;
+
+	// ACT
+	userinput = "0 1 2 3 4 5 6 7 8";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_strlen(userinput) / 2;
+	actual_size = ft_argv_size(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_size, actual_size);
 	while (expected_size >= 0)
 	{
 		free(argv_simulation[expected_size]);
@@ -672,8 +721,10 @@ MU_TEST(test_lst_init_nbr)
 	ft_lstclear_single_ptr(stack);
 }
 
-MU_TEST_SUITE(buildstack_argv_tests)
+MU_TEST_SUITE(argv_tests)
 {
+	MU_RUN_TEST(test_argv_size);
+	MU_RUN_TEST(test_argv_is_duplicated_false);
 	MU_RUN_TEST(test_buildstack_argv);
 }
 
@@ -717,7 +768,7 @@ int main(void)
 	MU_RUN_SUITE(swap_tests);
 	MU_RUN_SUITE(push_tests);
 	MU_RUN_SUITE(rotate_tests);
-	MU_RUN_SUITE(buildstack_argv_tests);
+	MU_RUN_SUITE(argv_tests);
 	MU_REPORT();
 	return (0);
 }
