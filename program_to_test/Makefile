@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/23 14:30:41 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/03 12:26:59 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ LIBS					= $(LIBFT)
 NAME					= push_swap
 
 SRC_FILES				= push_main.c
+SRC_FILES				+= ft_argv_validation.c
 SRC_FILES				+= ft_lst_addition.c
 SRC_FILES				+= ft_lst_clear.c
 SRC_FILES				+= ft_lst_deletes.c
@@ -118,6 +119,7 @@ endef
 
 define					instructions
 						@echo "TODO: add instructions here"
+						@echo "Usage: ./$(NAME) <numbers_seq_to_sort>"
 
 endef
 
