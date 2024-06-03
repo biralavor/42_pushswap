@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 10:58:30 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:54:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,19 @@ t_stack	*ft_lst_init(int value)
 	return (new_node);
 }
 
-bool	ft_is_sign(int c)
-{
-	if (c == '-' || c == '+')
-		return (true);
-	return (false);
-}
-
-bool	ft_is_space(int c)
-{
-	if (c == ' ')
-		return (true);
-	return (false);
-}
-
 t_stack	*ft_lts_buildstack_argv(t_stack *stack, char **argv)
 {
 	int	userinput;
 	int	index;
 
 	index = 0;
+	if (!ft_argv_validation(argv))
+	{
+		ft_printf("not valid argv\n");
+		return (NULL);
+	}
 	while (argv[++index] != NULL)
 	{
-		if (ft_is_sign(*argv[index]) || ft_is_space(*argv[index]))
-			argv[index]++;
-		if (!ft_isdigit(*argv[index]))
-			ft_error_msg("User's input must be numbers only\n");
 		userinput = ft_atoi(argv[index]);
 		stack = ft_lst_addto_end(stack, ft_lst_init(userinput));
 	}
