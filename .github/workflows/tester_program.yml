@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
-#    Updated: 2024/05/22 12:49:06 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/03 18:45:11 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ jobs:
         run: sudo apt-get update | sudo apt-get install -y valgrind
       
       - name: Running Valgrind
-        run: valgrind --leak-check=full ./push_swap.tests
+        run: valgrind --track-origins=yes --leak-check=full -q ./push_swap.tests
 
       - name: Install Python
         uses: actions/setup-python@v5.1.0
