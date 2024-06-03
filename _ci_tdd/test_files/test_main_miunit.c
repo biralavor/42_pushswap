@@ -6,12 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 10:45:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:21:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
+#include "../../program_to_test/src/ft_argv_validation.c"
 #include "../../program_to_test/src/ft_lst_init.c"
 #include "../../program_to_test/src/ft_lst_goto.c"
 #include "../../program_to_test/src/ft_lst_addition.c"
@@ -21,27 +22,34 @@
 #include "../../program_to_test/src/ft_push.c"
 #include "../../program_to_test/src/ft_rotate.c"
 
+// TODO: Add tests for the following functions:
+// ft_argv_size
+// ft_is_sign
+// ft_is_space
+// ft_argv_is_duplicated
+// ft_argv_validation
 
+MU_TEST(test_buildstack_argv)
+{
+	// ARRANGE
+	t_stack *stack;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		actual_size;
 
-// MU_TEST(test_buildstack_argv_3)
-// {
-// 	// ARRANGE
-// 	t_stack *stack;
-// 	char	**argv = NULL;
-// 	int		expected_size;
-// 	int		actual_size;
+	// ACT
+	stack = NULL;
+	userinput = "0 1 3 5 2 4 7 6";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_strlen(userinput) / 2;
+	stack = ft_lts_buildstack_argv(stack, argv_simulation);
+	actual_size = ft_lstsize_int((t_list *)stack);
 
-// 	// ACT
-// 	stack = NULL;
-// 	// argv = "3 4 5";
-// 	stack = ft_lts_buildstack_argv(stack, argv);
-// 	expected_size = 3;
-// 	actual_size = ft_lstsize_int((t_list *)stack);
-
-// 	// ASSERT
-// 	mu_assert_int_eq(expected_size, actual_size);
-// 	ft_lstclear_single_ptr(stack);
-// }
+	// ASSERT
+	mu_assert_int_eq(expected_size, actual_size);
+	ft_lstclear_single_ptr(stack);
+}
 
 MU_TEST(test_ft_reverse_rotate_ab)
 {
@@ -658,10 +666,10 @@ MU_TEST(test_lst_init_nbr)
 	ft_lstclear_single_ptr(stack);
 }
 
-// MU_TEST_SUITE(buildstack_argv_tests)
-// {
-// 	MU_RUN_TEST(test_buildstack_argv_3);
-// }
+MU_TEST_SUITE(buildstack_argv_tests)
+{
+	MU_RUN_TEST(test_buildstack_argv);
+}
 
 MU_TEST_SUITE(linked_list_tests)
 {
@@ -703,7 +711,7 @@ int main(void)
 	MU_RUN_SUITE(swap_tests);
 	MU_RUN_SUITE(push_tests);
 	MU_RUN_SUITE(rotate_tests);
-	// MU_RUN_SUITE(buildstack_argv_tests);
+	MU_RUN_SUITE(buildstack_argv_tests);
 	MU_REPORT();
 	return (0);
 }
