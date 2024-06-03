@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/03 10:55:20 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/03 12:55:57 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ $(BUILD_D)%.o:		%.c
 					@$(COMP_OBJS)
 					@echo "Compiling: $(notdir $<)"
 
-$(NAME):			push_swap $(OBJ_FILES)
+$(NAME):			fclean push_swap $(OBJ_FILES)
 					@$(COMP_EXE)
 #					@printf "$(YELLOW)"
 #					@echo ">>> Running PUSH_SWAP with arguments: $(call arguments)"
