@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 17:21:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:49:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ MU_TEST(test_buildstack_argv)
 	// ASSERT
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack);
+	while (expected_size >= 0)
+	{
+		free(argv_simulation[expected_size]);
+		expected_size--;
+	}
 }
 
 MU_TEST(test_ft_reverse_rotate_ab)
