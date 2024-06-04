@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 19:41:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:38:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@
 #include "../../program_to_test/src/ft_push.c"
 #include "../../program_to_test/src/ft_rotate.c"
 
-// TODO: Add tests for the following functions:
-// ft_is_sign
-// ft_is_space
-// ft_argv_is_duplicated
-// ft_argv_validation
+// TODO:
+// make a test for signs (- +)
 
 MU_TEST(test_buildstack_argv)
 {
@@ -52,6 +49,32 @@ MU_TEST(test_buildstack_argv)
 	{
 		free(argv_simulation[expected_size]);
 		expected_size--;
+	}
+	free(argv_simulation);
+}
+
+MU_TEST(test_argv_is_duplicated_true)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		argv_len;
+	int		expected_result;
+	int		actual_result;
+
+	// ACT
+	userinput = "0 1 2 3 4 5 6 7 8 2 9";
+	argv_simulation = ft_split(userinput, ' ');
+	argv_len = ft_strlen(userinput) / 2;
+	actual_result = ft_argv_is_duplicated(argv_simulation);
+	expected_result = true;
+
+	// ASSERT
+	mu_assert_int_eq(expected_result, actual_result);
+	while (argv_len >= 0)
+	{
+		free(argv_simulation[argv_len]);
+		argv_len--;
 	}
 	free(argv_simulation);
 }
@@ -725,6 +748,7 @@ MU_TEST_SUITE(argv_tests)
 {
 	MU_RUN_TEST(test_argv_size);
 	MU_RUN_TEST(test_argv_is_duplicated_false);
+	MU_RUN_TEST(test_argv_is_duplicated_true);
 	MU_RUN_TEST(test_buildstack_argv);
 }
 
