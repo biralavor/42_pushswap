@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 16:45:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:14:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include "../../program_to_test/src/ft_swap.c"
 #include "../../program_to_test/src/ft_push.c"
 #include "../../program_to_test/src/ft_rotate.c"
+#include "../../program_to_test/src/ft_sort_until3.c"
+#include "../../program_to_test/src/ft_do_and_print_01.c"
 
 // TODO:
 // make test for two decimals, three, four, five....
@@ -47,11 +49,12 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 
 	// ACT
 	stack = NULL;
-	userinput = "180000 9";
+	userinput = "./push_swap 180000 9";
 	argv_simulation = ft_split(userinput, ' ');
 	expected_size = ft_minunit_array_counter(argv_simulation);
-	expected_sorted_bottom = ft_atoi(argv_simulation[expected_size]);
+	expected_sorted_bottom = ft_atoi(argv_simulation[1]);
 	stack = ft_lts_buildstack_argv(stack, argv_simulation);
+	stack = ft_sort_2_nbrs(stack);
 	actual_size = ft_lstsize_int((t_list *)stack);
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
 
@@ -73,9 +76,9 @@ MU_TEST(test_buildstack_argv)
 
 	// ACT
 	stack = NULL;
-	userinput = "0 1 3 5 2 4 7 6";
+	userinput = "./push_swap 1 3 5 2 4 7 6";
 	argv_simulation = ft_split(userinput, ' ');
-	expected_size = ft_strlen(userinput) / 2;
+	expected_size = ft_minunit_array_counter(argv_simulation);
 	stack = ft_lts_buildstack_argv(stack, argv_simulation);
 	actual_size = ft_lstsize_int((t_list *)stack);
 
@@ -95,23 +98,23 @@ MU_TEST(test_argv_is_duplicated_true)
 	// ARRANGE
 	char	**argv_simulation = NULL;
 	char	*userinput;
-	int		argv_len;
+	int		expected_size;
 	int		expected_result;
 	int		actual_result;
 
 	// ACT
-	userinput = "0 1 2 3 4 5 6 7 8 2 9";
+	userinput = "./push_swap 1 2 3 4 5 6 7 8 2 9";
 	argv_simulation = ft_split(userinput, ' ');
-	argv_len = ft_strlen(userinput) / 2;
+	expected_size = ft_minunit_array_counter(argv_simulation);
 	actual_result = ft_argv_is_duplicated(argv_simulation);
 	expected_result = true;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
-	while (argv_len >= 0)
+	while (expected_size >= 0)
 	{
-		free(argv_simulation[argv_len]);
-		argv_len--;
+		free(argv_simulation[expected_size]);
+		expected_size--;
 	}
 	free(argv_simulation);
 }
@@ -121,23 +124,23 @@ MU_TEST(test_argv_is_duplicated_false)
 	// ARRANGE
 	char	**argv_simulation = NULL;
 	char	*userinput;
-	int		argv_len;
+	int		expected_size;
 	int		expected_result;
 	int		actual_result;
 
 	// ACT
-	userinput = "0 1 2 3 4 5 6 7 8";
+	userinput = "./push_swap 1 2 3 4 5 6 7 8";
 	argv_simulation = ft_split(userinput, ' ');
-	argv_len = ft_strlen(userinput) / 2;
+	expected_size = ft_minunit_array_counter(argv_simulation);
 	actual_result = ft_argv_is_duplicated(argv_simulation);
 	expected_result = false;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
-	while (argv_len >= 0)
+	while (expected_size >= 0)
 	{
-		free(argv_simulation[argv_len]);
-		argv_len--;
+		free(argv_simulation[expected_size]);
+		expected_size--;
 	}
 	free(argv_simulation);
 }
@@ -151,9 +154,9 @@ MU_TEST(test_argv_size)
 	int		actual_size;
 
 	// ACT
-	userinput = "0 1 2 3 4 5 6 7 8";
+	userinput = "./push_swap 1 2 3 4 5 6 7 8";
 	argv_simulation = ft_split(userinput, ' ');
-	expected_size = ft_strlen(userinput) / 2;
+	expected_size = ft_minunit_array_counter(argv_simulation);
 	actual_size = ft_argv_size(argv_simulation);
 
 	// ASSERT
