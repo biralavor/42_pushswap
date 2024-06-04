@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 17:14:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:17:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 // make test for empty list
 // make test for a list with '0'
 
-int	ft_minunit_array_counter(char **array);
+int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 
 MU_TEST(test_sort_2_nbrs_without_zero)
@@ -85,12 +85,7 @@ MU_TEST(test_buildstack_argv)
 	// ASSERT
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack);
-	while (expected_size >= 0)
-	{
-		free(argv_simulation[expected_size]);
-		expected_size--;
-	}
-	free(argv_simulation);
+	ft_array_clear(argv_simulation, expected_size);
 }
 
 MU_TEST(test_argv_is_duplicated_true)
@@ -111,12 +106,7 @@ MU_TEST(test_argv_is_duplicated_true)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
-	while (expected_size >= 0)
-	{
-		free(argv_simulation[expected_size]);
-		expected_size--;
-	}
-	free(argv_simulation);
+	ft_array_clear(argv_simulation, expected_size);
 }
 
 MU_TEST(test_argv_is_duplicated_false)
@@ -137,12 +127,7 @@ MU_TEST(test_argv_is_duplicated_false)
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
-	while (expected_size >= 0)
-	{
-		free(argv_simulation[expected_size]);
-		expected_size--;
-	}
-	free(argv_simulation);
+	ft_array_clear(argv_simulation, expected_size);
 }
 
 MU_TEST(test_argv_size)
@@ -161,12 +146,7 @@ MU_TEST(test_argv_size)
 
 	// ASSERT
 	mu_assert_int_eq(expected_size, actual_size);
-	while (expected_size >= 0)
-	{
-		free(argv_simulation[expected_size]);
-		expected_size--;
-	}
-	free(argv_simulation);
+	ft_array_clear(argv_simulation, expected_size);
 }
 
 MU_TEST(test_ft_reverse_rotate_ab)
