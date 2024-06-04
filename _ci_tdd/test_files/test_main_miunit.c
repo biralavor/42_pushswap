@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 13:20:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:55:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,18 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 
 	// ACT
 	stack = NULL;
-	userinput = "5 1";
+	expected_size = -1;
+	userinput = "180000 9";
 	argv_simulation = ft_split(userinput, ' ');
-	expected_size = ft_strlen(userinput) / 2;
+	while (argv_simulation[expected_size] != NULL)
+	{
+		expected_size++;
+		if (argv_simulation[expected_size] == NULL)
+		{
+			expected_size--;
+			break ;
+		}
+	}
 	expected_sorted_bottom = ft_atoi(argv_simulation[expected_size]);
 	stack = ft_lts_buildstack_argv(stack, argv_simulation);
 	actual_size = ft_lstsize_int((t_list *)stack);
@@ -54,10 +63,17 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 	mu_assert_int_eq(expected_size, actual_size);
 	mu_assert_int_eq(expected_sorted_bottom, actual_sorted_bottom);
 	ft_lstclear_single_ptr(stack);
+	ft_printf("expected_size: %d\n", expected_size);
+	ft_printf("argv-simulation: %s\n", argv_simulation[0]);
+	ft_printf("argv-simulation: %s\n", argv_simulation[1]);
+	ft_printf("argv-simulation: %c\n", argv_simulation[2]);
+
 	while (expected_size >= 0)
 	{
 		free(argv_simulation[expected_size]);
 		expected_size--;
+		if (expected_size == 0)
+			break ;
 	}
 	free(argv_simulation);
 }
