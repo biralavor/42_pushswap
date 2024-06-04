@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 17:29:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:36:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -848,8 +848,6 @@ void	ft_array_clear(char **array, int arr_size)
 	{
 		free(array[arr_size]);
 		arr_size--;
-		if (arr_size == 0)
-			break ;
 	}
 	free(array);
 }
