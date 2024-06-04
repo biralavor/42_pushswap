@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 16:39:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:45:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 
 	// ACT
 	stack = NULL;
-	expected_size = -1;
 	userinput = "180000 9";
 	argv_simulation = ft_split(userinput, ' ');
 	expected_size = ft_minunit_array_counter(argv_simulation);
@@ -60,10 +59,6 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 	mu_assert_int_eq(expected_size, actual_size);
 	mu_assert_int_eq(expected_sorted_bottom, actual_sorted_bottom);
 	ft_lstclear_single_ptr(stack);
-	ft_printf("expected_size: %d\n", expected_size);
-	ft_printf("argv-simulation: %s\n", argv_simulation[0]);
-	ft_printf("argv-simulation: %s\n", argv_simulation[1]);
-	ft_printf("argv-simulation: %c\n", argv_simulation[2]);
 	ft_array_clear(argv_simulation, expected_size);
 }
 
