@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 17:54:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:33:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ bool	ft_argv_is_duplicated(char **argv)
 		while ((++future_pos <= ft_argv_size(argv)) && (future_pos != index))
 		{
 			if (ft_atoi(compare[future_pos]) == after_atoi)
-			{
-				ft_error_msg("Duplicated items detected!\n");
 				return (true);
-			}
 		}
 	}
 	return (false);
@@ -81,6 +78,9 @@ bool	ft_argv_validation(char **argv)
 		}
 	}
 	if (ft_argv_is_duplicated(argv))
+	{
+		ft_error_msg("Duplicated items detected!\n");
 		return (false);
+	}
 	return (true);
 }
