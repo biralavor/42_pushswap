@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 17:36:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 18:54:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@
 #include "../../program_to_test/src/ft_push.c"
 #include "../../program_to_test/src/ft_rotate.c"
 #include "../../program_to_test/src/ft_sort_until3.c"
-#include "../../program_to_test/src/ft_do_and_print_01.c"
+#include "../../program_to_test/src/ft_do_push_fts.c"
+#include "../../program_to_test/src/ft_do_rev_rotate_fts.c"
+#include "../../program_to_test/src/ft_do_rotate_fts.c"
+#include "../../program_to_test/src/ft_do_swap_fts.c"
 
 // TODO:
 // make test for a list with three, four and five numbers

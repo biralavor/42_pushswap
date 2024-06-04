@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 12:41:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:01:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,20 @@ bool	ft_is_sorted(t_stack *list);
 /* sorting validation functions */
 
 t_stack	*ft_sort_2_nbrs(t_stack *list);
+t_stack	*ft_sort_3_nbrs(t_stack *list);
 /* sorting functions */
 
-void	ft_do_swap_a(t_stack *list);
+void	ft_do_swap_a(t_stack *stack);
+void	ft_do_swap_b(t_stack *stack);
+void	ft_do_swap_ab(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_push_a(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_push_b(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_rotate_a(t_stack *stack);
+void	ft_do_rotate_b(t_stack *stack);
+void	ft_do_rotate_ab(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_reverse_rotate_a(t_stack *stack);
+void	ft_do_reverse_rotate_b(t_stack *stack);
+void	ft_do_reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b);
 /* functions that call sorting and print the action on STDOUT */
 
 #endif
