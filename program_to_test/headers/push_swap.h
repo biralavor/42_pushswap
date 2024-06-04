@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 16:52:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:41:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	ft_is_space(int c);
 bool	ft_argv_is_duplicated(char **argv);
 int		ft_argv_size(char **argv);
 bool	ft_argv_validation(char **argv);
-/* new functions for push to be added in LIBFT */
+/* new functions for push_swap to be added in LIBFT */
 
 void	ft_swap(t_stack **stack);
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b);
@@ -52,7 +52,13 @@ void	ft_reverse_rotate(t_stack **stack);
 void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 /* basic push_swap functions */
 
-bool	ft_is_sorted(t_stack *stack);
-/* validation functions */
+bool	ft_is_sorted(t_stack *list);
+/* sorting validation functions */
+
+t_stack	*ft_sort_2_nbrs(t_stack *list);
+/* sorting functions */
+
+void	ft_do_swap_a(t_stack *list);
+/* functions that call sorting and print the action on STDOUT */
 
 #endif
