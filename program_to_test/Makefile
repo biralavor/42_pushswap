@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/03 12:26:59 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/04 12:28:34 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,13 @@ NAME					= push_swap
 
 SRC_FILES				= push_main.c
 SRC_FILES				+= ft_argv_validation.c
+SRC_FILES				+= ft_do_and_print_01.c
 SRC_FILES				+= ft_lst_addition.c
 SRC_FILES				+= ft_lst_clear.c
 SRC_FILES				+= ft_lst_deletes.c
 SRC_FILES				+= ft_lst_goto.c
 SRC_FILES				+= ft_lst_init.c
+SRC_FILES				+= ft_sort_until3.c
 SRC_FILES				+= ft_swap.c
 SRC_FILES				+= ft_push.c
 SRC_FILES				+= ft_rotate.c
