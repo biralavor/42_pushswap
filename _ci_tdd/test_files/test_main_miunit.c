@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 17:17:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:29:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #include "../../program_to_test/src/ft_do_and_print_01.c"
 
 // TODO:
-// make test for two decimals, three, four, five....
+// make test for a list with three, four and five numbers
 // make a test for signs (- +)
 // make test for non-numbers input
 // make test for empty list
@@ -35,6 +35,7 @@
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
+
 
 MU_TEST(test_sort_2_nbrs_without_zero)
 {
@@ -49,7 +50,7 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 
 	// ACT
 	stack = NULL;
-	userinput = "./push_swap 180000 9";
+	userinput = "./push_swap 2147483647 9";
 	argv_simulation = ft_split(userinput, ' ');
 	expected_size = ft_minunit_array_counter(argv_simulation);
 	expected_sorted_bottom = ft_atoi(argv_simulation[1]);
