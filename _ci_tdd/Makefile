@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/04 10:47:36 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/04 16:33:23 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ LIBS				= $(LIBFT_D)libft.a $(PUSH_SWAP_D)
 NAME				= push_swap.tests
 
 SRC_FILES			= test_main_miunit.c
+#SRC_FILES			+= minunit_utils.c
 
 SRC_FILES_ALL		= $(addprefix $(TEST_D), $(SRC_FILES))
 
@@ -74,7 +75,7 @@ COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) -o $(NAME)
 # **************************************************************************** #
 
 define		arguments
-		9 8 7 1 2 3 1024 50 42
+		42 1 1024
 endef
 
 define 		bonus
