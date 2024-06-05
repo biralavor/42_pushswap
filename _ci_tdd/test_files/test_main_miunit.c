@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 18:54:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:30:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,45 @@
 
 // TODO:
 // make test for a list with three, four and five numbers
-// make a test for signs (- +)
+// make test for signs (- +)
 // make test for non-numbers input
 // make test for empty list
-// make test for a list with '0'
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 
+MU_TEST(test_sort_3_nbrs_highest_at_middle)
+{
+	// ARRANGE
+	t_stack	*stack;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		actual_size;
+	int		expected_sorted_bottom;
+	int		actual_sorted_bottom;
+
+	// ACT
+	stack = NULL;
+	userinput = "./push_swap 2 3 1";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected_sorted_bottom = ft_atoi(argv_simulation[2]);
+	stack = ft_lts_buildstack_argv(stack, argv_simulation);
+	ft_lst_printf_int_content("highest_at_middle -previous list:", stack);
+	ft_printf("before list size = %d\n", ft_lstsize_int((t_list *)stack));
+	stack = ft_sort_3_nbrs(&stack);
+	actual_size = ft_lstsize_int((t_list *)stack);
+	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
+	ft_lst_printf_int_content("highest_at_middle -  sorted list:", stack);
+	ft_printf("after list size = %d\n", ft_lstsize_int((t_list *)stack));
+
+	// ASSERT
+	mu_assert_int_eq(expected_size, actual_size);
+	mu_assert_int_eq(expected_sorted_bottom, actual_sorted_bottom);
+	ft_lstclear_single_ptr(stack);
+	ft_array_clear(argv_simulation, expected_size);
+}
 
 MU_TEST(test_sort_2_nbrs_without_zero)
 {
@@ -813,6 +844,7 @@ MU_TEST_SUITE(argv_tests)
 MU_TEST_SUITE(sorting_tests)
 {
 	MU_RUN_TEST(test_sort_2_nbrs_without_zero);
+	MU_RUN_TEST(test_sort_3_nbrs_highest_at_middle);
 }
 
 int main(void)
