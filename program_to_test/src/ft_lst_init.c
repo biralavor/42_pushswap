@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 10:50:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:20:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ t_stack	*ft_lts_buildstack_argv(t_stack *stack, char **argv)
 
 	index = 0;
 	if (!ft_argv_validation(argv))
-	{
-		ft_printf("not valid argv\n");
 		return (NULL);
-	}
 	while (argv[++index] != NULL)
 	{
 		userinput = ft_atoi(argv[index]);
