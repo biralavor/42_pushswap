@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/03 15:54:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:50:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_stack	*ft_lst_init(int value)
 {
 	t_stack	*new_node;
 
-	if (!value)
-		ft_error_msg("Invalid value at lst_init()\n");
 	new_node = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (new_node == NULL)
 		ft_error_msg("Memory allocation failed\n");
