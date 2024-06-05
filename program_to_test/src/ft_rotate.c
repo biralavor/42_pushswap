@@ -6,21 +6,28 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:48:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 19:21:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:34:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+	/*	rotate:
+	*	the top element is sent do the bottom
+	*/
 void	ft_rotate(t_stack **stack)
 {
-	int	temp;
+	t_stack	*temp;
+	t_stack	*last_node;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	temp = (*stack)->nbr;
-	*stack = ft_lst_addto_end(*stack, ft_lst_init(temp));
-	*stack = ft_lst_delat_begin(*stack);
+	temp = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last_node = ft_lst_goto_end(*stack);
+	temp->next = NULL;
+	last_node->next = temp;
 }
 
 void	ft_rotate_ab(t_stack **stack_a, t_stack **stack_b)
