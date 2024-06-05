@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 11:38:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:50:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	ft_do_swap_b(t_stack **stack);
 void	ft_do_swap_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_do_push_a(t_stack *stack_a, t_stack *stack_b);
 void	ft_do_push_b(t_stack *stack_a, t_stack *stack_b);
-void	ft_do_rotate_a(t_stack *stack);
-void	ft_do_rotate_b(t_stack *stack);
-void	ft_do_rotate_ab(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_rotate_a(t_stack **stack);
+void	ft_do_rotate_b(t_stack **stack);
+void	ft_do_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_do_reverse_rotate_a(t_stack **stack);
 void	ft_do_reverse_rotate_b(t_stack **stack);
 void	ft_do_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
