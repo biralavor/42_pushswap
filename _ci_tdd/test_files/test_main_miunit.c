@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 11:30:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:39:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ MU_TEST(test_sort_2_nbrs_without_zero)
 	expected_size = ft_minunit_array_counter(argv_simulation);
 	expected_sorted_bottom = ft_atoi(argv_simulation[1]);
 	stack = ft_lts_buildstack_argv(stack, argv_simulation);
-	stack = ft_sort_2_nbrs(stack);
+	stack = ft_sort_2_nbrs(&stack);
 	actual_size = ft_lstsize_int((t_list *)stack);
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
 

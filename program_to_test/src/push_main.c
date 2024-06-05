@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 12:47:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:39:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	{
 		if (ft_lstsize_int((t_list *)list) == 2)
 		{
-			ft_sort_2_nbrs(list);
+			ft_sort_2_nbrs(&list);
 			ft_lst_printf_int_content("2 nbrs list after sorting:", list);
 		}
 	}
