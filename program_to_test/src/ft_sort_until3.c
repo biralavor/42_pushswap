@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:14 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 14:28:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:55:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ t_stack	*ft_sort_2_nbrs(t_stack **list)
 
 t_stack	*ft_sort_3_nbrs(t_stack **list)
 {
-	if (((*list)->nbr < (*list)->next->nbr)
-		&& ((*list)->nbr > ft_lst_goto_end(*list)->nbr))
-		ft_do_reverse_rotate_a(list);
-	if (((*list)->next->nbr < (*list)->nbr)
-		&& ((*list)->next->nbr < ft_lst_goto_end(*list)->nbr))
-		ft_do_rotate_a(list);
+	while (!ft_is_sorted(*list))
+	{
+		if (((*list)->nbr < (*list)->next->nbr)
+			&& ((*list)->nbr > ft_lst_goto_end(*list)->nbr))
+			ft_do_reverse_rotate_a(list);
+		if (((*list)->next->nbr < (*list)->nbr)
+			&& ((*list)->next->nbr < ft_lst_goto_end(*list)->nbr))
+			ft_do_rotate_a(list);
+		else
+			ft_do_swap_a(list);
+	}
 	return (*list);
 }
