@@ -6,18 +6,16 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 12:27:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:44:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minunit_utils.c"
-// #include "minunit_utils.h"
 #include "minunit.h"
 #include "push_swap.h"
 #include "../../program_to_test/src/ft_argv_validation.c"
 #include "../../program_to_test/src/ft_lst_init.c"
 #include "../../program_to_test/src/ft_lst_goto.c"
-#include "../../program_to_test/src/ft_lst_addition.c"
+#include "../../program_to_test/src/ft_lst_addto.c"
 #include "../../program_to_test/src/ft_lst_deletes.c"
 #include "../../program_to_test/src/ft_lst_clear.c"
 #include "../../program_to_test/src/ft_swap.c"
@@ -28,6 +26,8 @@
 #include "../../program_to_test/src/ft_do_rev_rotate_fts.c"
 #include "../../program_to_test/src/ft_do_rotate_fts.c"
 #include "../../program_to_test/src/ft_do_swap_fts.c"
+// #include "minunit_utils.c"
+// #include "minunit_utils.h"
 
 // TODO:
 // make test for a list with three, four and five numbers
@@ -38,6 +38,7 @@
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
+
 
 
 MU_TEST(test_sort_3_nbrs_highest_at_middle)
@@ -381,7 +382,7 @@ MU_TEST(test_ft_rotate)
 	expected_result_a = second_a;
 	expected_size = ft_lstsize_int((t_list *)stack_a);
 	ft_rotate(&stack_a);
-	actual_result_a = stack_a->nbr;
+	actual_result_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_size = ft_lstsize_int((t_list *)stack_a);
 
 	// ASSERT
