@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 10:50:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:50:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_lst_printf_int_content(char *msg, t_stack *list)
 {
 	t_stack	*temp;
 
+	list = ft_lst_goto_head(list);
 	temp = list;
 	ft_printf("%s %d\n", msg, temp->nbr);
 	while (temp->next != NULL)
