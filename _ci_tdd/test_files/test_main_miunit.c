@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 12:21:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:27:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
+void	ft_array_printer(char **array, int arr_size);
 
 
 MU_TEST(test_sort_3_nbrs_highest_at_middle)
@@ -928,4 +929,16 @@ void	ft_array_clear(char **array, int arr_size)
 		arr_size--;
 	}
 	free(array);
+}
+
+void	ft_array_printer(char **array, int arr_size)
+{
+	int index;
+
+	index = arr_size;
+	while (index >= 0)
+	{
+		ft_printf("argv_simulation = %s\n", (array[index]));
+		index--;
+	}
 }
