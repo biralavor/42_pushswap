@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/06 13:20:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:29:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -754,87 +754,46 @@ void	ft_array_printer(char **array, int arr_size);
 // 	ft_lstclear_single_ptr(stack);
 // }
 
-// MU_TEST(test_lst_goto_before_end)
-// {
-// 	// ARRANGE
-// 	int		top = 11;
-// 	int		middle = 22;
-// 	int		bottom = 33;
-// 	int		expected_result;
-// 	int		expected_size;
-// 	int		actual_result;
-// 	int		actual_size;
-// 	t_stack	*stack;
 
-// 	// ACT
-// 	stack = NULL;
-// 	stack = ft_lst_init(top);
-// 	stack = ft_lst_addto_end(&stack, ft_lst_init(middle));
-// 	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
-// 	actual_result = ft_lst_goto_before_end(stack)->nbr;
-// 	expected_result = middle;
-// 	actual_size = ft_lstsize_int((t_list *)stack);
-// 	expected_size = 3;
+MU_TEST(test_lst_gotoend_head_and_beforeend)
+{
+	// ARRANGE
+	int		top = 11;
+	int		second = 22;
+	int		thrid = 33;
+	int		bottom = 44;
+	int		expected_top;
+	int		expected_bottom;
+	int		expected_before_end;
+	int		actual_top;
+	int		actual_bottom;
+	int		actual_before_end;
+	int		expected_size;
+	int		actual_size;
+	t_stack	*stack;
 
-// 	// ASSERT
-// 	mu_assert_int_eq(expected_result, actual_result);
-// 	mu_assert_int_eq(expected_size, actual_size);
-// 	ft_lstclear_single_ptr(stack);
-// }
+	// ACT
+	stack = NULL;
+	stack = ft_lst_init(top);
+	stack = ft_lst_addto_end(&stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(thrid));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
+	expected_top = top;
+	expected_before_end = thrid;
+	expected_bottom = bottom;
+	actual_bottom = ft_lst_goto_end(stack)->nbr;
+	actual_top = ft_lst_goto_head(stack)->nbr;
+	actual_size = ft_lstsize_int((t_list *)stack);
+	actual_before_end = ft_lst_goto_before_end(stack)->nbr;
+	expected_size = 4;
 
-// MU_TEST(test_lst_goto_head)
-// {
-// 	// ARRANGE
-// 	int		top = 11;
-// 	int		middle = 22;
-// 	int		bottom = 33;
-// 	int		expected_result;
-// 	int		expected_size;
-// 	int		actual_result;
-// 	int		actual_size;
-// 	t_stack	*stack;
-
-// 	// ACT
-// 	stack = NULL;
-// 	stack = ft_lst_init(top);
-// 	stack = ft_lst_addto_end(&stack, ft_lst_init(middle));
-// 	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
-// 	actual_result = ft_lst_goto_head(stack)->nbr;
-// 	expected_result = top;
-// 	actual_size = ft_lstsize_int((t_list *)stack);
-// 	expected_size = 3;
-
-// 	// ASSERT
-// 	mu_assert_int_eq(expected_result, actual_result);
-// 	mu_assert_int_eq(expected_size, actual_size);
-// 	ft_lstclear_single_ptr(stack);
-// }
-
-// MU_TEST(test_lst_goto_end)
-// {
-// 	// ARRANGE
-// 	int		top = 11;
-// 	int		bottom = 22;
-// 	int		expected_result;
-// 	int		expected_size;
-// 	int		actual_result;
-// 	int		actual_size;
-// 	t_stack	*stack;
-
-// 	// ACT
-// 	stack = NULL;
-// 	stack = ft_lst_init(top);
-// 	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
-// 	actual_result = ft_lst_goto_end(stack)->nbr;
-// 	expected_result = bottom;
-// 	actual_size = ft_lstsize_int((t_list *)stack);
-// 	expected_size = 2;
-
-// 	// ASSERT
-// 	mu_assert_int_eq(expected_result, actual_result);
-// 	mu_assert_int_eq(expected_size, actual_size);
-// 	ft_lstclear_single_ptr(stack);
-// }
+	// ASSERT
+	mu_assert_int_eq(expected_top, actual_top);
+	mu_assert_int_eq(expected_before_end, actual_before_end);
+	mu_assert_int_eq(expected_bottom, actual_bottom);
+	mu_assert_int_eq(expected_size, actual_size);
+	ft_lstclear_single_ptr(stack);
+}
 
 MU_TEST(test_lst_addto_end)
 {
@@ -967,9 +926,7 @@ MU_TEST_SUITE(linked_list_tests)
 	// MU_RUN_TEST(test_lst_init_non_nbr);
 	MU_RUN_TEST(test_lst_addto_begin);
 	MU_RUN_TEST(test_lst_addto_end);
-	// MU_RUN_TEST(test_lst_goto_end);
-	// MU_RUN_TEST(test_lst_goto_head);
-	// MU_RUN_TEST(test_lst_goto_before_end);
+	MU_RUN_TEST(test_lst_gotoend_head_and_beforeend);
 	// MU_RUN_TEST(test_lstsize_int_expec_3);
 	// MU_RUN_TEST(test_lst_delat_begin);
 	// MU_RUN_TEST(test_lst_delat_end);
