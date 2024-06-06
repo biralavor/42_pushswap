@@ -1,43 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_adds.c                                      :+:      :+:    :+:   */
+/*   ft_lst_addto.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/23 14:26:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:59:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new)
+t_stack	*ft_lst_addto_end(t_stack **stack, t_stack *new)
 {
-	t_stack	*temp;
+	t_stack	*tail;
 
-	if (!list)
-	{
-		list = new;
-		return (list);
-	}
 	if (!new)
-		return (list);
-	temp = ft_lst_goto_end(list);
-	temp->next = new;
-	new->prev = temp;
-	return (list);
+		return (*stack);
+	if (!*stack)
+	{
+		new->next = NULL;
+		*stack = new;
+		return (new);
+	}
+	tail = ft_lst_goto_end(*stack);
+	tail->next = new;
+	new->prev = tail;
+	return (*stack);
 }
 
-t_stack	*ft_lst_addto_begin(t_stack *list, t_stack *new)
+t_stack	*ft_lst_addto_begin(t_stack **stack, t_stack *new)
 {
-	if (!list)
-	{
-		list = new;
-		return (list);
-	}
 	if (!new)
-		return (list);
-	new->next = list;
+		return (*stack);
+	if (!*stack)
+	{
+		new->next = NULL;
+		*stack = new;
+		return (new);
+	}
+	new->next = *stack;
+	(*stack)->prev = new;
+	new->prev = NULL;
+	*stack = new;
 	return (new);
 }

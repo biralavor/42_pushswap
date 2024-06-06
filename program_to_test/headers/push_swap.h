@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 11:50:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:00:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ typedef struct s_stack
 }					t_stack;
 
 t_stack	*ft_lst_init(int value);
-t_stack	*ft_lst_goto_end(t_stack *list);
-t_stack	*ft_lst_goto_head(t_stack *list);
-t_stack	*ft_lst_goto_before_end(t_stack *list);
-t_stack	*ft_lst_addto_end(t_stack *list, t_stack *new);
-t_stack	*ft_lst_addto_begin(t_stack *list, t_stack *new);
-t_stack	*ft_lst_delat_begin(t_stack *list);
-t_stack	*ft_lst_delat_end(t_stack *list);
-void	ft_lstclear_double_ptr(t_stack **list);
-void	ft_lstclear_single_ptr(t_stack *list);
-void	ft_lst_printf_int_content(char *msg, t_stack *list);
-t_stack	*ft_lts_buildstack_argv(t_stack *stack, char **argv);
+t_stack	*ft_lst_goto_end(t_stack *stack);
+t_stack	*ft_lst_goto_head(t_stack *stack);
+t_stack	*ft_lst_goto_before_end(t_stack *stack);
+t_stack	*ft_lst_addto_end(t_stack **stack, t_stack *new);
+t_stack	*ft_lst_addto_begin(t_stack **stack, t_stack *new);
+t_stack	*ft_lst_delat_begin(t_stack *stack);
+t_stack	*ft_lst_delat_end(t_stack *stack);
+void	ft_lstclear_double_ptr(t_stack **stack);
+void	ft_lstclear_single_ptr(t_stack *stack);
+void	ft_lst_printf_int_content(char *msg, t_stack *stack);
+t_stack	*ft_lts_buildstack_argv(t_stack **stack, char **argv);
 bool	ft_is_sign(int c);
 bool	ft_is_space(int c);
 bool	ft_argv_is_duplicated(char **argv);
@@ -52,11 +52,11 @@ void	ft_reverse_rotate(t_stack **stack);
 void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 /* basic push_swap functions */
 
-bool	ft_is_sorted(t_stack *list);
+bool	ft_is_sorted(t_stack *stack);
 /* sorting validation functions */
 
-t_stack	*ft_sort_2_nbrs(t_stack **list);
-t_stack	*ft_sort_3_nbrs(t_stack **list);
+t_stack	*ft_sort_2_nbrs(t_stack **stack);
+t_stack	*ft_sort_3_nbrs(t_stack **stack);
 /* sorting functions */
 
 void	ft_do_swap_a(t_stack **stack);
