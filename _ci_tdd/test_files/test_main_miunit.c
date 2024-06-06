@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/05 16:50:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:48:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,44 @@ int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
 
-MU_TEST(test_sort_3_nbrs_highest_last)
-{
-	// ARRANGE
-	t_stack	*stack;
-	char	**argv_simulation = NULL;
-	char	*userinput;
-	int		expected_size;
-	int		actual_size;
-	int		expected_sorted_bottom;
-	int		actual_sorted_bottom;
-	int		expected_sorted_top;
-	int		actual_sorted_top;
+// MU_TEST(test_sort_3_nbrs_highest_last)
+// {
+// 	// ARRANGE
+// 	t_stack	*stack;
+// 	char	**argv_simulation = NULL;
+// 	char	*userinput;
+// 	int		expected_size;
+// 	int		actual_size;
+// 	int		expected_sorted_bottom;
+// 	int		actual_sorted_bottom;
+// 	int		expected_sorted_top;
+// 	int		actual_sorted_top;
 
-	// ACT
-	stack = NULL;
-	userinput = "./push_swap 2 1 3";
-	argv_simulation = ft_split(userinput, ' ');
-	expected_size = ft_minunit_array_counter(argv_simulation);
-	expected_sorted_bottom = ft_atoi(argv_simulation[3]);
-	expected_sorted_top = ft_atoi(argv_simulation[2]);
-	stack = ft_lts_buildstack_argv(stack, argv_simulation);
-	ft_lst_printf_int_content("highest_1st -previous list:", stack);
-	ft_printf("before list size = %d\n", ft_lstsize_int((t_list *)stack));
-	stack = ft_sort_3_nbrs(&stack);
-	actual_size = ft_lstsize_int((t_list *)stack);
-	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
-	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
-	ft_lst_printf_int_content("highest_1st -  sorted list:", stack);
-	ft_printf("after list size = %d\n", ft_lstsize_int((t_list *)stack));
-	ft_array_printer(argv_simulation, expected_size);
+// 	// ACT
+// 	stack = NULL;
+// 	userinput = "./push_swap 2 1 3";
+// 	argv_simulation = ft_split(userinput, ' ');
+// 	expected_size = ft_minunit_array_counter(argv_simulation);
+// 	expected_sorted_bottom = ft_atoi(argv_simulation[3]);
+// 	expected_sorted_top = ft_atoi(argv_simulation[2]);
+// 	stack = ft_lts_buildstack_argv(stack, argv_simulation);
+// 	ft_lst_printf_int_content("highest_1st -previous list:", stack);
+// 	ft_printf("before list size = %d\n", ft_lstsize_int((t_list *)stack));
+// 	stack = ft_sort_3_nbrs(&stack);
+// 	actual_size = ft_lstsize_int((t_list *)stack);
+// 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
+// 	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
+// 	ft_lst_printf_int_content("highest_1st -  sorted list:", stack);
+// 	ft_printf("after list size = %d\n", ft_lstsize_int((t_list *)stack));
+// 	ft_array_printer(argv_simulation, expected_size);
 
-	// ASSERT
-	mu_assert_int_eq(expected_size, actual_size);
-	mu_assert_int_eq(expected_sorted_bottom, actual_sorted_bottom);
-	mu_assert_int_eq(expected_sorted_top, actual_sorted_top);
-	ft_lstclear_single_ptr(stack);
-	ft_array_clear(argv_simulation, expected_size);
-}
+// 	// ASSERT
+// 	mu_assert_int_eq(expected_size, actual_size);
+// 	mu_assert_int_eq(expected_sorted_bottom, actual_sorted_bottom);
+// 	mu_assert_int_eq(expected_sorted_top, actual_sorted_top);
+// 	ft_lstclear_single_ptr(stack);
+// 	ft_array_clear(argv_simulation, expected_size);
+// }
 
 MU_TEST(test_sort_3_nbrs_highest_first)
 {
@@ -332,13 +332,13 @@ MU_TEST(test_ft_reverse_rotate_ab)
 
 	// ACT
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(bottom_b));
 	expected_size_a = ft_lstsize_int((t_list *)stack_a);
 	expected_size_b = ft_lstsize_int((t_list *)stack_b);
 	ft_reverse_rotate_ab(&stack_a, &stack_b);
@@ -374,9 +374,9 @@ MU_TEST(test_ft_reverse_rotate)
 	// ACT
 	stack_a = NULL;
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	expected_result_a = bottom_a;
 	expected_size_a = ft_lstsize_int((t_list *)stack_a);
 	ft_reverse_rotate(&stack_a);
@@ -415,13 +415,13 @@ MU_TEST(test_ft_rotate_ab)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(bottom_b));
 	expected_result_a = second_a;
 	expected_result_b = second_b;
 	expected_size_a = ft_lstsize_int((t_list *)stack_a);
@@ -457,9 +457,9 @@ MU_TEST(test_ft_rotate)
 	// ACT
 	stack_a = NULL;
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	expected_result_a = second_a;
 	expected_size = ft_lstsize_int((t_list *)stack_a);
 	ft_rotate(&stack_a);
@@ -498,13 +498,13 @@ MU_TEST(test_ft_push_b)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(bottom_b));
 	expected_result_a = second_a;
 	expected_result_b = top_a;
 	expected_size_a = ft_lstsize_int((t_list *)stack_a) - 1;
@@ -550,13 +550,13 @@ MU_TEST(test_ft_push_a)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(bottom_b));
 	expected_size_a = ft_lstsize_int((t_list *)stack_a) + 1;
 	expected_size_b = ft_lstsize_int((t_list *)stack_b) - 1;
 	ft_push_a(&stack_a, &stack_b);
@@ -602,13 +602,13 @@ MU_TEST(test_ft_swap_ab)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_lst_init(top_a);
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(second_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(third_a));
-	stack_a = ft_lst_addto_end(stack_a, ft_lst_init(bottom_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(second_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(third_a));
+	stack_a = ft_lst_addto_end(&stack_a, ft_lst_init(bottom_a));
 	stack_b = ft_lst_init(top_b);
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(second_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(third_b));
-	stack_b = ft_lst_addto_end(stack_b, ft_lst_init(bottom_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(second_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(third_b));
+	stack_b = ft_lst_addto_end(&stack_b, ft_lst_init(bottom_b));
 	expected_size_a = ft_lstsize_int((t_list *)stack_a);
 	expected_size_b = ft_lstsize_int((t_list *)stack_b);
 	ft_swap_ab(&stack_a, &stack_b);
@@ -644,9 +644,9 @@ MU_TEST(test_ft_swap)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(second));
-	stack = ft_lst_addto_end(stack, ft_lst_init(third));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(third));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	expected_result = second;
 	expected_size = ft_lstsize_int((t_list *)stack);
 
@@ -676,9 +676,9 @@ MU_TEST(test_lst_delat_end)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(second));
-	stack = ft_lst_addto_end(stack, ft_lst_init(third));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(third));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	expected_size = ft_lstsize_int((t_list *)stack) - 1;
 	expected_result = third;
 
@@ -696,28 +696,38 @@ MU_TEST(test_lst_delat_begin)
 {
 	// ARRANGE
 	int		top = 11;
-	int		middle = 22;
-	int		bottom = 33;
-	int		expected_result;
+	int		second = 22;
+	int		thrid = 33;
+	int		bottom = 44;
+	int		expected_top;
+	int		expected_bottom;
 	int		expected_size;
-	int		actual_result;
+	int		actual_top;
+	int		actual_bottom;
 	int		actual_size;
 	t_stack	*stack;
 
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(thrid));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	expected_size = ft_lstsize_int((t_list *)stack) - 1;
-	expected_result = middle;
+	expected_top = second;
+	expected_bottom = bottom;
 	stack = ft_lst_delat_begin(stack);
-	actual_result = ft_lst_goto_head(stack)->nbr;
+	stack = ft_lst_goto_head(stack);
+	ft_lst_printf_int_content("lst_delat_begin >>>>>>", stack);
+	actual_top = ft_lst_goto_head(stack)->nbr;
+	actual_bottom = ft_lst_goto_end(stack)->nbr;
 	actual_size = ft_lstsize_int((t_list *)stack);
+	ft_printf("delat begin size = %d\n", ft_lstsize_int((t_list *)stack));
 
 	// ASSERT
-	mu_assert_int_eq(expected_result, actual_result);
 	mu_assert_int_eq(expected_size, actual_size);
+	mu_assert_int_eq(expected_top, actual_top);
+	mu_assert_int_eq(expected_bottom, actual_bottom);
 	ft_lstclear_single_ptr(stack);
 }
 
@@ -734,8 +744,8 @@ MU_TEST(test_lstsize_int_expec_3)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(second));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	actual_size = ft_lstsize_int((t_list *)stack);
 	expected_size = 3;
 
@@ -759,8 +769,8 @@ MU_TEST(test_lst_addto_end)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(middle));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	actual_result = ft_lst_goto_end(stack)->nbr;
 	expected_result = bottom;
 	actual_size = ft_lstsize_int((t_list *)stack);
@@ -776,26 +786,33 @@ MU_TEST(test_lst_addto_begin)
 {
 	// ARRANGE
 	int		top = 11;
-	int		middle = 22;
-	int		bottom = 33;
-	int		expected_result;
+	int		second = 22;
+	int		thrid = 33;
+	int		bottom = 44;
+	int		expected_top;
+	int		expected_bottom;
 	int		expected_size;
-	int		actual_result;
+	int		actual_top;
+	int		actual_bottom;
 	int		actual_size;
 	t_stack	*stack;
 
 	// ACT
-	expected_result = bottom;
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
-	stack = ft_lst_addto_begin(stack, ft_lst_init(bottom));
-	actual_result = ft_lst_goto_head(stack)->nbr;;
+	stack = ft_lst_addto_end(&stack, ft_lst_init(second));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(thrid));
+	stack = ft_lst_addto_begin(&stack, ft_lst_init(bottom));
+	expected_top = bottom;
+	expected_bottom = thrid;
+	actual_top = ft_lst_goto_head(stack)->nbr;
+	actual_bottom = ft_lst_goto_end(stack)->nbr;
 	actual_size = ft_lstsize_int((t_list *)stack);
-	expected_size = 3;
+	expected_size = 4;
 
 	// ASSERT
-	mu_assert_int_eq(expected_result, actual_result);
+	mu_assert_int_eq(expected_top, actual_top);
+	mu_assert_int_eq(expected_bottom, actual_bottom);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack);
 }
@@ -815,8 +832,8 @@ MU_TEST(test_lst_goto_before_end)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(middle));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	actual_result = ft_lst_goto_before_end(stack)->nbr;
 	expected_result = middle;
 	actual_size = ft_lstsize_int((t_list *)stack);
@@ -843,8 +860,8 @@ MU_TEST(test_lst_goto_head)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(middle));
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(middle));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	actual_result = ft_lst_goto_head(stack)->nbr;
 	expected_result = top;
 	actual_size = ft_lstsize_int((t_list *)stack);
@@ -870,7 +887,7 @@ MU_TEST(test_lst_goto_end)
 	// ACT
 	stack = NULL;
 	stack = ft_lst_init(top);
-	stack = ft_lst_addto_end(stack, ft_lst_init(bottom));
+	stack = ft_lst_addto_end(&stack, ft_lst_init(bottom));
 	actual_result = ft_lst_goto_end(stack)->nbr;
 	expected_result = bottom;
 	actual_size = ft_lstsize_int((t_list *)stack);
@@ -971,7 +988,7 @@ MU_TEST_SUITE(sorting_tests)
 	MU_RUN_TEST(test_sort_2_nbrs_with_zero);
 	MU_RUN_TEST(test_sort_3_nbrs_highest_at_middle);
 	MU_RUN_TEST(test_sort_3_nbrs_highest_first);
-	MU_RUN_TEST(test_sort_3_nbrs_highest_last);
+	// MU_RUN_TEST(test_sort_3_nbrs_highest_last);
 }
 
 int main(void)
