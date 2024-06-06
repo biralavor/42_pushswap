@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/05 14:54:57 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/06 18:49:18 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ NAME					= push_swap
 
 SRC_FILES				= push_main.c
 SRC_FILES				+= ft_argv_validation.c
+SRC_FILES				+= ft_do_sort.c
 SRC_FILES				+= ft_do_push_fts.c
 SRC_FILES				+= ft_do_rev_rotate_fts.c
 SRC_FILES				+= ft_do_rotate_fts.c
