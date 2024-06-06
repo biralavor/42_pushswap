@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/04 10:33:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:33:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ bool	ft_argv_validation(char **argv)
 		if (!ft_isdigit(*argv[index]))
 		{
 			ft_error_msg("User's input must be numbers only\n");
+			return (false);
+		}
+		if (ft_atoi(argv[index]) < INT_MIN || ft_atoi(argv[index]) > INT_MAX)
+		{
+			ft_error_msg("Number outside limits of 32-bit system\n");
 			return (false);
 		}
 	}

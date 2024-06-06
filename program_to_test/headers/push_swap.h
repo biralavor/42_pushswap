@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/06 17:29:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:37:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libs/libft/includes/libft.h"
 # include <stdbool.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
