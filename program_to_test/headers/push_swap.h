@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/06 13:00:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:29:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_stack
 {
 	int				nbr;
+	int				cost;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
