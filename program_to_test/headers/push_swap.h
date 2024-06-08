@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/07 16:15:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/08 14:55:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		ft_argv_size(char **argv);
 bool	ft_argv_validation(char **argv);
 /* new functions for push_swap to be added in LIBFT */
 
+int		ft_lst_size(t_stack *stack);
 void	ft_swap(t_stack **stack);
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_push_a(t_stack **stack_a, t_stack **stack_b);
