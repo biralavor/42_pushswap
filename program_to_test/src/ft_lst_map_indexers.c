@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 11:29:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:07:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	ft_lst_map_position(t_stack *stack)
 	while (stack->next != NULL)
 	{
 		pos++;
-		(*stack).pos = pos;
+		stack->pos = pos;
 		stack = stack->next;
 		if (stack->next == NULL)
 		{
 			pos++;
-			(*stack).pos = pos;
+			stack->pos = pos;
 		}
 	}
 	stack = ft_lst_goto_head(stack);
@@ -40,29 +40,21 @@ void	ft_lst_map_position(t_stack *stack)
 void	ft_lst_map_weight(t_stack **stack)
 {
 	int		weight;
-	int		target;
-	int		tocompare;
-	t_stack	*temp;
+	t_stack	*target;
+	t_stack	*compare_node;
 	
+	target = *stack;
 	weight = 0;
-	temp = *stack;
-	target = temp->nbr;
-	tocompare = (*stack)->next->nbr;
-	while ((temp != NULL) && (temp->next != NULL) && ((*stack)->next != NULL)
-			&& (weight <= ft_lst_size(*stack)))
+	while (target != NULL && target->next != NULL)
 	{
-		while ((*stack)->next && (*stack)->next->nbr)
+		compare_node = target->next;
+		while (compare_node != NULL)
 		{
-			if (target > tocompare)
+			if (target->nbr > compare_node->nbr)
 				weight++;
-			(*stack)->weight = weight;
-			if ((*stack)->next != NULL)
-			{
-				(*stack) = (*stack)->next;
-				tocompare = (*stack)->nbr;
-			}
+			compare_node = compare_node->next;
 		}
-		temp = temp->next;
-		target = temp->nbr;
+		target->weight = weight;
+		target = target->next;
 	}
 }
