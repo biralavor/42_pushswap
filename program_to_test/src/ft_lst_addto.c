@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/06 12:59:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/08 18:05:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_stack	*ft_lst_addto_end(t_stack **stack, t_stack *new)
 
 t_stack	*ft_lst_addto_begin(t_stack **stack, t_stack *new)
 {
+	t_stack *head;
+
 	if (!new)
 		return (*stack);
 	if (!*stack)
@@ -40,9 +42,9 @@ t_stack	*ft_lst_addto_begin(t_stack **stack, t_stack *new)
 		*stack = new;
 		return (new);
 	}
-	new->next = *stack;
-	(*stack)->prev = new;
+	head = ft_lst_goto_head(*stack);
+	head->prev = new;
+	new->next = head;
 	new->prev = NULL;
-	*stack = new;
 	return (new);
 }
