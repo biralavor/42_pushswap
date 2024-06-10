@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/08 14:51:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:26:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv);
-	ft_lst_printf_int_content("testing main content:", stack_a);
-	ft_printf("testing main size: %d\n", ft_lst_size(stack_a));
+	ft_lst_printf_int_content("original main:", stack_a);
+	ft_lst_map_all_indexers(&stack_a);
+	stack_a = ft_lst_goto_head(stack_a);
+	while (stack_a->next !=NULL)
+	{
+		ft_printf("stack_a pos[%d] main = %d and weight = %d\n", stack_a->pos, stack_a->nbr, stack_a->weight);
+		stack_a = stack_a->next;
+		if (stack_a->next ==NULL)
+			ft_printf("stack_a pos[%d] main = %d and weight = %d\n", stack_a->pos, stack_a->nbr, stack_a->weight);
+	}
 	ft_do_sort(&stack_a, &stack_b);
 	ft_lst_printf_int_content("updated main content:", stack_a);
-	ft_printf("stack_a pos na main = %d\n", stack_a->pos);
 	ft_lstclear_single_ptr(stack_a);
 	ft_lstclear_single_ptr(stack_b);
 	return (0);
