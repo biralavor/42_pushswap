@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 15:13:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:47:15 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
 void	ft_lst_map_all_indexers(t_stack **stack);
 void	ft_lst_map_position(t_stack **stack);
-void	ft_lst_map_weight(t_stack **stack);
+void	ft_lst_map_weight(t_stack **stack, int stack_size);
 
 bool	ft_is_sorted(t_stack *stack);
 /* sorting validation functions */
@@ -75,6 +75,7 @@ void	ft_do_swap_b(t_stack **stack);
 void	ft_do_swap_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_do_push_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_do_push_b(t_stack **stack_a, t_stack **stack_b);
+void	ft_push(t_stack **source, t_stack **destiny);
 void	ft_do_rotate_a(t_stack **stack);
 void	ft_do_rotate_b(t_stack **stack);
 void	ft_do_rotate_ab(t_stack **stack_a, t_stack **stack_b);
