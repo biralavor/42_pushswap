@@ -6,35 +6,35 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 12:07:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:13:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lst_map_all_indexers(t_stack *stack)
+void	ft_lst_map_all_indexers(t_stack **stack)
 {
 	ft_lst_map_position(stack);
-	ft_lst_map_weight(&stack);
+	ft_lst_map_weight(stack);
 }
 
-void	ft_lst_map_position(t_stack *stack)
+void	ft_lst_map_position(t_stack **stack)
 {
 	int	pos;
 
 	pos = 0;
-	while (stack->next != NULL)
+	while ((*stack)->next != NULL)
 	{
 		pos++;
-		stack->pos = pos;
-		stack = stack->next;
-		if (stack->next == NULL)
+		(*stack)->pos = pos;
+		(*stack) = (*stack)->next;
+		if ((*stack)->next == NULL)
 		{
 			pos++;
-			stack->pos = pos;
+			(*stack)->pos = pos;
 		}
 	}
-	stack = ft_lst_goto_head(stack);
+	*stack = ft_lst_goto_head(*stack);
 }
 
 void	ft_lst_map_weight(t_stack **stack)
@@ -44,7 +44,7 @@ void	ft_lst_map_weight(t_stack **stack)
 	t_stack	*compare_node;
 	
 	target = *stack;
-	weight = 0;
+	weight = 1;
 	while (target != NULL && target->next != NULL)
 	{
 		compare_node = target->next;
@@ -58,3 +58,20 @@ void	ft_lst_map_weight(t_stack **stack)
 		target = target->next;
 	}
 }
+
+// void	ft_lst_map_weight_by_argv(t_stack **stack, char argv)
+// {
+// 	int		weight;
+// 	int		pos;
+// 	int		**argv_splited;
+
+// 	weight = 0;
+// 	pos = 0;
+// 	argv_splited = ft_split(argv, ' ');
+// 	while (argv_splited[pos] != NULL)
+// 	{
+// 		weight = 1;
+// 		if (argv_splited[pos] > argv_splited[pos + 1])
+// 			argv_splited[pos]++;
+// 	}
+// }
