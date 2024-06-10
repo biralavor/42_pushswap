@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/08 14:58:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:54:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -846,12 +846,16 @@ MU_TEST(test_lst_gotoend_head_and_beforeend)
 	int		expected_top;
 	int		expected_bottom;
 	int		expected_before_end;
+	int		expected_ptr;
 	int		actual_top;
 	int		actual_bottom;
 	int		actual_before_end;
 	int		expected_size;
 	int		actual_size;
+	int		actual_top_again;
+	int		actual_ptr;
 	t_stack	*stack;
+	t_stack	*head_tocheck;
 
 	// ACT
 	stack = NULL;
@@ -862,13 +866,25 @@ MU_TEST(test_lst_gotoend_head_and_beforeend)
 	expected_top = top;
 	expected_before_end = third;
 	expected_bottom = bottom;
+	expected_size = 4;
+	expected_ptr = 1;
+	head_tocheck = stack;
 	actual_bottom = ft_lst_goto_end(stack)->nbr;
 	actual_top = ft_lst_goto_head(stack)->nbr;
 	actual_size = ft_lst_size(stack);
 	actual_before_end = ft_lst_goto_before_end(stack)->nbr;
-	expected_size = 4;
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+	}
+	actual_top_again = ft_lst_goto_head(stack)->nbr;
+	actual_ptr = 0;
+	if (head_tocheck == stack)
+		actual_ptr = 1;
 
 	// ASSERT
+	// mu_assert_int_eq(expected_ptr, actual_ptr);
+	mu_assert_int_eq(expected_top, actual_top_again);
 	mu_assert_int_eq(expected_top, actual_top);
 	mu_assert_int_eq(expected_before_end, actual_before_end);
 	mu_assert_int_eq(expected_bottom, actual_bottom);
