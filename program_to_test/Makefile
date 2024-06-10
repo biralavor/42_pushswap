@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/10 10:38:42 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/10 16:20:06 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC_FILES				+= ft_lst_goto.c
 SRC_FILES				+= ft_lst_init.c
 SRC_FILES				+= ft_lst_map_indexers.c
 SRC_FILES				+= ft_sort_until3.c
+SRC_FILES				+= ft_sort_4_or_more.c
 SRC_FILES				+= ft_swap.c
 SRC_FILES				+= ft_push.c
 SRC_FILES				+= ft_rotate.c
