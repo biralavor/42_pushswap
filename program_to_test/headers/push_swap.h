@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/08 14:55:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:10:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 	int				nbr;
 	int				cost;
 	int				pos;
+	int				weight;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
@@ -55,6 +56,10 @@ void	ft_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_reverse_rotate(t_stack **stack);
 void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 /* basic push_swap functions */
+
+void	ft_lst_map_all_indexers(t_stack *stack);
+void	ft_lst_map_position(t_stack *stack);
+void	ft_lst_map_weight(t_stack **stack);
 
 bool	ft_is_sorted(t_stack *stack);
 /* sorting validation functions */
