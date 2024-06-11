@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 10:35:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 10:02:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_lst_size(t_stack *stack)
 	int	size;
 
 	size = 0;
+	if (!stack)
+		return (size);
 	while (stack)
 	{
 		size++;
