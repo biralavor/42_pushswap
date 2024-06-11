@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 18:03:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:04:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,54 @@ int	ft_lst_map_lowest_weight_position(t_stack **stack)
 		temp = temp->next;
 	}
 	return (lowest_position);
+}
+
+int	ft_lst_get_target_nbr(t_stack **stack_a, int b_weight,
+							int target_weight, int target_pos)
+{
+	t_stack	*temp_a;
+
+	temp_a = *stack_a;
+	while (temp_a)
+	{
+		if (temp_a->weight > b_weight && temp_a->weight < target_weight)
+		{
+			target_weight = temp_a->weight;
+			target_pos = temp_a->pos;
+		}
+	}
+	if (target_weight != INT_MAX)
+		return (target_pos);
+	temp_a = *stack_a;
+	while (temp_a)
+	{
+		if (temp_a->weight < target_weight)
+		{
+			target_weight = temp_a->weight;
+			target_pos = temp_a->pos;
+		}
+		temp_a = temp_a->next;
+	}
+	return (target_pos);
+}
+
+void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b)
+{
+	int		target_position;
+	t_stack	*temp_b;
+
+	temp_b = *stack_b;
+	ft_lst_map_position(stack_a);
+	ft_lst_map_position(stack_b);
+	target_position = 0;
+	while (temp_b)
+	{
+		target_position = ft_lst_get_target_nbr(stack_a, temp_b->weight,
+												INT_MAX, target_position);
+		temp_b->target = target_position;
+		temp_b = temp_b->next;
+	}
+	
 }
 
 // void	ft_lst_map_weight_by_argv(t_stack **stack, char **argv)

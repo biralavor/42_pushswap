@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 15:16:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:31:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 	int				cost;
 	int				pos;
 	int				weight;
+	int				target;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
