@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 18:04:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:38:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_lst_map_weight(t_stack **stack, int stack_size)
 	int		weight;
 	t_stack	*target;
 	t_stack	*highest;
-	
+
 	while (--stack_size > 0)
 	{
 		target = *stack;
@@ -122,11 +122,10 @@ void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b)
 	while (temp_b)
 	{
 		target_position = ft_lst_get_target_nbr(stack_a, temp_b->weight,
-												INT_MAX, target_position);
+				INT_MAX, target_position);
 		temp_b->target = target_position;
 		temp_b = temp_b->next;
 	}
-	
 }
 
 // void	ft_lst_map_weight_by_argv(t_stack **stack, char **argv)
