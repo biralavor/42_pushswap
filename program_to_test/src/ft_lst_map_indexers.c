@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 17:53:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:43:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,28 +69,26 @@ void	ft_lst_map_weight(t_stack **stack, int stack_size)
 	}
 }
 
+int	ft_lst_map_lowest_weight_position(t_stack **stack)
+{
+	int		lowest_weight;
+	int		lowest_position;
+	t_stack	*temp;
 
-// void	ft_lst_map_weight(t_stack **stack)
-// {
-// 	int		weight;
-// 	t_stack	*target;
-// 	t_stack	*compare_node;
-	
-// 	target = *stack;
-// 	weight = 1;
-// 	while (target != NULL && target->next != NULL)
-// 	{
-// 		compare_node = target->next;
-// 		while (compare_node != NULL)
-// 		{
-// 			if (target->nbr > compare_node->nbr)
-// 				weight++;
-// 			compare_node = compare_node->next;
-// 		}
-// 		target->weight = weight;
-// 		target = target->next;
-// 	}
-// }
+	temp = *stack;
+	lowest_weight = INT_MAX;
+	lowest_position = temp->pos;
+	while (temp)
+	{
+		if (temp->weight < lowest_weight)
+		{
+			lowest_weight = temp->weight;
+			lowest_position = temp->pos;
+		}
+		temp = temp->next;
+	}
+	return (lowest_position);
+}
 
 // void	ft_lst_map_weight_by_argv(t_stack **stack, char **argv)
 // {
