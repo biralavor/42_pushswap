@@ -6,20 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 14:43:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:03:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_lst_map_all_indexers(t_stack **stack)
-{
-	int	stack_size;
-
-	stack_size = ft_lst_size(*stack);
-	ft_lst_map_position(stack);
-	ft_lst_map_weight(stack, stack_size);
-}
 
 void	ft_lst_map_position(t_stack **stack)
 {
