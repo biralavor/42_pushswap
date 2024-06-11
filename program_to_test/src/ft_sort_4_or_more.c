@@ -6,11 +6,17 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 13:33:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:09:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_push_b_all_but_three(stack_a, stack_b);
+	ft_sort_three_nbrs(stack_a);
+}
 
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 {

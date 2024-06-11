@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 14:13:42 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:16:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ bool	ft_is_sorted(t_stack *stack);
 /* sorting validation functions */
 
 void	ft_do_sort(t_stack **stack_a, t_stack **stack_b);
-t_stack	*ft_sort_2_nbrs(t_stack **stack);
-t_stack	*ft_sort_3_nbrs(t_stack **stack);
+t_stack	*ft_sort_two_nbrs(t_stack **stack);
+t_stack	*ft_sort_three_nbrs(t_stack **stack);
+void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b);
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b);
 /* sorting functions */
 

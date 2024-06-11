@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:14 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 10:52:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:20:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ bool	ft_is_sorted(t_stack *list)
 	return (true);
 }
 
-t_stack	*ft_sort_2_nbrs(t_stack **list)
+t_stack	*ft_sort_two_nbrs(t_stack **list)
 {
 	if ((*list)->nbr > (*list)->next->nbr)
 		ft_do_swap_a(list);
 	return (*list);
 }
 
-t_stack	*ft_sort_3_nbrs(t_stack **list)
+t_stack	*ft_sort_three_nbrs(t_stack **list)
 {
 	while (!ft_is_sorted(*list))
 	{
