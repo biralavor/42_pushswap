@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 16:21:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:26:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,16 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 		if ((*stack_a)->weight <= (stack_size / 2))
 		{
 			ft_do_push_b(stack_a, stack_b);
-			ft_lst_printf_int_content("stack_b content:", *stack_b);
 			pushed++;
-			ft_printf("pushed = %d\n", pushed);
 		}
 		else
 			ft_sort_3_nbrs(stack_a);
 		index++;
-		ft_printf("index = %d\n", index);
 	}
 	while (stack_size - pushed > 3)
 	{
 		ft_do_push_b(stack_a, stack_b);
 		pushed++;
-		ft_printf("pushed = %d\n", pushed);
 	}
-	// ft_sort_3_nbrs(stack_a);
+	*stack_b = ft_lst_delat_end(*stack_b);
 }
