@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 15:11:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:09:15 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
+
+
 
 MU_TEST(test_1st_miastep_map_lowest_weight)
 {
@@ -1121,23 +1123,22 @@ MU_TEST(test_lst_delat_begin)
 MU_TEST(test_lst_gotoend_head_and_beforeend)
 {
 	// ARRANGE
-	int		top = 11;
-	int		second = 22;
-	int		third = 33;
-	int		bottom = 44;
-	int		expected_top;
-	int		expected_bottom;
-	int		expected_before_end;
-	int		expected_ptr;
-	int		actual_top;
-	int		actual_bottom;
-	int		actual_before_end;
-	int		expected_size;
-	int		actual_size;
-	int		actual_top_again;
-	int		actual_ptr;
-	t_stack	*stack;
-	t_stack	*head_tocheck;
+	int			top = 11;
+	int			second = 22;
+	int			third = 33;
+	int			bottom = 44;
+	int			expected_top;
+	int			expected_bottom;
+	int			expected_before_end;
+	int			actual_top;
+	int			actual_bottom;
+	int			actual_before_end;
+	int			expected_size;
+	int			actual_size;
+	int			actual_top_again;
+	t_stack		*actual_ptr;
+	t_stack		*expected_ptr;
+	t_stack		*stack;
 
 	// ACT
 	stack = NULL;
@@ -1149,8 +1150,8 @@ MU_TEST(test_lst_gotoend_head_and_beforeend)
 	expected_before_end = third;
 	expected_bottom = bottom;
 	expected_size = 4;
-	expected_ptr = 1;
-	head_tocheck = stack;
+	expected_ptr = stack;
+	
 	actual_bottom = ft_lst_goto_end(stack)->nbr;
 	actual_top = ft_lst_goto_head(stack)->nbr;
 	actual_size = ft_lst_size(stack);
@@ -1160,12 +1161,10 @@ MU_TEST(test_lst_gotoend_head_and_beforeend)
 		stack = stack->next;
 	}
 	actual_top_again = ft_lst_goto_head(stack)->nbr;
-	actual_ptr = 0;
-	if (head_tocheck == stack)
-		actual_ptr = 1;
+	actual_ptr = ft_lst_goto_head(stack);
 
 	// ASSERT
-	// mu_assert_int_eq(expected_ptr, actual_ptr);
+	mu_assert_mem_eq(&expected_ptr, &actual_ptr, sizeof(t_stack *));
 	mu_assert_int_eq(expected_top, actual_top_again);
 	mu_assert_int_eq(expected_top, actual_top);
 	mu_assert_int_eq(expected_before_end, actual_before_end);
@@ -1380,6 +1379,7 @@ MU_TEST_SUITE(miacombeau_tests)
 	MU_RUN_TEST(test_1st_miastep_push_b_all_but3);
 	MU_RUN_TEST(test_1st_miastep_push_b_all_but3_sort_3a);
 	MU_RUN_TEST(test_1st_miastep_map_lowest_weight);
+	// MU_RUN_TEST(test_1st_miastep_map_target_pos);
 }
 
 int main(void)
