@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 18:05:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:53:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ MU_TEST(test_1st_miastep_map_target_pos)
 	// expected_target_pos = 3;
 	actual_size = ft_lst_size(stack);
 	ft_lst_map_all_indexers(&stack);
-	
+
 	// actual_target_pos = ft_lst_map_lowest_weight_position(&stack);
 	actual_bottom_a = ft_lst_goto_end(stack)->nbr;
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
@@ -94,7 +94,9 @@ MU_TEST(test_1st_miastep_map_lowest_weight)
 	int		expected_bottom_a;
 	int		actual_bottom_a;
 	int		expected_lowest_weight_pos;
+	int		expected_lowest_weight_nbr;
 	int		actual_lowest_weight_pos;
+	int		actual_lowest_weight_nbr;
 
 	// ACT
 	stack = NULL;
@@ -105,7 +107,8 @@ MU_TEST(test_1st_miastep_map_lowest_weight)
 	expected_bottom_a = ft_atoi(argv_simulation[8]);
 
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
-	expected_lowest_weight_pos = 3;
+	expected_lowest_weight_pos = 3; // argv[3] = 1;
+	expected_lowest_weight_nbr = ft_atoi(argv_simulation[expected_lowest_weight_pos]);
 
 	actual_size = ft_lst_size(stack);
 	ft_lst_map_position(&stack);
@@ -113,9 +116,12 @@ MU_TEST(test_1st_miastep_map_lowest_weight)
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
 	actual_lowest_weight_pos = ft_lst_map_lowest_weight_position(&stack);
 	actual_bottom_a = ft_lst_goto_end(stack)->nbr;
+	actual_lowest_weight_nbr = stack->next->next->nbr;
+	
 
 	// ASSERT
 	mu_assert_int_eq(expected_lowest_weight_pos, actual_lowest_weight_pos);
+	mu_assert_int_eq(expected_lowest_weight_nbr, actual_lowest_weight_nbr);
 	mu_assert_int_eq(expected_size, actual_size);
 	mu_assert_int_eq(expected_top_a, actual_top_a);
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
