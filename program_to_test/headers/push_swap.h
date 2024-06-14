@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 18:52:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:49:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 typedef struct s_stack
 {
 	int				nbr;
-	int				cost;
 	int				pos;
 	int				weight;
 	int				target;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
@@ -58,23 +59,29 @@ void	ft_reverse_rotate(t_stack **stack);
 void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 /* basic push_swap functions */
 
-void	ft_lst_map_all_indexers(t_stack **stack);
-void	ft_lst_map_position(t_stack **stack);
-void	ft_lst_map_weight(t_stack **stack, int stack_size);
-int		ft_lst_map_lowest_weight_position(t_stack **stack);
-
 bool	ft_is_sorted(t_stack *stack);
 /* sorting validation functions */
 
 void	ft_do_sort(t_stack **stack_a, t_stack **stack_b);
 t_stack	*ft_sort_two_nbrs(t_stack **stack);
 t_stack	*ft_sort_three_nbrs(t_stack **stack);
+/* sorting functions if list has until 3 numbers */
+
 void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b);
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b);
-int		ft_lst_get_target_nbr(t_stack **stack_a, int b_weight,
+int		ft_lst_get_target(t_stack **stack_a, int b_weight,
 			int target_weight, int target_pos);
 void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b);
-/* sorting functions */
+void	ft_lst_map_all_indexers(t_stack **stack);
+void	ft_lst_map_position(t_stack **stack);
+void	ft_lst_map_weight(t_stack **stack, int stack_size);
+int		ft_lst_map_lowest_weight_position(t_stack **stack);
+void	ft_lst_shift_stack(t_stack **stack_a);
+void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b);
+void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
+void	ft_do_move_after_cheapest(t_stack **stack_a, t_stack **stack_b,
+			int cost_a, int cost_b);
+/* sorting functions if list has 4 or more numbers */
 
 void	ft_do_swap_a(t_stack **stack);
 void	ft_do_swap_b(t_stack **stack);
