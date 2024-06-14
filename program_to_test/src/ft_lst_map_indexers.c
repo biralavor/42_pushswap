@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 18:38:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:31:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	ft_lst_map_lowest_weight_position(t_stack **stack)
 
 	temp = *stack;
 	lowest_weight = INT_MAX;
+	ft_lst_map_position(stack);
 	lowest_position = temp->pos;
 	while (temp)
 	{
@@ -81,7 +82,7 @@ int	ft_lst_map_lowest_weight_position(t_stack **stack)
 	return (lowest_position);
 }
 
-int	ft_lst_get_target_nbr(t_stack **stack_a, int b_weight,
+int	ft_lst_get_target(t_stack **stack_a, int b_weight,
 							int target_weight, int target_pos)
 {
 	t_stack	*temp_a;
@@ -94,6 +95,7 @@ int	ft_lst_get_target_nbr(t_stack **stack_a, int b_weight,
 			target_weight = temp_a->weight;
 			target_pos = temp_a->pos;
 		}
+		temp_a = temp_a->next;
 	}
 	if (target_weight != INT_MAX)
 		return (target_pos);
@@ -121,7 +123,7 @@ void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b)
 	target_position = 0;
 	while (temp_b)
 	{
-		target_position = ft_lst_get_target_nbr(stack_a, temp_b->weight,
+		target_position = ft_lst_get_target(stack_a, temp_b->weight,
 				INT_MAX, target_position);
 		temp_b->target = target_position;
 		temp_b = temp_b->next;
