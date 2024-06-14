@@ -6,38 +6,28 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/11 18:48:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:16:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lst_map_all_indexers(t_stack **stack)
-{
-	int	stack_size;
-
-	stack_size = ft_lst_size(*stack);
-	ft_lst_map_position(stack);
-	ft_lst_map_weight(stack, stack_size);
-}
-
-/*
-* TODO after line 40:
-*	while (*stack_b)
-*	{
-*		ft_lst_get_target_position(stack_a, stack_b);
-*		ft_lst_get_cost(stack_a, stack_b);
-*		ft_lst_do_cheapest_move(stack_a, stack_b);
-*	}
-*	if (!ft_is_sorted(*stack_a))
-*	{
-*		ft_lst_shift_stack(stack_a);
-*	}
-*/
 void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_three_nbrs(stack_a);
+	ft_lst_printf_int_content("stack_a before get-target:", *stack_a);
+	ft_lst_printf_int_content("stack_b before get-target:", *stack_b);
+	while (*stack_b)
+	{
+		ft_lst_get_target_position(stack_a, stack_b);
+		ft_lst_get_cost(stack_a, stack_b);
+		ft_lst_do_cheapest_move(stack_a, stack_b);
+	}
+	ft_lst_printf_int_content("stack_a after get-target:", *stack_a);
+	ft_lst_printf_int_content("stack_b after get-target:", *stack_b);
+	if (!ft_is_sorted(*stack_a))
+		ft_lst_shift_stack(stack_a);
 }
 
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
@@ -67,4 +57,74 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 		pushed++;
 	}
 	*stack_b = ft_lst_delat_end(*stack_b);
+}
+
+void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b)
+{
+	int		size_a;
+	int		size_b;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
+
+	temp_a = *stack_a;
+	temp_b = *stack_b;
+	size_a = ft_lst_size(temp_a);
+	size_b = ft_lst_size(temp_b);
+	while (temp_b)
+	{
+		temp_b->cost_b = temp_b->pos;
+		if (temp_b->pos > size_b / 2)
+			temp_b->cost_b = (size_b - temp_b->pos) * -1;
+		temp_b->cost_a = temp_b->target;
+		if (temp_b->target > size_a / 2)
+			temp_b->cost_a = (size_a - temp_b->target) * -1;
+		temp_b = temp_b->next;
+	}
+}
+
+void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
+{
+	int		cost_a;
+	int		cost_b;
+	int		cheapest;
+	t_stack	*temp_b;
+
+	temp_b = *stack_b;
+	cheapest = INT_MAX;
+	while (temp_b)
+	{
+		if ((temp_b->cost_a + temp_b->cost_b) < cheapest)
+		{
+			cheapest = temp_b->cost_b + temp_b->cost_a;
+			cost_a = temp_b->cost_a;
+			cost_b = temp_b->cost_b;
+		}
+		temp_b = temp_b->next;
+	}
+	ft_do_move_after_cheapest(stack_a, stack_b, cost_a, cost_b);
+}
+
+void	ft_lst_shift_stack(t_stack **stack_a)
+{
+	int	lowest_weight_pos;
+	int	stack_size;
+
+	stack_size = ft_lst_size(*stack_a);
+	lowest_weight_pos = ft_lst_map_lowest_weight_position(stack_a);
+	if (lowest_weight_pos < stack_size / 2)
+	{
+		while (lowest_weight_pos < stack_size)
+		{
+			ft_do_reverse_rotate_a(stack_a);
+			lowest_weight_pos++;
+		}
+	}
+	else
+	{
+		while (lowest_weight_pos > 0)
+		{
+			ft_do_rotate_a(stack_a);
+			lowest_weight_pos--;
+		}
+	}
 }
