@@ -6,13 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/13 16:39:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:17:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
 #include "../../program_to_test/src/ft_argv_validation.c"
+#include "../../program_to_test/src/ft_lst_map_all.c"
 #include "../../program_to_test/src/ft_lst_map_indexers.c"
 #include "../../program_to_test/src/ft_lst_init.c"
 #include "../../program_to_test/src/ft_lst_goto.c"
@@ -26,6 +27,7 @@
 #include "../../program_to_test/src/ft_do_rev_rotate_fts.c"
 #include "../../program_to_test/src/ft_do_rotate_fts.c"
 #include "../../program_to_test/src/ft_do_swap_fts.c"
+#include "../../program_to_test/src/ft_do_sort.c"
 #include "../../program_to_test/src/ft_sort_until3.c"
 #include "../../program_to_test/src/ft_sort_4_or_more.c"
 // #include "minunit_utils.c"
@@ -40,9 +42,165 @@ int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
 
+// MU_TEST(test_3rd_miastep_map_get_target_position)
+// {
+// 	// ARRANGE
+// 	t_stack	*stack_a;
+// 	t_stack	*stack_b;
+// 	char	**argv_simulation = NULL;
+// 	char	*userinput;
+// 	int		expected_size;
+// 	int		actual_size;
+// 	int		expected_top_a;
+// 	int		actual_top_a;
+// 	int		expected_bottom_a;
+// 	int		actual_bottom_a;
+// 	int		expected_target_pos;
+// 	int		actual_target_pos;
+
+// 	// ACT
+// 	stack_a = NULL;
+// 	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
+// 	userinput = "./push_swap 2 42 1 4 8 5 31 27";
+// 	argv_simulation = ft_split(userinput, ' ');
+// 	expected_size = ft_minunit_array_counter(argv_simulation);
+// 	expected_top_a = ft_atoi(argv_simulation[1]);
+// 	expected_bottom_a = ft_atoi(argv_simulation[8]);
+
+// 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+// 	expected_target_pos = 8;  // argv[8] = 42;
+// 	actual_size = ft_lst_size(stack_a);
+// 	ft_lst_map_all_indexers(&stack_a);
+// 	ft_push_b_all_but_three(&stack_a, &stack_b);
+// 	ft_sort_three_nbrs(&stack_a);
+// 	ft_lst_get_target_position(&stack_a, &stack_b);
+
+// 	actual_target_pos = ft_lst_goto_end(stack_b)->nbr;
+// 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+// 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+
+// 	// ASSERT
+// 	mu_assert_int_eq(expected_target_pos, actual_target_pos);
+// 	mu_assert_int_eq(expected_size, actual_size);
+// 	mu_assert_int_eq(expected_top_a, actual_top_a);
+// 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
+// 	ft_lstclear_single_ptr(stack_a);
+// 	ft_lstclear_single_ptr(stack_b);
+// 	ft_array_clear(argv_simulation, expected_size);
+// }
 
 
-MU_TEST(test_3st_miastep_map_lowest_weight)
+
+MU_TEST(test_3rd_miastep_get_cost)
+{
+	// ARRANGE
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		actual_size;
+	int		expected_top_a;
+	int		actual_top_a;
+	int		expected_bottom_a;
+	int		actual_bottom_a;
+	int		expected_cost;
+	int		actual_cost;
+
+	// ACT
+	stack_a = NULL;
+	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	userinput = "./push_swap 2 42 1 4 8 5 31 27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected_top_a = ft_atoi(argv_simulation[8]);
+	expected_bottom_a = ft_atoi(argv_simulation[2]);
+
+	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+	expected_cost = 0;  // stack_b->nbr[8]
+	actual_size = ft_lst_size(stack_a);
+	ft_lst_map_all_indexers(&stack_a);
+	ft_push_b_all_but_three(&stack_a, &stack_b);
+	ft_sort_three_nbrs(&stack_a);
+	ft_lst_get_cost(&stack_a, &stack_b);
+	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+	ft_lst_printf_int_content("stack_a:", stack_a);
+	ft_lst_printf_int_content("stack_b:", stack_b);
+	t_stack *temp;
+	temp = stack_b;
+	while (temp)
+	{
+		ft_printf("nbr[%d] in pos[%d] target [%d] has cost = %d\n", temp->nbr, temp->pos, temp->target, temp->cost_b);
+		temp = temp->next;
+	}
+	actual_cost = stack_b->next->cost_b;
+	// ASSERT
+	mu_assert_int_eq(expected_cost, actual_cost);
+	mu_assert_int_eq(expected_size, actual_size);
+	mu_assert_int_eq(expected_top_a, actual_top_a);
+	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
+	ft_lstclear_single_ptr(stack_a);
+	ft_lstclear_single_ptr(stack_b);
+	ft_array_clear(argv_simulation, expected_size);
+}
+
+MU_TEST(test_3rd_miastep_map_get_target)
+{
+	// ARRANGE
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		actual_size;
+	int		expected_top_a;
+	int		actual_top_a;
+	int		expected_bottom_a;
+	int		actual_bottom_a;
+	int		expected_target_pos;
+	int		actual_target_pos;
+
+	// ACT
+	stack_a = NULL;
+	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	userinput = "./push_swap 2 42 1 4 8 5 31 27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected_top_a = ft_atoi(argv_simulation[8]);
+	expected_bottom_a = ft_atoi(argv_simulation[2]);
+
+	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+	expected_target_pos = 5;  // stack_b->pos[5]
+	actual_size = ft_lst_size(stack_a);
+	ft_lst_map_all_indexers(&stack_a);
+	ft_push_b_all_but_three(&stack_a, &stack_b);
+	ft_sort_three_nbrs(&stack_a);
+	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+
+	ft_lst_get_target_position(&stack_a, &stack_b);
+	actual_target_pos = stack_b->target;
+	t_stack *temp;
+	temp = stack_b;
+	while (temp)
+	{
+		ft_printf("nbr[%d] in pos[%d] has target [%d]\n", temp->nbr, temp->pos, temp->target);
+		temp = temp->next;
+	}
+	
+
+	// ASSERT
+	mu_assert_int_eq(expected_target_pos, actual_target_pos);
+	mu_assert_int_eq(expected_size, actual_size);
+	mu_assert_int_eq(expected_top_a, actual_top_a);
+	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
+	ft_lstclear_single_ptr(stack_a);
+	ft_lstclear_single_ptr(stack_b);
+	ft_array_clear(argv_simulation, expected_size);
+}
+
+MU_TEST(test_3rd_miastep_map_lowest_weight)
 {
 	// ARRANGE
 	t_stack	*stack;
@@ -90,7 +248,7 @@ MU_TEST(test_3st_miastep_map_lowest_weight)
 	ft_array_clear(argv_simulation, expected_size);
 }
 
-MU_TEST(test_2st_miastep_push_b_all_but3_sort_3a)
+MU_TEST(test_2nd_miastep_push_b_all_but3_sort_3a)
 {
 	// ARRANGE
 	t_stack	*stack_a;
@@ -1399,10 +1557,11 @@ MU_TEST_SUITE(miacombeau_tests)
 	MU_RUN_TEST(test_1st_miastep_pos_index);
 	MU_RUN_TEST(test_1st_miastep_weight_index);
 	MU_RUN_TEST(test_1st_miastep_push_b_all_but3);
-	MU_RUN_TEST(test_2st_miastep_push_b_all_but3_sort_3a);
-	MU_RUN_TEST(test_3st_miastep_map_lowest_weight);
-	MU_RUN_TEST(test_3st_miastep_map_get_target);
-	// MU_RUN_TEST(test_3st_miastep_map_get_target_position);
+	MU_RUN_TEST(test_2nd_miastep_push_b_all_but3_sort_3a);
+	MU_RUN_TEST(test_3rd_miastep_map_lowest_weight);
+	MU_RUN_TEST(test_3rd_miastep_get_cost);
+	MU_RUN_TEST(test_3rd_miastep_map_get_target);
+	// MU_RUN_TEST(test_3rd_miastep_map_get_target_position);
 }
 
 int main(void)
