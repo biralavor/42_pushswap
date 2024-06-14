@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/14 17:41:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:56:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	ft_lst_printf_int_content(char *msg, t_stack *list)
 	temp = list;
 	while (temp)
 	{
-		ft_printf("%s %d\n", msg, temp->nbr);
+		ft_printf("%s\tnbr[%d]\tpos[%d]\t",msg, temp->nbr, temp->pos);
+		ft_printf("weight[%d]\ttarget[%d]\t", temp->weight, temp->target);
+		ft_printf("cost_a[%d]\tcost_b[%d]\n", temp->cost_a, temp->cost_b);
 		temp = temp->next;
 	}
 }
