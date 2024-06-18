@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:00:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:13:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_stack
 {
 	int				nbr;
-	int				pos;
+	int				origin;
 	int				final_pos;
 	int				target;
 	int				cost_a;
@@ -73,7 +73,7 @@ int		ft_lst_get_target(t_stack **stack_a, int b_ideal_pos,
 			int target_ideal_pos, int target_pos);
 void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b);
 void	ft_lst_map_all_indexers(t_stack **stack);
-void	ft_lst_map_position(t_stack **stack);
+void	ft_lst_map_original_position(t_stack **stack);
 void	ft_lst_map_final_pos(t_stack **stack, int stack_size);
 int		ft_lst_map_lowest_final_position(t_stack **stack);
 void	ft_lst_shift_stack(t_stack **stack_a);

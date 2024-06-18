@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:05:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:17:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ MU_TEST(test_3rd_miastep_get_cost)
 	temp = stack_b;
 	while (temp)
 	{
-		ft_printf("nbr[%d] in pos[%d] target [%d] has cost = %d\n", temp->nbr, temp->pos, temp->target, temp->cost_b);
+		ft_printf("nbr[%d] in origin[%d] target [%d] has cost = %d\n", temp->nbr, temp->origin, temp->target, temp->cost_b);
 		temp = temp->next;
 	}
 	actual_cost = stack_b->next->cost_b;
@@ -185,7 +185,7 @@ MU_TEST(test_3rd_miastep_map_get_target)
 	temp = stack_b;
 	while (temp)
 	{
-		ft_printf("nbr[%d] in pos[%d] has target [%d]\n", temp->nbr, temp->pos, temp->target);
+		ft_printf("nbr[%d] in origin[%d] has target [%d]\n", temp->nbr, temp->origin, temp->target);
 		temp = temp->next;
 	}
 	
@@ -230,7 +230,7 @@ MU_TEST(test_3rd_miastep_map_lowest_final_pos)
 	expected_lowest_final_pos_nbr = ft_atoi(argv_simulation[expected_lowest_final_pos_pos]);
 
 	actual_size = ft_lst_size(stack);
-	ft_lst_map_position(&stack);
+	ft_lst_map_original_position(&stack);
 	ft_lst_map_final_pos(&stack, expected_size);
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
 	actual_lowest_final_pos_pos = ft_lst_map_lowest_final_position(&stack);
@@ -286,7 +286,7 @@ MU_TEST(test_2nd_miastep_push_b_all_but3_sort_3a)
 	actual_top_a_before_push = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a_before_push = ft_lst_goto_end(stack_a)->nbr;
 
-	ft_lst_map_position(&stack_a);
+	ft_lst_map_original_position(&stack_a);
 	ft_lst_map_final_pos(&stack_a, expected_size_before_push);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
 	ft_sort_three_nbrs(&stack_a);
@@ -350,7 +350,7 @@ MU_TEST(test_1st_miastep_push_b_all_but3)
 	actual_top_a_before_push = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a_before_push = ft_lst_goto_end(stack_a)->nbr;
 
-	ft_lst_map_position(&stack_a);
+	ft_lst_map_original_position(&stack_a);
 	ft_lst_map_final_pos(&stack_a, expected_size_before_push);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
 
@@ -402,14 +402,14 @@ MU_TEST(test_1st_miastep_final_pos_index)
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 
 	actual_size = ft_lst_size(stack);
-	ft_lst_map_position(&stack);
+	ft_lst_map_original_position(&stack);
 	ft_lst_map_final_pos(&stack, expected_size);
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
 
-	while (stack->pos <= 2)
+	while (stack->origin <= 2)
 	{
 		stack = stack->next;
-		if (stack->pos == 2)
+		if (stack->origin == 2)
 			actual_highest_final_pos = stack->final_pos;
 	}
 	actual_bottom_a = ft_lst_goto_end(stack)->nbr;
@@ -450,12 +450,12 @@ MU_TEST(test_1st_miastep_pos_index)
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 
 	actual_size = ft_lst_size(stack);
-	ft_lst_map_position(&stack);
+	ft_lst_map_original_position(&stack);
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
-	while (stack->pos <= 5)
+	while (stack->origin <= 5)
 	{
 		stack = stack->next;
-		if (stack->pos == 5)
+		if (stack->origin == 5)
 			actual_fith_position = stack->nbr;
 	}
 	actual_bottom_a = ft_lst_goto_end(stack)->nbr;

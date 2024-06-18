@@ -6,26 +6,26 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:02:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:15:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lst_map_position(t_stack **stack)
+void	ft_lst_map_original_position(t_stack **stack)
 {
-	int	pos;
+	int	original_position;
 
-	pos = 0;
+	original_position = 0;
 	while ((*stack)->next != NULL)
 	{
-		pos++;
-		(*stack)->pos = pos;
+		original_position++;
+		(*stack)->origin = original_position;
 		(*stack) = (*stack)->next;
 		if ((*stack)->next == NULL)
 		{
-			pos++;
-			(*stack)->pos = pos;
+			original_position++;
+			(*stack)->origin = original_position;
 		}
 	}
 	*stack = ft_lst_goto_head(*stack);
@@ -68,14 +68,14 @@ int	ft_lst_map_lowest_final_position(t_stack **stack)
 
 	temp = *stack;
 	lowest_final_pos = INT_MAX;
-	ft_lst_map_position(stack);
-	lowest_position = temp->pos;
+	ft_lst_map_original_position(stack);
+	lowest_position = temp->origin;
 	while (temp)
 	{
 		if (temp->final_pos < lowest_final_pos)
 		{
 			lowest_final_pos = temp->final_pos;
-			lowest_position = temp->pos;
+			lowest_position = temp->origin;
 		}
 		temp = temp->next;
 	}
@@ -93,7 +93,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_final_pos,
 		if (temp_a->final_pos > b_final_pos && temp_a->final_pos < target_final_pos)
 		{
 			target_final_pos = temp_a->final_pos;
-			target_pos = temp_a->pos;
+			target_pos = temp_a->origin;
 		}
 		temp_a = temp_a->next;
 	}
@@ -105,7 +105,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_final_pos,
 		if (temp_a->final_pos < target_final_pos)
 		{
 			target_final_pos = temp_a->final_pos;
-			target_pos = temp_a->pos;
+			target_pos = temp_a->origin;
 		}
 		temp_a = temp_a->next;
 	}
@@ -118,8 +118,8 @@ void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_b;
 
 	temp_b = *stack_b;
-	ft_lst_map_position(stack_a);
-	ft_lst_map_position(stack_b);
+	ft_lst_map_original_position(stack_a);
+	ft_lst_map_original_position(stack_b);
 	target_position = 0;
 	while (temp_b)
 	{

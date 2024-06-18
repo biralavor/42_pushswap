@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:04:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:10:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b)
 	size_b = ft_lst_size(temp_b);
 	while (temp_b)
 	{
-		temp_b->cost_b = temp_b->pos;
-		if (temp_b->pos > size_b / 2)
-			temp_b->cost_b = (size_b - temp_b->pos) * -1;
+		temp_b->cost_b = temp_b->origin;
+		if (temp_b->origin > size_b / 2)
+			temp_b->cost_b = (size_b - temp_b->origin) * -1;
 		temp_b->cost_a = temp_b->target;
 		if (temp_b->target > size_a / 2)
 			temp_b->cost_a = (size_a - temp_b->target) * -1;
