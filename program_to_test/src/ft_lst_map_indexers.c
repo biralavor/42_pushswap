@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 16:07:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:37:30 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,30 +82,29 @@ int	ft_lst_map_lowest_final_position(t_stack **stack)
 	return (lowest_position);
 }
 
-int	ft_lst_get_target(t_stack **stack_a, int b_final_pos,
-							int target_final_pos, int target_pos)
+int	ft_lst_get_target(t_stack **stack_a, int b_end_pos,
+							int target_end_pos, int target_pos)
 {
 	t_stack	*temp_a;
 
 	temp_a = *stack_a;
 	while (temp_a)
 	{
-		if (temp_a->final_pos > b_final_pos
-			&& temp_a->final_pos < target_final_pos)
+		if (temp_a->final_pos > b_end_pos && temp_a->final_pos < target_end_pos)
 		{
-			target_final_pos = temp_a->final_pos;
+			target_end_pos = temp_a->final_pos;
 			target_pos = temp_a->origin;
 		}
 		temp_a = temp_a->next;
 	}
-	if (target_final_pos != INT_MAX)
+	if (target_end_pos != INT_MAX)
 		return (target_pos);
 	temp_a = ft_lst_goto_head(temp_a);
 	while (temp_a)
 	{
-		if (temp_a->final_pos < target_final_pos)
+		if (temp_a->final_pos < target_end_pos)
 		{
-			target_final_pos = temp_a->final_pos;
+			target_end_pos = temp_a->final_pos;
 			target_pos = temp_a->origin;
 		}
 		temp_a = temp_a->next;

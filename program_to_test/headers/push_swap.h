@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 16:11:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:38:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ t_stack	*ft_sort_three_nbrs(t_stack **stack);
 
 void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b);
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b);
-int		ft_lst_get_target(t_stack **stack_a, int b_ideal_pos,
-			int target_ideal_pos, int target_pos);
+int		ft_lst_get_target(t_stack **stack_a, int b_end_pos,
+			int target_end_pos, int target_pos);
 void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b);
 void	ft_lst_map_all_indexers(t_stack **stack);
 void	ft_lst_map_actual_position(t_stack **stack);

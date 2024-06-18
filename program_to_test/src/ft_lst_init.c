@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 12:16:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:35:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_lst_printf_data_content(char *msg, t_stack *list)
 	temp = list;
 	while (temp)
 	{
-		ft_printf("%s\tnbr[%d]\torigin[%d]\t",msg, temp->nbr, temp->origin);
+		ft_printf("%s\tnbr[%d]\torigin[%d]\t", msg, temp->nbr, temp->origin);
 		ft_printf("final_pos[%d]\ttarget[%d]\t", temp->final_pos, temp->target);
 		ft_printf("cost_a[%d]\tcost_b[%d]\n", temp->cost_a, temp->cost_b);
 		temp = temp->next;
