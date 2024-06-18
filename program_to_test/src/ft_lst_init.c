@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:33:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:16:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,6 @@ void	ft_lst_printf_data_content(char *msg, t_stack *list)
 		ft_printf("cost_a[%d]\tcost_b[%d]\n", temp->cost_a, temp->cost_b);
 		temp = temp->next;
 	}
+	if (list == NULL)
+		ft_printf("%s\tEmpty list\n", msg);
 }
