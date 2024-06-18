@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:34:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:11:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 bool	ft_is_sorted(t_stack *stack);
 /* sorting validation functions */
 
+int		ft_lst_map_highest_pos(t_stack *list);
 void	ft_do_sort(t_stack **stack_a, t_stack **stack_b);
 t_stack	*ft_sort_two_nbrs(t_stack **stack);
 t_stack	*ft_sort_three_nbrs(t_stack **stack);
@@ -73,7 +74,7 @@ int		ft_lst_get_target(t_stack **stack_a, int b_ideal_pos,
 			int target_ideal_pos, int target_pos);
 void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b);
 void	ft_lst_map_all_indexers(t_stack **stack);
-void	ft_lst_map_original_position(t_stack **stack);
+void	ft_lst_map_actual_position(t_stack **stack);
 void	ft_lst_map_final_pos(t_stack **stack, int stack_size);
 int		ft_lst_map_lowest_final_position(t_stack **stack);
 void	ft_lst_shift_stack(t_stack **stack_a);
