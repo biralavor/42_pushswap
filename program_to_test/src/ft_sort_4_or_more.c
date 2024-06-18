@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 15:24:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:36:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->final_pos <= (stack_size / 2))
 		{
+			ft_printf("1 pushing %d\n", (*stack_a)->nbr);
 			ft_do_push_b(stack_a, stack_b);
 			pushed++;
 		}
@@ -51,8 +52,9 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 			ft_do_rotate_a(stack_a);
 		index++;
 	}
-	while (stack_size - pushed > 3)
+	while ((stack_size - pushed) > 3)
 	{
+		ft_printf("2 pushing %d\n", (*stack_a)->nbr);
 		ft_do_push_b(stack_a, stack_b);
 		pushed++;
 	}
