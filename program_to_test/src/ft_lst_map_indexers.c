@@ -6,26 +6,26 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:15:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:07:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lst_map_original_position(t_stack **stack)
+void	ft_lst_map_actual_position(t_stack **stack)
 {
-	int	original_position;
+	int	actual_position;
 
-	original_position = 0;
+	actual_position = 0;
 	while ((*stack)->next != NULL)
 	{
-		original_position++;
-		(*stack)->origin = original_position;
+		actual_position++;
+		(*stack)->origin = actual_position;
 		(*stack) = (*stack)->next;
 		if ((*stack)->next == NULL)
 		{
-			original_position++;
-			(*stack)->origin = original_position;
+			actual_position++;
+			(*stack)->origin = actual_position;
 		}
 	}
 	*stack = ft_lst_goto_head(*stack);
@@ -68,7 +68,7 @@ int	ft_lst_map_lowest_final_position(t_stack **stack)
 
 	temp = *stack;
 	lowest_final_pos = INT_MAX;
-	ft_lst_map_original_position(stack);
+	ft_lst_map_actual_position(stack);
 	lowest_position = temp->origin;
 	while (temp)
 	{
@@ -90,7 +90,8 @@ int	ft_lst_get_target(t_stack **stack_a, int b_final_pos,
 	temp_a = *stack_a;
 	while (temp_a)
 	{
-		if (temp_a->final_pos > b_final_pos && temp_a->final_pos < target_final_pos)
+		if (temp_a->final_pos > b_final_pos
+			&& temp_a->final_pos < target_final_pos)
 		{
 			target_final_pos = temp_a->final_pos;
 			target_pos = temp_a->origin;
@@ -99,7 +100,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_final_pos,
 	}
 	if (target_final_pos != INT_MAX)
 		return (target_pos);
-	temp_a = *stack_a;
+	temp_a = ft_lst_goto_head(temp_a);
 	while (temp_a)
 	{
 		if (temp_a->final_pos < target_final_pos)
@@ -118,8 +119,8 @@ void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_b;
 
 	temp_b = *stack_b;
-	ft_lst_map_original_position(stack_a);
-	ft_lst_map_original_position(stack_b);
+	ft_lst_map_actual_position(stack_a);
+	ft_lst_map_actual_position(stack_b);
 	target_position = 0;
 	while (temp_b)
 	{
@@ -129,23 +130,3 @@ void	ft_lst_get_target_position(t_stack **stack_a, t_stack **stack_b)
 		temp_b = temp_b->next;
 	}
 }
-
-// void	ft_lst_map_final_pos_by_argv(t_stack **stack, char **argv)
-// {
-// 	int		final_pos;
-// 	int		pos;
-// 	char	**argv_splited;
-// 	t_stack	*temp;
-
-// 	final_pos = 0;
-// 	pos = 0;
-// 	final_pos = 0;
-// 	temp = *stack;
-// 	argv_splited = ft_split(*argv, ' ');
-// 	while ((argv_splited[pos] != NULL) && (temp->next != NULL))
-// 	{
-// 		if (ft_atoi(argv_splited[pos]) > ft_atoi(argv_splited[pos + 1]))
-// 			temp->final_pos = final_pos++;
-//		temp = temp->next;
-// 	}
-// }
