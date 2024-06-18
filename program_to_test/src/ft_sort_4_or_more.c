@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:10:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:38:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_three_nbrs(stack_a);
-	ft_lst_printf_int_content("stack_a before get-target:", *stack_a);
-	ft_lst_printf_int_content("stack_b before get-target:", *stack_b);
+	ft_lst_printf_data_content("stack_a before get-target:", *stack_a);
+	ft_lst_printf_data_content("stack_b before get-target:", *stack_b);
 	while (*stack_b)
 	{
 		ft_lst_get_target_position(stack_a, stack_b);
 		ft_lst_get_cost(stack_a, stack_b);
 		ft_lst_do_cheapest_move(stack_a, stack_b);
 	}
-	ft_lst_printf_int_content("stack_a after get-target:", *stack_a);
-	ft_lst_printf_int_content("stack_b after get-target:", *stack_b);
+	ft_lst_printf_data_content("stack_a after get-target:", *stack_a);
+	ft_lst_printf_data_content("stack_b after get-target:", *stack_b);
 	if (!ft_is_sorted(*stack_a))
 		ft_lst_shift_stack(stack_a);
 }

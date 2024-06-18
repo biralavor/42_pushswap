@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:17:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:37:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,15 +125,8 @@ MU_TEST(test_3rd_miastep_get_cost)
 	ft_lst_get_cost(&stack_a, &stack_b);
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
-	ft_lst_printf_int_content("stack_a:", stack_a);
-	ft_lst_printf_int_content("stack_b:", stack_b);
-	t_stack *temp;
-	temp = stack_b;
-	while (temp)
-	{
-		ft_printf("nbr[%d] in origin[%d] target [%d] has cost = %d\n", temp->nbr, temp->origin, temp->target, temp->cost_b);
-		temp = temp->next;
-	}
+	ft_lst_printf_data_content("get_cost stack_a:", stack_a);
+	ft_lst_printf_data_content("get_cost stack_b:", stack_b);
 	actual_cost = stack_b->next->cost_b;
 	// ASSERT
 	mu_assert_int_eq(expected_cost, actual_cost);
@@ -181,14 +174,8 @@ MU_TEST(test_3rd_miastep_map_get_target)
 
 	ft_lst_get_target_position(&stack_a, &stack_b);
 	actual_target_pos = stack_b->target;
-	t_stack *temp;
-	temp = stack_b;
-	while (temp)
-	{
-		ft_printf("nbr[%d] in origin[%d] has target [%d]\n", temp->nbr, temp->origin, temp->target);
-		temp = temp->next;
-	}
-	
+	ft_lst_printf_data_content("get_target stack_a:", stack_a);
+	ft_lst_printf_data_content("get_target stack_b:", stack_b);
 
 	// ASSERT
 	mu_assert_int_eq(expected_target_pos, actual_target_pos);

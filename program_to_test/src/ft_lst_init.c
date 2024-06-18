@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:14:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:33:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_stack	*ft_lts_buildstack_argv(t_stack **stack, char **argv)
 	return (*stack);
 }
 
-void	ft_lst_printf_int_content(char *msg, t_stack *list)
+void	ft_lst_printf_data_content(char *msg, t_stack *list)
 {
 	t_stack	*temp;
 

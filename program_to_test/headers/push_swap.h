@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 11:13:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:34:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_stack	*ft_lst_delat_begin(t_stack *stack);
 t_stack	*ft_lst_delat_end(t_stack *stack);
 void	ft_lstclear_double_ptr(t_stack **stack);
 void	ft_lstclear_single_ptr(t_stack *stack);
-void	ft_lst_printf_int_content(char *msg, t_stack *stack);
+void	ft_lst_printf_data_content(char *msg, t_stack *stack);
 t_stack	*ft_lts_buildstack_argv(t_stack **stack, char **argv);
 bool	ft_is_sign(int c);
 bool	ft_is_space(int c);
