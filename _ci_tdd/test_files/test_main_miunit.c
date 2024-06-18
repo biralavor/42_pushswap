@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 16:42:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:47:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ MU_TEST(test_3rd_miastep_map_get_target_position)
 	int		actual_top_a;
 	int		expected_bottom_a;
 	int		actual_bottom_a;
-	int		expected_target_pos;
-	int		actual_target_pos;
+	// int		expected_target_pos;
+	// int		actual_target_pos;
 
 	// ACT
 	stack_a = NULL;
@@ -117,7 +117,7 @@ MU_TEST(test_3rd_miastep_map_get_target_position)
 
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
 	ft_lst_map_all_indexers(&stack_a);
-	expected_target_pos = 5;  // stack_b->origin[5]
+	// expected_target_pos = 5;  // stack_b->origin[5]
 	actual_size = ft_lst_size(stack_a);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
 	ft_sort_three_nbrs(&stack_a);
@@ -125,7 +125,7 @@ MU_TEST(test_3rd_miastep_map_get_target_position)
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 
 	ft_lst_get_target_position(&stack_a, &stack_b);
-	actual_target_pos = stack_b->target;
+	// actual_target_pos = stack_b->target;
 
 	// ASSERT
 	// mu_assert_int_eq(expected_target_pos, actual_target_pos);
