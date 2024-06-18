@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/14 17:17:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:05:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ MU_TEST(test_3rd_miastep_map_get_target)
 	ft_array_clear(argv_simulation, expected_size);
 }
 
-MU_TEST(test_3rd_miastep_map_lowest_weight)
+MU_TEST(test_3rd_miastep_map_lowest_final_pos)
 {
 	// ARRANGE
 	t_stack	*stack;
@@ -212,10 +212,10 @@ MU_TEST(test_3rd_miastep_map_lowest_weight)
 	int		actual_top_a;
 	int		expected_bottom_a;
 	int		actual_bottom_a;
-	int		expected_lowest_weight_pos;
-	int		expected_lowest_weight_nbr;
-	int		actual_lowest_weight_pos;
-	int		actual_lowest_weight_nbr;
+	int		expected_lowest_final_pos_pos;
+	int		expected_lowest_final_pos_nbr;
+	int		actual_lowest_final_pos_pos;
+	int		actual_lowest_final_pos_nbr;
 
 	// ACT
 	stack = NULL;
@@ -226,21 +226,21 @@ MU_TEST(test_3rd_miastep_map_lowest_weight)
 	expected_bottom_a = ft_atoi(argv_simulation[8]);
 
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
-	expected_lowest_weight_pos = 3; // argv[3] = 1;
-	expected_lowest_weight_nbr = ft_atoi(argv_simulation[expected_lowest_weight_pos]);
+	expected_lowest_final_pos_pos = 3; // argv[3] = 1;
+	expected_lowest_final_pos_nbr = ft_atoi(argv_simulation[expected_lowest_final_pos_pos]);
 
 	actual_size = ft_lst_size(stack);
 	ft_lst_map_position(&stack);
-	ft_lst_map_weight(&stack, expected_size);
+	ft_lst_map_final_pos(&stack, expected_size);
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
-	actual_lowest_weight_pos = ft_lst_map_lowest_weight_position(&stack);
+	actual_lowest_final_pos_pos = ft_lst_map_lowest_final_position(&stack);
 	actual_bottom_a = ft_lst_goto_end(stack)->nbr;
-	actual_lowest_weight_nbr = stack->next->next->nbr;
+	actual_lowest_final_pos_nbr = stack->next->next->nbr;
 	
 
 	// ASSERT
-	mu_assert_int_eq(expected_lowest_weight_pos, actual_lowest_weight_pos);
-	mu_assert_int_eq(expected_lowest_weight_nbr, actual_lowest_weight_nbr);
+	mu_assert_int_eq(expected_lowest_final_pos_pos, actual_lowest_final_pos_pos);
+	mu_assert_int_eq(expected_lowest_final_pos_nbr, actual_lowest_final_pos_nbr);
 	mu_assert_int_eq(expected_size, actual_size);
 	mu_assert_int_eq(expected_top_a, actual_top_a);
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
@@ -287,7 +287,7 @@ MU_TEST(test_2nd_miastep_push_b_all_but3_sort_3a)
 	actual_bottom_a_before_push = ft_lst_goto_end(stack_a)->nbr;
 
 	ft_lst_map_position(&stack_a);
-	ft_lst_map_weight(&stack_a, expected_size_before_push);
+	ft_lst_map_final_pos(&stack_a, expected_size_before_push);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
 	ft_sort_three_nbrs(&stack_a);
 
@@ -351,7 +351,7 @@ MU_TEST(test_1st_miastep_push_b_all_but3)
 	actual_bottom_a_before_push = ft_lst_goto_end(stack_a)->nbr;
 
 	ft_lst_map_position(&stack_a);
-	ft_lst_map_weight(&stack_a, expected_size_before_push);
+	ft_lst_map_final_pos(&stack_a, expected_size_before_push);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
 
 	expected_top_a_after_push = ft_atoi(argv_simulation[4]);
@@ -375,7 +375,7 @@ MU_TEST(test_1st_miastep_push_b_all_but3)
 	ft_array_clear(argv_simulation, expected_size_before_push);
 }
 
-MU_TEST(test_1st_miastep_weight_index)
+MU_TEST(test_1st_miastep_final_pos_index)
 {
 	// ARRANGE
 	t_stack	*stack;
@@ -387,8 +387,8 @@ MU_TEST(test_1st_miastep_weight_index)
 	int		actual_top_a;
 	int		expected_bottom_a;
 	int		actual_bottom_a;
-	int		expected_highest_weight;
-	int		actual_highest_weight;
+	int		expected_highest_final_pos;
+	int		actual_highest_final_pos;
 
 	// ACT
 	stack = NULL;
@@ -397,25 +397,25 @@ MU_TEST(test_1st_miastep_weight_index)
 	expected_size = ft_minunit_array_counter(argv_simulation);
 	expected_top_a = ft_atoi(argv_simulation[1]);
 	expected_bottom_a = ft_atoi(argv_simulation[8]);
-	expected_highest_weight = expected_size - 1;
+	expected_highest_final_pos = expected_size - 1;
 
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 
 	actual_size = ft_lst_size(stack);
 	ft_lst_map_position(&stack);
-	ft_lst_map_weight(&stack, expected_size);
+	ft_lst_map_final_pos(&stack, expected_size);
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
 
 	while (stack->pos <= 2)
 	{
 		stack = stack->next;
 		if (stack->pos == 2)
-			actual_highest_weight = stack->weight;
+			actual_highest_final_pos = stack->final_pos;
 	}
 	actual_bottom_a = ft_lst_goto_end(stack)->nbr;
 
 	// ASSERT
-	mu_assert_int_eq(expected_highest_weight, actual_highest_weight);
+	mu_assert_int_eq(expected_highest_final_pos, actual_highest_final_pos);
 	mu_assert_int_eq(expected_size, actual_size);
 	mu_assert_int_eq(expected_top_a, actual_top_a);
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
@@ -1555,10 +1555,10 @@ MU_TEST_SUITE(sorting_tests)
 MU_TEST_SUITE(miacombeau_tests)
 {
 	MU_RUN_TEST(test_1st_miastep_pos_index);
-	MU_RUN_TEST(test_1st_miastep_weight_index);
+	MU_RUN_TEST(test_1st_miastep_final_pos_index);
 	MU_RUN_TEST(test_1st_miastep_push_b_all_but3);
 	MU_RUN_TEST(test_2nd_miastep_push_b_all_but3_sort_3a);
-	MU_RUN_TEST(test_3rd_miastep_map_lowest_weight);
+	MU_RUN_TEST(test_3rd_miastep_map_lowest_final_pos);
 	MU_RUN_TEST(test_3rd_miastep_get_cost);
 	MU_RUN_TEST(test_3rd_miastep_map_get_target);
 	// MU_RUN_TEST(test_3rd_miastep_map_get_target_position);
