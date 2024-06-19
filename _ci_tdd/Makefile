@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/19 15:05:18 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/19 17:28:23 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) -o $(NAME)
 # **************************************************************************** #
 
 define		arguments
-		42 1 10 21 11 7 4 2
+		42 1 10 21
 endef
 
 define 		bonus
@@ -99,10 +99,10 @@ $(BUILD_D)%.o:		%.c
 $(NAME):			clean push_swap $(OBJ_FILES)
 					@$(COMP_EXE)
 					@printf "$(PURPLE)"
-#					@echo ">>> Running PUSH_SWAP with default arguments:"
-#					@echo "$(call arguments)"
-#					@printf "$(CYAN)"
-#					$(PUSH_SWAP_D)./push_swap $(call arguments)
+					@echo ">>> Running PUSH_SWAP with default arguments:"
+					@echo "$(call arguments)"
+					@printf "$(CYAN)"
+					$(PUSH_SWAP_D)./push_swap $(call arguments)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"
 					@printf "$(RESET)"
