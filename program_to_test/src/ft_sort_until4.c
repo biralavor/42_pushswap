@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_4_or_more.c                                :+:      :+:    :+:   */
+/*   ft_sort_until5.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 18:36:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:56:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort_four_nbrs(t_stack **stack_a, t_stack **stack_b)
 {
+	int	highest_pos;
+
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_three_nbrs(stack_a);
-	ft_lst_printf_data_content("stack_a before get-target:", *stack_a);
-	ft_lst_printf_data_content("stack_b before get-target:", *stack_b);
-	while (*stack_b)
+	highest_pos = ft_lst_map_highest_pos(*stack_b);
+	if ((*stack_b)->final_pos == highest_pos)
 	{
-		ft_lst_get_target_position(stack_a, stack_b);
-		ft_lst_get_cost(stack_a, stack_b);
-		ft_lst_do_cheapest_move(stack_a, stack_b);
+		ft_do_push_a(stack_a, stack_b);
+		ft_do_rotate_a(stack_a);
+	}
+	if (((*stack_a)->final_pos == 0) && ((*stack_a)->next->final_pos == 2)
+		&& ((*stack_a)->next->next->final_pos == 3))
+	{
+		ft_do_reverse_rotate_a(stack_a);
+		ft_do_swap_a(stack_a);
 	}
 	if (!ft_is_sorted(*stack_a))
 		ft_lst_shift_stack(stack_a);
-	ft_lst_printf_data_content("stack_a after get-target:", *stack_a);
-	ft_lst_printf_data_content("stack_b after get-target:", *stack_b);
 }
 
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
@@ -44,7 +48,6 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->final_pos <= (stack_size / 2))
 		{
-			ft_printf("1 pushing %d\n", (*stack_a)->nbr);
 			ft_do_push_b(stack_a, stack_b);
 			pushed++;
 		}
@@ -54,56 +57,9 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 	}
 	while ((stack_size - pushed) > 3)
 	{
-		ft_printf("2 pushing %d\n", (*stack_a)->nbr);
 		ft_do_push_b(stack_a, stack_b);
 		pushed++;
 	}
-	*stack_b = ft_lst_delat_end(*stack_b);
-}
-
-void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b)
-{
-	int		size_a;
-	int		size_b;
-	t_stack	*temp_a;
-	t_stack	*temp_b;
-
-	temp_a = *stack_a;
-	temp_b = *stack_b;
-	size_a = ft_lst_size(temp_a);
-	size_b = ft_lst_size(temp_b);
-	while (temp_b)
-	{
-		temp_b->cost_b = temp_b->origin;
-		if (temp_b->origin > size_b / 2)
-			temp_b->cost_b = (size_b - temp_b->origin) * -1;
-		temp_b->cost_a = temp_b->target;
-		if (temp_b->target > size_a / 2)
-			temp_b->cost_a = (size_a - temp_b->target) * -1;
-		temp_b = temp_b->next;
-	}
-}
-
-void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
-{
-	int		cost_a;
-	int		cost_b;
-	int		cheapest;
-	t_stack	*temp_b;
-
-	temp_b = *stack_b;
-	cheapest = INT_MAX;
-	while (temp_b)
-	{
-		if ((temp_b->cost_a + temp_b->cost_b) < cheapest)
-		{
-			cheapest = temp_b->cost_b + temp_b->cost_a;
-			cost_a = temp_b->cost_a;
-			cost_b = temp_b->cost_b;
-		}
-		temp_b = temp_b->next;
-	}
-	ft_do_move_after_cheapest(stack_a, stack_b, cost_a, cost_b);
 }
 
 void	ft_lst_shift_stack(t_stack **stack_a)
@@ -121,6 +77,8 @@ void	ft_lst_shift_stack(t_stack **stack_a)
 			lowest_final_pos++;
 		}
 	}
+	if (ft_lst_goto_end(*stack_a)->final_pos == 0)
+		ft_do_reverse_rotate_a(stack_a);
 	else
 	{
 		while (lowest_final_pos > 0)
@@ -129,4 +87,26 @@ void	ft_lst_shift_stack(t_stack **stack_a)
 			lowest_final_pos--;
 		}
 	}
+}
+
+int	ft_lst_map_lowest_final_position(t_stack **stack)
+{
+	int		lowest_final_pos;
+	int		lowest_position;
+	t_stack	*temp;
+
+	temp = *stack;
+	lowest_final_pos = INT_MAX;
+	ft_lst_map_actual_position(stack);
+	lowest_position = temp->origin;
+	while (temp)
+	{
+		if (temp->final_pos < lowest_final_pos)
+		{
+			lowest_final_pos = temp->final_pos;
+			lowest_position = temp->origin;
+		}
+		temp = temp->next;
+	}
+	return (lowest_position);
 }

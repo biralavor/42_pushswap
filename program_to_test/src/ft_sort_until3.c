@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:14 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 16:10:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:38:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ int	ft_lst_map_highest_pos(t_stack *list)
 	int		highest_pos;
 	t_stack	*temp;
 
-	temp = list;
-	temp = ft_lst_goto_head(temp);
-	highest_pos = list->final_pos;
+	temp = ft_lst_goto_head(list);
+	highest_pos = temp->final_pos;
 	while (temp)
 	{
 		if (temp->final_pos > highest_pos)
