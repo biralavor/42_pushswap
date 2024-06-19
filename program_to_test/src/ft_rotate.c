@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:48:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/14 17:40:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:45:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@
 	*/
 void	ft_rotate(t_stack **stack)
 {
-	t_stack	*temp;
 	t_stack	*last_node;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (NULL == *stack || NULL== stack)
 		return ;
-	temp = *stack;
+	last_node = ft_lst_goto_end(*stack);
+	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
-	last_node = ft_lst_goto_end(*stack);
-	temp->next = NULL;
-	last_node->next = temp;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
 void	ft_rotate_ab(t_stack **stack_a, t_stack **stack_b)
