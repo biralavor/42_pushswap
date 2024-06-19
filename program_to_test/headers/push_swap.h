@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 16:38:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:07:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ t_stack	*ft_sort_two_nbrs(t_stack **stack);
 t_stack	*ft_sort_three_nbrs(t_stack **stack);
 /* sorting functions if list has until 3 numbers */
 
-void	ft_sort_four_or_more_nbrs(t_stack **stack_a, t_stack **stack_b);
+void	ft_sort_four_nbrs(t_stack **stack_a, t_stack **stack_b);
+void	ft_sort_five_or_more_nbr(t_stack **stack_a, t_stack **stack_b);
 void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b);
 int		ft_lst_get_target(t_stack **stack_a, int b_end_pos,
 			int target_end_pos, int target_pos);

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 18:46:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 18:12:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:07:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,16 @@ void	ft_do_sort(t_stack **stack_a, t_stack **stack_b)
 			ft_sort_two_nbrs(stack_a);
 		else if (stack_size == 3)
 			ft_sort_three_nbrs(stack_a);
-		else
+		else if (stack_size == 4)
+			ft_sort_four_nbrs(stack_a, stack_b);
+		else if (stack_size >= 5)
 		{
-			ft_sort_four_or_more_nbrs(stack_a, stack_b);
+			ft_sort_five_or_more_nbr(stack_a, stack_b);
 		}
+		// else
+		// {
+		// 	ft_sort_five_or_more_nbr(stack_a, stack_b);
+		// }
 	}
 }
 
