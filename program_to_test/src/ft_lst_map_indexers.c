@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 16:37:30 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:51:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,6 @@ void	ft_lst_map_final_pos(t_stack **stack, int stack_size)
 		if (highest != NULL)
 			highest->final_pos = stack_size;
 	}
-}
-
-int	ft_lst_map_lowest_final_position(t_stack **stack)
-{
-	int		lowest_final_pos;
-	int		lowest_position;
-	t_stack	*temp;
-
-	temp = *stack;
-	lowest_final_pos = INT_MAX;
-	ft_lst_map_actual_position(stack);
-	lowest_position = temp->origin;
-	while (temp)
-	{
-		if (temp->final_pos < lowest_final_pos)
-		{
-			lowest_final_pos = temp->final_pos;
-			lowest_position = temp->origin;
-		}
-		temp = temp->next;
-	}
-	return (lowest_position);
 }
 
 int	ft_lst_get_target(t_stack **stack_a, int b_end_pos,
