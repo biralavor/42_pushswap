@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/18 15:01:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:48:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ t_stack	*ft_lst_goto_head(t_stack *list)
 {
 	if (NULL == list)
 		return (NULL);
-	while (list->prev)
+	while (list->prev != NULL)
+	{
 		list = list->prev;
-	if (list->prev == NULL)
-		return (list);
+		if (NULL == list->prev)
+			break ;
+	}
 	return (list);
 }
