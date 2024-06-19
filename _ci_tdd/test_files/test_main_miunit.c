@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 15:18:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 17:10:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 // #include "minunit_utils.h"
 
 // TODO:
-// make test for a list with four or more numbers
-// make test for signs (- +)
-// make test for non-numbers input
+// make test for a list with 5 or more numbers
+// make test for negative numbers
+// make test for double or more signs (-- +++)
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
@@ -78,8 +78,6 @@ MU_TEST(test_3rd_miastep_get_cost)
 	ft_lst_get_cost(&stack_a, &stack_b);
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
-	ft_lst_printf_data_content("get_cost stack_a:", stack_a);
-	ft_lst_printf_data_content("get_cost stack_b:", stack_b);
 	actual_cost = stack_b->next->cost_b;
 	// ASSERT
 	mu_assert_int_eq(expected_cost, actual_cost);
@@ -185,6 +183,8 @@ MU_TEST(test_3rd_miastep_map_lowest_final_pos)
 	ft_lstclear_single_ptr(stack);
 	ft_array_clear(argv_simulation, expected_size);
 }
+
+
 
 MU_TEST(test_sort_four_nbrs_v04)
 {
@@ -1300,14 +1300,12 @@ MU_TEST(test_ft_swap_ab)
 	expected_size_b = ft_lst_size(stack_b);
 	expected_result_a = second_a;
 	expected_result_b = second_b;
-	
-	ft_swap_ab(&stack_a, &stack_b);	
+
+	ft_swap_ab(&stack_a, &stack_b);
 	actual_result_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_result_b = ft_lst_goto_head(stack_b)->nbr;
 	actual_size_a = ft_lst_size(stack_a);
 	actual_size_b = ft_lst_size(stack_b);
-	ft_lst_printf_data_content("stack_a", stack_a);
-	ft_lst_printf_data_content("stack_b", stack_b);
 
 	// ASSERT
 	mu_assert_int_eq(expected_result_a, actual_result_a);

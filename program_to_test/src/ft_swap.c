@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 14:37:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 17:09:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ void	ft_swap(t_stack **stack)
 
 void	ft_swap_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = *stack_a;
-	b = *stack_b;
-	ft_swap(&a);
-	ft_swap(&b);
-	stack_a = &a;
-	stack_b = &b;
+	ft_swap(stack_a);
+	ft_swap(stack_b);
 }
