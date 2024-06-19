@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 18:46:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/08 14:41:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:07:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,36 @@
 
 void	ft_do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	(void)stack_b;
+	int	stack_size;
 
+	stack_size = ft_lst_size(*stack_a);
 	if (!ft_is_sorted(*stack_a))
 	{
-		if (ft_lst_size(*stack_a) == 2)
-			ft_sort_2_nbrs(stack_a);
-		if (ft_lst_size(*stack_a) == 3)
-			ft_sort_3_nbrs(stack_a);
+		if (stack_size == 2)
+			ft_sort_two_nbrs(stack_a);
+		else if (stack_size == 3)
+			ft_sort_three_nbrs(stack_a);
+		else if (stack_size == 4)
+			ft_sort_four_nbrs(stack_a, stack_b);
+		else if (stack_size >= 5)
+		{
+			ft_sort_five_or_more_nbr(stack_a, stack_b);
+		}
+		// else
+		// {
+		// 	ft_sort_five_or_more_nbr(stack_a, stack_b);
+		// }
 	}
+}
+
+void	ft_do_move_after_cheapest(t_stack **stack_a, t_stack **stack_b,
+			int cost_a, int cost_b)
+{
+	if (cost_a < 0 && cost_b < 0)
+		ft_do_reverse_rotate_ab(stack_a, stack_b);
+	else if (cost_a > 0 && cost_b > 0)
+		ft_do_rotate_ab(stack_a, stack_b);
+	ft_do_rotate_a(stack_a);
+	ft_do_rotate_b(stack_b);
+	ft_do_push_a(stack_a, stack_b);
 }

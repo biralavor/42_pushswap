@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 10:09:44 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/04 16:33:23 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/19 15:05:18 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ COMP_EXE	= $(CC) $(LDFLAGS) $(OBJ_FILES) $(LDLIBS) -o $(NAME)
 # **************************************************************************** #
 
 define		arguments
-		42 1 1024
+		42 1 10 21 11 7 4 2
 endef
 
 define 		bonus
@@ -96,13 +96,13 @@ $(BUILD_D)%.o:		%.c
 					@$(COMP_OBJS)
 					@echo "Compiling: $(notdir $<)"
 
-$(NAME):			fclean push_swap $(OBJ_FILES)
+$(NAME):			clean push_swap $(OBJ_FILES)
 					@$(COMP_EXE)
 					@printf "$(PURPLE)"
-					@echo ">>> Running PUSH_SWAP with default arguments:"
-					@echo "$(call arguments)"
-					@printf "$(CYAN)"
-					$(PUSH_SWAP_D)./push_swap $(call arguments)
+#					@echo ">>> Running PUSH_SWAP with default arguments:"
+#					@echo "$(call arguments)"
+#					@printf "$(CYAN)"
+#					$(PUSH_SWAP_D)./push_swap $(call arguments)
 					@printf "$(GREEN)"
 					@echo "$(NAME) Ready!"
 					@printf "$(RESET)"
@@ -123,7 +123,6 @@ clean:
 					@printf "$(PURPLE)"
 					$(RM) $(OBJ_FILES)
 					$(RM) $(BUILD_D)
-					$(MAKE) -C $(PUSH_SWAP_D) fclean
 					@printf "$(RESET)"
 
 fclean:				clean
@@ -132,6 +131,7 @@ fclean:				clean
 					@printf "$(PURPLE)"
 					$(RM) $(NAME)
 					$(RM) $(NAME_BONUS)
+					$(MAKE) -C $(PUSH_SWAP_D) fclean
 					@printf "$(RESET)"
 
 re:					fclean all

@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/06 18:49:18 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/19 15:06:51 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,11 @@ SRC_FILES				+= ft_lst_clear.c
 SRC_FILES				+= ft_lst_deletes.c
 SRC_FILES				+= ft_lst_goto.c
 SRC_FILES				+= ft_lst_init.c
+SRC_FILES				+= ft_lst_map_all.c
+SRC_FILES				+= ft_lst_map_indexers.c
 SRC_FILES				+= ft_sort_until3.c
+SRC_FILES				+= ft_sort_until4.c
+SRC_FILES				+= ft_sort_5_or_more.c
 SRC_FILES				+= ft_swap.c
 SRC_FILES				+= ft_push.c
 SRC_FILES				+= ft_rotate.c
@@ -74,7 +78,7 @@ NAME_BONUS				= push_swap_bonus
 
 SRC_FILES_BONUS			= 
 
-SRC_BONUS_ALL			= $(addprefix $(SRC_SV_BONUS_D), $(SRC_FILES_BONUS))
+SRC_BONUS_ALL			= $(addprefix $(SRC_BONUS_D), $(SRC_FILES_BONUS))
 
 OBJS_FILES_BONUS		= $(addprefix $(BUILD_D), $(SRC_BONUS_ALL:%.c=%.o))
 OBJS_ALL_BONUS			= $(OBJS_FILES_BONUS)

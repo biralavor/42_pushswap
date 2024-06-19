@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_do_push_fts.c                                   :+:      :+:    :+:   */
+/*   ft_lst_map_all.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 12:24:04 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/10 14:57:19 by umeneses         ###   ########.fr       */
+/*   Created: 2024/06/13 18:41:22 by umeneses          #+#    #+#             */
+/*   Updated: 2024/06/18 13:53:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_do_push_a(t_stack **stack_a, t_stack **stack_b)
+void	ft_lst_map_all_indexers(t_stack **stack)
 {
-	ft_push_a(stack_a, stack_b);
-	ft_putstr_fd("pa\n", 1);
-}
+	int	stack_size;
 
-void	ft_do_push_b(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_push_b(stack_a, stack_b);
-	ft_putstr_fd("pb\n", 1);
+	stack_size = ft_lst_size(*stack);
+	ft_lst_map_actual_position(stack);
+	ft_lst_map_final_pos(stack, stack_size);
 }
