@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 15:06:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/21 11:54:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_sort_five_or_more_nbr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_three_nbrs(stack_a);
+	ft_lst_map_actual_position(stack_a);
+	ft_lst_map_actual_position(stack_b);
 	while (*stack_b)
 	{
 		ft_lst_get_target_position(stack_a, stack_b);
@@ -33,10 +35,12 @@ void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 
-	temp_a = *stack_a;
-	temp_b = *stack_b;
+	temp_a = ft_lst_goto_head(*stack_a);
+	temp_b = ft_lst_goto_head(*stack_b);
 	size_a = ft_lst_size(temp_a);
 	size_b = ft_lst_size(temp_b);
+	ft_lst_map_actual_position(stack_a);
+	ft_lst_map_actual_position(stack_b);
 	while (temp_b)
 	{
 		temp_b->cost_b = temp_b->origin;
@@ -56,17 +60,39 @@ void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 	int		cheapest;
 	t_stack	*temp_b;
 
-	temp_b = *stack_b;
 	cheapest = INT_MAX;
+	ft_lst_map_actual_position(stack_a);
+	ft_lst_map_actual_position(stack_b);
+	temp_b = ft_lst_goto_head(*stack_b);
 	while (temp_b)
 	{
-		if ((temp_b->cost_a + temp_b->cost_b) < cheapest)
+		if ((abs_nbr(temp_b->cost_a) + abs_nbr(temp_b->cost_b))
+			< abs_nbr(cheapest))
 		{
-			cheapest = temp_b->cost_b + temp_b->cost_a;
+			cheapest = abs_nbr(temp_b->cost_b) + abs_nbr(temp_b->cost_a);
 			cost_a = temp_b->cost_a;
 			cost_b = temp_b->cost_b;
 		}
 		temp_b = temp_b->next;
 	}
 	ft_do_move_after_cheapest(stack_a, stack_b, cost_a, cost_b);
+}
+
+int	abs_nbr(int nbr)
+{
+	if (nbr < 0)
+		return (nbr * -1);
+	return (nbr);
+}
+
+void	ft_do_move_after_cheapest(t_stack **stack_a, t_stack **stack_b,
+			int cost_a, int cost_b)
+{
+	if (cost_a < 0 && cost_b < 0)
+		ft_do_reverse_rotate_ab(stack_a, stack_b);
+	else if (cost_a > 0 && cost_b > 0)
+		ft_do_rotate_ab(stack_a, stack_b);
+	ft_do_rotate_a(stack_a);
+	ft_do_rotate_b(stack_b);
+	ft_do_push_a(stack_a, stack_b);
 }
