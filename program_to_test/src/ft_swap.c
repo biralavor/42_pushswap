@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:49:58 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 17:09:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:30:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 
 void	ft_swap(t_stack **stack)
 {
-	// int	temp;
-
-	// if (NULL == stack || NULL == (*stack))
-	// 	return ;
-	// temp = (*stack)->nbr;
-	// (*stack)->nbr = (*stack)->next->nbr;
-	// (*stack)->next->nbr = temp;
-
 	if (NULL == stack || NULL == (*stack))
 		return ;
 	(*stack) = (*stack)->next;
