@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 11:51:52 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/21 11:46:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ void	ft_lst_map_actual_position(t_stack **stack)
 	int	actual_position;
 
 	actual_position = 0;
+	*stack = ft_lst_goto_head(*stack);
 	while ((*stack)->next != NULL)
 	{
-		actual_position++;
 		(*stack)->origin = actual_position;
 		(*stack) = (*stack)->next;
-		if ((*stack)->next == NULL)
-		{
-			actual_position++;
-			(*stack)->origin = actual_position;
-		}
+		// if ((*stack)->next == NULL)
+		// {
+		// 	actual_position++;
+		// 	(*stack)->origin = actual_position;
+		// }
+		actual_position++;
 	}
 	*stack = ft_lst_goto_head(*stack);
 }
@@ -34,26 +35,27 @@ void	ft_lst_map_actual_position(t_stack **stack)
 void	ft_lst_map_final_pos(t_stack **stack, int stack_size)
 {
 	int		final_pos;
-	t_stack	*target;
+	t_stack	*temp;
 	t_stack	*highest;
 
+	stack_size++;
 	while (--stack_size > 0)
 	{
-		target = *stack;
+		temp = *stack;
 		final_pos = INT_MIN;
 		highest = NULL;
-		while (target)
+		while (temp)
 		{
-			if (target->nbr == INT_MIN && target->final_pos == 0)
-				target->final_pos = 1;
-			if (target->nbr > final_pos && target->final_pos == 0)
+			if (temp->nbr == INT_MIN && temp->final_pos == 0)
+				temp->final_pos = 1;
+			if (temp->nbr > final_pos && temp->final_pos == 0)
 			{
-				final_pos = target->nbr;
-				highest = target;
-				target = *stack;
+				final_pos = temp->nbr;
+				highest = temp;
+				temp = *stack;
 			}
 			else
-				target = target->next;
+				temp = temp->next;
 		}
 		if (highest != NULL)
 			highest->final_pos = stack_size;
@@ -65,7 +67,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_end_pos,
 {
 	t_stack	*temp_a;
 
-	temp_a = *stack_a;
+	temp_a = ft_lst_goto_head(*stack_a);
 	while (temp_a)
 	{
 		if (temp_a->final_pos > b_end_pos && temp_a->final_pos < target_end_pos)
@@ -77,7 +79,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_end_pos,
 	}
 	if (target_end_pos != INT_MAX)
 		return (target_pos);
-	temp_a = ft_lst_goto_head(temp_a);
+	temp_a = ft_lst_goto_head(*stack_a);
 	while (temp_a)
 	{
 		if (temp_a->final_pos < target_end_pos)
