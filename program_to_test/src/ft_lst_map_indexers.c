@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/25 13:43:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:34:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_lst_map_final_pos(t_stack **stack, int stack_size)
 	t_stack	*temp;
 	t_stack	*highest;
 
-	stack_size++;
 	while (--stack_size > 0)
 	{
 		temp = *stack;

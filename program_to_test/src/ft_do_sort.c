@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 18:46:55 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/21 11:54:29 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:32:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ void	ft_do_sort(t_stack **stack_a, t_stack **stack_b)
 		}
 	}
 }
-
-
