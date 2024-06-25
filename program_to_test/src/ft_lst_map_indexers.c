@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/21 11:46:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:43:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	ft_lst_map_actual_position(t_stack **stack)
 	{
 		(*stack)->origin = actual_position;
 		(*stack) = (*stack)->next;
-		// if ((*stack)->next == NULL)
-		// {
-		// 	actual_position++;
-		// 	(*stack)->origin = actual_position;
-		// }
+		if ((*stack)->next == NULL)
+		{
+			actual_position++;
+			(*stack)->origin = actual_position;
+		}
 		actual_position++;
 	}
 	*stack = ft_lst_goto_head(*stack);
