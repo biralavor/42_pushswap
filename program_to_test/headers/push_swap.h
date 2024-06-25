@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 15:07:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:06:30 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_lst_map_final_pos(t_stack **stack, int stack_size);
 int		ft_lst_map_lowest_final_position(t_stack **stack);
 void	ft_lst_shift_stack(t_stack **stack_a);
 void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b);
+int		abs_nbr(int nbr);
 void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 void	ft_do_move_after_cheapest(t_stack **stack_a, t_stack **stack_b,
 			int cost_a, int cost_b);
