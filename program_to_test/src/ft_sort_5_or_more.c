@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/21 11:54:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:52:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	ft_sort_five_or_more_nbr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_three_nbrs(stack_a);
-	ft_lst_map_actual_position(stack_a);
-	ft_lst_map_actual_position(stack_b);
 	while (*stack_b)
 	{
 		ft_lst_get_target_position(stack_a, stack_b);
@@ -72,6 +70,7 @@ void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 			cheapest = abs_nbr(temp_b->cost_b) + abs_nbr(temp_b->cost_a);
 			cost_a = temp_b->cost_a;
 			cost_b = temp_b->cost_b;
+			ft_printf("\t\tb_nbr[%d]\tcheapest[%d]\tcost_a[%d]\tcost_b[%d]\n", temp_b->nbr, cheapest, cost_a, cost_b);
 		}
 		temp_b = temp_b->next;
 	}
@@ -89,10 +88,10 @@ void	ft_do_move_after_cheapest(t_stack **stack_a, t_stack **stack_b,
 			int cost_a, int cost_b)
 {
 	if (cost_a < 0 && cost_b < 0)
-		ft_do_reverse_rotate_ab(stack_a, stack_b);
+		ft_rev_rotate_ab_with_cost(stack_a, stack_b, &cost_a, &cost_b);
 	else if (cost_a > 0 && cost_b > 0)
-		ft_do_rotate_ab(stack_a, stack_b);
-	ft_do_rotate_a(stack_a);
-	ft_do_rotate_b(stack_b);
+		ft_rotate_ab_with_cost(stack_a, stack_b, &cost_a, &cost_b);
+	ft_rotate_a_with_cost(stack_a, &cost_a);
+	ft_rotate_b_with_cost(stack_b, &cost_b);
 	ft_do_push_a(stack_a, stack_b);
 }
