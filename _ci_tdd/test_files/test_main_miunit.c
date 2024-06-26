@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/25 17:26:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:06:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #include "../../program_to_test/src/ft_do_rotate_fts.c"
 #include "../../program_to_test/src/ft_do_swap_fts.c"
 #include "../../program_to_test/src/ft_do_sort.c"
+#include "../../program_to_test/src/ft_do_move_with_cost.c"
 #include "../../program_to_test/src/ft_sort_until3.c"
 #include "../../program_to_test/src/ft_sort_until4.c"
 #include "../../program_to_test/src/ft_sort_5_or_more.c"
@@ -542,8 +543,7 @@ MU_TEST(test_1st_miastep_final_pos_index)
 
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_actual_position(&stack);
-	ft_lst_map_final_pos(&stack, expected_size);
-
+	ft_lst_map_final_pos(&stack, expected_size + 1);
 	actual_size = ft_lst_size(stack);
 	actual_top_a = ft_lst_goto_head(stack)->nbr;
 	actual_highest_final_pos = 0;
