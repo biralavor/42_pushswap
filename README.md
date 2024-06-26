@@ -37,5 +37,6 @@ Push Swap is about a program that **sort numbers** from user's input, but also:
 
 # this README is still in WIP 
 
-![Screenshot from 2024-05-24 10-21-04](https://github.com/biralavor/42_pushswap/assets/80487147/9b4deaa5-3024-425a-825f-eb84578ea697)
+![Screenshot from 2024-06-26 14-50-12](https://github.com/biralavor/42_pushswap/assets/80487147/6d9e8ca8-32b1-4929-b192-c59a0bbae4b4)
+
 
