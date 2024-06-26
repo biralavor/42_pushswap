@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/26 13:52:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:01:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 			cheapest = abs_nbr(temp_b->cost_b) + abs_nbr(temp_b->cost_a);
 			cost_a = temp_b->cost_a;
 			cost_b = temp_b->cost_b;
-			ft_printf("\t\tb_nbr[%d]\tcheapest[%d]\tcost_a[%d]\tcost_b[%d]\n", temp_b->nbr, cheapest, cost_a, cost_b);
 		}
 		temp_b = temp_b->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:14 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/20 12:31:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:02:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ bool	ft_is_sorted(t_stack *list)
 			return (false);
 		temp = temp->next;
 	}
-	// ft_printf(">>>>>>>>>>>>> list is sorted!\n");
 	return (true);
 }
 

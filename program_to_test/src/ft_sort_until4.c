@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/21 11:43:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:47:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void	ft_lst_shift_stack(t_stack **stack_a)
 			lowest_final_pos++;
 		}
 	}
-	// if (ft_lst_goto_end(*stack_a)->final_pos == 1)
-	// 	ft_do_reverse_rotate_a(stack_a);
 	else
 	{
 		while (lowest_final_pos > 0)
