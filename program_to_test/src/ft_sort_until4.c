@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_until5.c                                   :+:      :+:    :+:   */
+/*   ft_sort_until4.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 14:56:16 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:47:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	ft_sort_four_nbrs(t_stack **stack_a, t_stack **stack_b)
 {
-	int	highest_pos;
+	int	highest_pos_b;
 
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_three_nbrs(stack_a);
-	highest_pos = ft_lst_map_highest_pos(*stack_b);
-	if ((*stack_b)->final_pos == highest_pos)
+	highest_pos_b = ft_lst_map_highest_pos(*stack_b);
+	if ((*stack_b)->final_pos == highest_pos_b)
 	{
 		ft_do_push_a(stack_a, stack_b);
 		ft_do_rotate_a(stack_a);
 	}
-	if (((*stack_a)->final_pos == 0) && ((*stack_a)->next->final_pos == 2)
-		&& ((*stack_a)->next->next->final_pos == 3))
+	if (((*stack_a)->final_pos == 1) && ((*stack_a)->next->final_pos == 3)
+		&& ((*stack_a)->next->next->final_pos == 4))
 	{
 		ft_do_reverse_rotate_a(stack_a);
 		ft_do_swap_a(stack_a);
@@ -69,7 +69,7 @@ void	ft_lst_shift_stack(t_stack **stack_a)
 
 	stack_size = ft_lst_size(*stack_a);
 	lowest_final_pos = ft_lst_map_lowest_final_position(stack_a);
-	if (lowest_final_pos < stack_size / 2)
+	if (lowest_final_pos > stack_size / 2)
 	{
 		while (lowest_final_pos < stack_size)
 		{
@@ -77,8 +77,6 @@ void	ft_lst_shift_stack(t_stack **stack_a)
 			lowest_final_pos++;
 		}
 	}
-	if (ft_lst_goto_end(*stack_a)->final_pos == 0)
-		ft_do_reverse_rotate_a(stack_a);
 	else
 	{
 		while (lowest_final_pos > 0)
@@ -95,9 +93,9 @@ int	ft_lst_map_lowest_final_position(t_stack **stack)
 	int		lowest_position;
 	t_stack	*temp;
 
-	temp = *stack;
-	lowest_final_pos = INT_MAX;
+	temp = ft_lst_goto_head(*stack);
 	ft_lst_map_actual_position(stack);
+	lowest_final_pos = INT_MAX;
 	lowest_position = temp->origin;
 	while (temp)
 	{

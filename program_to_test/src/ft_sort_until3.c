@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:14 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 14:38:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:02:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@ bool	ft_is_sorted(t_stack *list)
 {
 	t_stack	*temp;
 
-	while (list->next != NULL)
+	temp = list;
+	while (temp->next != NULL)
 	{
-		temp = list->next;
-		if (list->nbr > temp->nbr)
+		if (temp->nbr > temp->next->nbr)
 			return (false);
-		list = list->next;
+		temp = temp->next;
 	}
-	ft_lst_goto_head(list);
-	ft_printf(">>>>>>>>>>>>> list is sorted!\n");
 	return (true);
 }
 

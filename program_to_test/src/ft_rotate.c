@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:48:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/19 13:45:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:32:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_rotate(t_stack **stack)
 {
 	t_stack	*last_node;
 
-	if (NULL == *stack || NULL== stack)
+	if (NULL == *stack || NULL == stack || ft_lst_size(*stack) <= 2)
 		return ;
 	last_node = ft_lst_goto_end(*stack);
 	last_node->next = *stack;
@@ -42,7 +42,7 @@ void	ft_reverse_rotate(t_stack **stack)
 {
 	t_stack	*last_node;
 
-	if (NULL == *stack || NULL == (*stack)->next || ft_lst_size(*stack) < 2)
+	if (NULL == *stack || NULL == (*stack)->next || ft_lst_size(*stack) <= 2)
 		return ;
 	last_node = ft_lst_goto_end(*stack);
 	last_node->prev->next = NULL;
