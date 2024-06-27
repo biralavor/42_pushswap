@@ -6,11 +6,12 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/26 15:52:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:58:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	ft_argv_size(char **argv)
 {
@@ -25,7 +26,7 @@ int	ft_argv_size(char **argv)
 	return (size - 1);
 }
 
-bool	ft_argv_is_duplicated(char **argv)
+bool	ft_argv_is_not_duplicated(char **argv)
 {
 	int		after_atoi;
 	int		index;
@@ -42,10 +43,10 @@ bool	ft_argv_is_duplicated(char **argv)
 		while ((++future_pos <= ft_argv_size(argv)) && (future_pos != index))
 		{
 			if (ft_atoi(compare[future_pos]) == after_atoi)
-				return (true);
+				return (false);
 		}
 	}
-	return (false);
+	return (true);
 }
 
 bool	ft_argv_signs_and_nbrs(char **argv)
@@ -57,37 +58,30 @@ bool	ft_argv_signs_and_nbrs(char **argv)
 	{	
 		if (ft_is_sign(*argv[index]) || ft_is_space(*argv[index]))
 				index++;
-			if (!ft_isdigit(*argv[index]))
-			{
-				ft_error_msg("User's input must be numbers only\n");
+			if (!ft_isdigit_long(*argv[index]))
 				return (false);
-			}
 	}
 	return (true);
 }
 
+
+
 bool	ft_argv_validation(char **argv)
 {
-	int	index;
-	int	nbr;
-
-	index = 0;
-	if (ft_argv_signs_and_nbrs(argv) == true)
+	if (!ft_argv_signs_and_nbrs(argv))
 	{
-		while (argv[++index] != NULL)
-		{
-			nbr = ft_atoi(argv[index]);
-			if (nbr < INT_MIN || nbr > INT_MAX)
-			{
-				ft_error_msg("Number outside limits of 32-bit system\n");
-				return (false);
-			}
-		}
-		if (ft_argv_is_duplicated(argv))
-		{
-			ft_error_msg("Duplicated items detected!\n");
-			return (false);
-		}
+		ft_error_msg("User's input must be numbers only\n");
+		return (false);
+	}
+	if (!ft_argv_inside_range_intmin_intmax(argv))
+	{
+		ft_error_msg("Number outside limits of 32-bit system\n");
+		return (false);
+	}
+	if (!ft_argv_is_not_duplicated(argv))
+	{
+		ft_error_msg("Duplicated items detected!\n");
+		return (false);
 	}
 	return (true);
 }
