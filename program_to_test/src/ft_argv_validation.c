@@ -6,12 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/27 12:58:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:33:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	ft_argv_size(char **argv)
 {
@@ -64,7 +63,24 @@ bool	ft_argv_signs_and_nbrs(char **argv)
 	return (true);
 }
 
+bool	ft_argv_inside_range_intmin_intmax(char **argv)
+{
+	long int	index;
+	long int	long_nbr;
+	char		*long_nbr_as_str;
 
+	index = 0;
+	while (argv[++index] != NULL)
+	{
+		long_nbr = ft_atoi_long_int(argv[index]);
+		long_nbr_as_str = ft_itoa(long_nbr);
+		if (ft_strlen(argv[index]) != ft_strlen(long_nbr_as_str))
+			return (false);
+		if (long_nbr < INT_MIN || long_nbr > INT_MAX)
+			return (false);
+	}
+	return (true);
+}
 
 bool	ft_argv_validation(char **argv)
 {
