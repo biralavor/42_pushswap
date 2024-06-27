@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/26 12:21:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:54:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ bool	ft_is_sign(int c);
 bool	ft_is_space(int c);
 bool	ft_argv_is_duplicated(char **argv);
 int		ft_argv_size(char **argv);
+bool	ft_argv_signs_and_nbrs(char **argv);
 bool	ft_argv_validation(char **argv);
 /* new functions for push_swap to be added in LIBFT */
 
