@@ -6,12 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/26 14:06:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:01:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
 #include "push_swap.h"
+#include "../../program_to_test/src/ft_argv_utils.c"
 #include "../../program_to_test/src/ft_argv_validation.c"
 #include "../../program_to_test/src/ft_lst_map_all.c"
 #include "../../program_to_test/src/ft_lst_map_indexers.c"
@@ -36,7 +37,7 @@
 // #include "minunit_utils.h"
 
 // TODO:
-// make test for a list with 5 or more numbers
+// make test for a list with 8 or more numbers
 // make test for negative numbers
 // make test for double or more signs (-- +++)
 
@@ -961,6 +962,94 @@ MU_TEST(test_buildstack_argv)
 	ft_array_clear(argv_simulation, expected_size);
 }
 
+MU_TEST(test_argv_inside_range_intmin_intmax_outside_int_min)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		expected;
+	int		result;
+
+	// ACT
+	userinput = "./push_swap 1 4 3 2 -2147483649 12 9";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected = false;
+	
+	result = ft_argv_inside_range_intmin_intmax(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected, result);
+	ft_array_clear(argv_simulation, expected_size);
+}
+
+MU_TEST(test_argv_inside_range_intmin_intmax_inside_int_min)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		expected;
+	int		result;
+
+	// ACT
+	userinput = "./push_swap 1 4 3 2 -2147483648 12 9";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected = true;
+	
+	result = ft_argv_inside_range_intmin_intmax(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected, result);
+	ft_array_clear(argv_simulation, expected_size);
+}
+
+MU_TEST(test_argv_inside_range_intmin_intmax_outside_int_max)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		expected;
+	int		result;
+
+	// ACT
+	userinput = "./push_swap 1 4 3 2 2147483649 12 9";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected = false;
+	
+	result = ft_argv_inside_range_intmin_intmax(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected, result);
+	ft_array_clear(argv_simulation, expected_size);
+}
+
+MU_TEST(test_argv_inside_range_intmin_intmax_inside_int_max)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		expected;
+	int		result;
+
+	// ACT
+	userinput = "./push_swap 1 4 3 2 2147483647 12 9";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected = true;
+	
+	result = ft_argv_inside_range_intmin_intmax(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected, result);
+	ft_array_clear(argv_simulation, expected_size);
+}
+
 MU_TEST(test_argv_is_duplicated_true)
 {
 	// ARRANGE
@@ -974,8 +1063,8 @@ MU_TEST(test_argv_is_duplicated_true)
 	userinput = "./push_swap 1 2 3 4 5 6 7 8 2 9";
 	argv_simulation = ft_split(userinput, ' ');
 	expected_size = ft_minunit_array_counter(argv_simulation);
-	actual_result = ft_argv_is_duplicated(argv_simulation);
-	expected_result = true;
+	actual_result = ft_argv_is_not_duplicated(argv_simulation);
+	expected_result = false;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
@@ -995,8 +1084,8 @@ MU_TEST(test_argv_is_duplicated_false)
 	userinput = "./push_swap 1 2 3 4 5 6 7 8";
 	argv_simulation = ft_split(userinput, ' ');
 	expected_size = ft_minunit_array_counter(argv_simulation);
-	actual_result = ft_argv_is_duplicated(argv_simulation);
-	expected_result = false;
+	actual_result = ft_argv_is_not_duplicated(argv_simulation);
+	expected_result = true;
 
 	// ASSERT
 	mu_assert_int_eq(expected_result, actual_result);
@@ -1697,6 +1786,10 @@ MU_TEST_SUITE(argv_tests)
 	MU_RUN_TEST(test_argv_size);
 	MU_RUN_TEST(test_argv_is_duplicated_false);
 	MU_RUN_TEST(test_argv_is_duplicated_true);
+	MU_RUN_TEST(test_argv_inside_range_intmin_intmax_inside_int_min);
+	MU_RUN_TEST(test_argv_inside_range_intmin_intmax_outside_int_min);
+	MU_RUN_TEST(test_argv_inside_range_intmin_intmax_inside_int_max);
+	MU_RUN_TEST(test_argv_inside_range_intmin_intmax_outside_int_max);
 	MU_RUN_TEST(test_buildstack_argv);
 	MU_RUN_TEST(test_buildstack_non_nbr);
 }
