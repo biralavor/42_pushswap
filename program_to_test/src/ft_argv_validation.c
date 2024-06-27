@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/27 14:33:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:58:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,18 @@ bool	ft_argv_is_not_duplicated(char **argv)
 
 bool	ft_argv_signs_and_nbrs(char **argv)
 {
-	int	index;
+	int		index;
 
 	index = 0;
 	while (argv[++index] != NULL)
-	{	
+	{
 		if (ft_is_sign(*argv[index]) || ft_is_space(*argv[index]))
-				index++;
-			if (!ft_isdigit_long(*argv[index]))
+		{
+			if (ft_is_sign(*(argv[index] + 1)))
 				return (false);
+			if (!ft_isdigit(*(argv[index] + 1)))
+				return (false);
+		}
 	}
 	return (true);
 }
