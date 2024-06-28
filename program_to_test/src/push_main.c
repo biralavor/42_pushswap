@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 13:38:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:33:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	main(int argc, char **argv)
 	{
 		if (ft_argv_validation(argv) == true)
 			return (EXIT_SUCCESS);
-		else
-			ft_error_msg("Only number arguments allowed.");
 	}
 	stack_a = NULL;
 	stack_b = NULL;
