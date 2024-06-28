@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/27 17:56:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:26:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,46 @@
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
+
+MU_TEST(test_negative_nbr_one_neg_at_the_end)
+{
+	// ARRANGE
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		expected_size;
+	int		actual_size;
+	int		expected_top_a;
+	int		expected_bottom_a;
+	int		actual_top_a;
+	int		actual_bottom_a;
+
+	// ACT
+	stack_a = NULL;
+	stack_b = NULL;
+	userinput = "./push_swap 2 42 1 4 8 5 31 -27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_size = ft_minunit_array_counter(argv_simulation);
+	expected_top_a = ft_atoi(argv_simulation[8]);
+	expected_bottom_a = ft_atoi(argv_simulation[2]);
+
+	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+	ft_lst_map_all_indexers(&stack_a);
+	ft_do_sort(&stack_a, &stack_b);
+	ft_lst_printf_data_content("stack_a neg at end", stack_a);
+	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+	actual_size = ft_lst_size(stack_a);
+
+	// ASSERT
+	mu_assert_int_eq(expected_top_a, actual_top_a);
+	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
+	mu_assert_int_eq(expected_size, actual_size);
+	ft_lstclear_single_ptr(stack_a);
+	ft_lstclear_single_ptr(stack_b);
+	ft_array_clear(argv_simulation, expected_size);
+}
 
 MU_TEST(test_negative_nbr_five_negs)
 {
@@ -187,7 +227,6 @@ MU_TEST(test_negative_nbr_two_negs_at_end_on_top)
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
 	ft_lst_map_all_indexers(&stack_a);
 	ft_do_sort(&stack_a, &stack_b);
-	ft_lst_printf_data_content("stack_a", stack_a);
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_size = ft_lst_size(stack_a);
@@ -2111,6 +2150,7 @@ MU_TEST_SUITE(negative_numbers_test)
 	MU_RUN_TEST(test_negative_nbr_all_negs_6nbrs);
 	MU_RUN_TEST(test_negative_nbr_two_negs);
 	MU_RUN_TEST(test_negative_nbr_five_negs);
+	MU_RUN_TEST(test_negative_nbr_one_neg_at_the_end);
 }
 
 int main(void)
