@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/27 16:58:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:36:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ bool	ft_argv_is_not_duplicated(char **argv)
 	{
 		after_atoi = ft_atoi(argv[index]);
 		future_pos = 1;
-		while ((++future_pos <= ft_argv_size(argv)) && (future_pos != index))
+		while ((++future_pos <= ft_argv_size(argv)) && (future_pos != index)
+			&& compare[future_pos] != NULL)
 		{
 			if (ft_atoi(compare[future_pos]) == after_atoi)
 				return (false);
