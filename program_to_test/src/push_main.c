@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/21 11:51:44 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:38:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int	main(int argc, char **argv)
 	ft_lst_printf_data_content("// final stack_a:", stack_a);
 	ft_lst_printf_data_content("// final stack_b:", stack_b);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	return (0);
 }
