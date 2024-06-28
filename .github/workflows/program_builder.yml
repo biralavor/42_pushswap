@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 19:12:18 by umeneses          #+#    #+#              #
-#    Updated: 2024/06/03 19:22:22 by umeneses         ###   ########.fr        #
+#    Updated: 2024/06/28 12:49:20 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,17 @@ name: program_builder
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
+    - 'feature/**'
+    - 'bugfix/**'
+    - 'release/**'
   pull_request:
-    branches: [ main ]
+    branches:
+    - main
+    - 'feature/**'
+    - 'bugfix/**'
+    - 'release/**'
 
 jobs:
   build:
@@ -28,5 +36,11 @@ jobs:
       - name: Starting github actions
         uses: actions/checkout@v4.1.4
       
+      - name: Setup Valgrind
+        run: sudo apt-get update | sudo apt-get install -y valgrind
+
       - name: Building Program with Push_Swap Makefile
         run: make
+      
+      - name: Running Valgrind
+        run: valgrind --track-origins=yes --leak-check=full -q ./push_swap 42 -2 10 -10 11 77 666 2147483647 -2147483648
