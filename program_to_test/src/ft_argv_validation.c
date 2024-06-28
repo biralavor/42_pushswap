@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 12:36:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:30:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,47 @@ int	ft_argv_size(char **argv)
 			size++;
 	}
 	return (size - 1);
+}
+
+bool	ft_argv_signs_and_nbrs(char **argv)
+{
+	int	index;
+
+	index = 0;
+	while (argv[++index] != NULL)
+	{
+		if (ft_isalpha(*argv[index]))
+			return (false);
+		if (ft_isdigit(*(argv[index])) && argv[index] == NULL)
+			return (true);
+		if ((ft_is_sign(*argv[index]) || ft_is_space(*argv[index])))
+		{
+			if (ft_is_sign(*(argv[index] + 1)))
+				return (false);
+			if (!ft_isdigit(*(argv[index] + 1)))
+				return (false);
+		}
+	}
+	return (false);
+}
+
+bool	ft_argv_inside_range_intmin_intmax(char **argv)
+{
+	long int	index;
+	long int	long_nbr;
+	char		*long_nbr_as_str;
+
+	index = 0;
+	while (argv[++index] != NULL)
+	{
+		long_nbr = ft_atoi_long_int(argv[index]);
+		long_nbr_as_str = ft_itoa(long_nbr);
+		if (ft_strlen(argv[index]) != ft_strlen(long_nbr_as_str))
+			return (false);
+		if (long_nbr < INT_MIN || long_nbr > INT_MAX)
+			return (false);
+	}
+	return (true);
 }
 
 bool	ft_argv_is_not_duplicated(char **argv)
@@ -45,43 +86,6 @@ bool	ft_argv_is_not_duplicated(char **argv)
 			if (ft_atoi(compare[future_pos]) == after_atoi)
 				return (false);
 		}
-	}
-	return (true);
-}
-
-bool	ft_argv_signs_and_nbrs(char **argv)
-{
-	int		index;
-
-	index = 0;
-	while (argv[++index] != NULL)
-	{
-		if (ft_is_sign(*argv[index]) || ft_is_space(*argv[index]))
-		{
-			if (ft_is_sign(*(argv[index] + 1)))
-				return (false);
-			if (!ft_isdigit(*(argv[index] + 1)))
-				return (false);
-		}
-	}
-	return (true);
-}
-
-bool	ft_argv_inside_range_intmin_intmax(char **argv)
-{
-	long int	index;
-	long int	long_nbr;
-	char		*long_nbr_as_str;
-
-	index = 0;
-	while (argv[++index] != NULL)
-	{
-		long_nbr = ft_atoi_long_int(argv[index]);
-		long_nbr_as_str = ft_itoa(long_nbr);
-		if (ft_strlen(argv[index]) != ft_strlen(long_nbr_as_str))
-			return (false);
-		if (long_nbr < INT_MIN || long_nbr > INT_MAX)
-			return (false);
 	}
 	return (true);
 }
