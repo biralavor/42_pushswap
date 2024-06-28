@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 12:26:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:46:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1930,6 +1930,7 @@ MU_TEST(test_lst_gotoend_head_and_beforeend)
 	mu_assert_int_eq(expected_bottom, actual_bottom);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack);
+	ft_lstclear_single_ptr(actual_ptr);
 }
 
 MU_TEST(test_lst_addto_end)
