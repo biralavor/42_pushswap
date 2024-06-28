@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:30:01 by umeneses          #+#    #+#             */
-/*   Updated: 2024/05/17 17:55:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:34:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 /* Headers for LIBFT && GNL mandatory functions */
 # include <stdarg.h>
 /* Headers for ft_printf */
+
+# include <stdbool.h>
 
 # define DEC "0123456789"
 # define HEXL "0123456789abcdef"
@@ -71,11 +73,11 @@ typedef struct s_file_container
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t n_items, size_t size);
-int				ft_isalnum(int content);
-int				ft_isalpha(int c);
-int				ft_isascii(int content);
-int				ft_isdigit(int input);
-int				ft_isprint(int content);
+bool			ft_isalnum(int content);
+bool			ft_isalpha(int c);
+bool			ft_isascii(int content);
+bool			ft_isdigit(int input);
+bool			ft_isprint(int content);
 void			*ft_memchr(const void *str, int c, size_t n);
 int				ft_memcmp(const void *str1, const void *str2, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
