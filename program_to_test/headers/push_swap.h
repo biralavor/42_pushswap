@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/27 14:17:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:20:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ bool		ft_is_sign(int c);
 bool		ft_is_space(int c);
 bool		ft_argv_is_not_duplicated(char **argv);
 int			ft_argv_size(char **argv);
-bool		ft_argv_signs_and_nbrs(char **argv);
+bool		ft_argv_valid_sign_and_not_alpha(char **argv);
+bool		ft_argv_only_nbrs_per_string(char **argv);
 long int	ft_atoi_long_int(const char *str);
 bool		ft_argv_inside_range_intmin_intmax(char **argv);
 bool		ft_argv_validation(char **argv);

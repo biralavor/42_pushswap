@@ -6,11 +6,15 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:10:22 by bira              #+#    #+#             */
-/*   Updated: 2023/09/03 16:48:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:28:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+bool	ft_isalpha(int c)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (true);
+	return (false);
 }

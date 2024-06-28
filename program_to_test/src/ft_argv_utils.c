@@ -6,11 +6,24 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:35:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/27 14:33:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:08:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_argv_size(char **argv)
+{
+	int	size;
+
+	size = 0;
+	while (argv[++size] != NULL)
+	{
+		if (ft_is_sign(*argv[size]) || ft_is_space(*argv[size]))
+			size++;
+	}
+	return (size - 1);
+}
 
 bool	ft_is_sign(int c)
 {
