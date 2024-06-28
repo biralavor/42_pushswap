@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 18:33:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/06/28 19:04:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 
 	if (argc < 2)
-		ft_error_msg("Not enough arguments.");
+		ft_error_msg("1.Not enough arguments.");
 	if (argc == 2)
 	{
 		if (ft_argv_validation(argv) == true)
