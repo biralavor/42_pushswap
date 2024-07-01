@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 12:36:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:49:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,11 @@ bool	ft_argv_inside_range_intmin_intmax(char **argv)
 {
 	long int	index;
 	long int	long_nbr;
-	char		*long_nbr_as_str;
 
 	index = 0;
 	while (argv[++index] != NULL)
 	{
 		long_nbr = ft_atoi_long_int(argv[index]);
-		long_nbr_as_str = ft_itoa(long_nbr);
-		if (ft_strlen(argv[index]) != ft_strlen(long_nbr_as_str))
-			return (false);
 		if (long_nbr < INT_MIN || long_nbr > INT_MAX)
 			return (false);
 	}
@@ -120,14 +116,14 @@ bool	ft_argv_validation(char **argv)
 		ft_error_msg("3.User's input must be numbers only\n");
 		return (false);
 	}
-	if (!ft_argv_inside_range_intmin_intmax(argv))
-	{
-		ft_error_msg("4.User's input is outside limits of 32-bit system\n");
-		return (false);
-	}
 	if (!ft_argv_is_not_duplicated(argv))
 	{
-		ft_error_msg("5.Duplicated items detected!\n");
+		ft_error_msg("4.Duplicated items detected!\n");
+		return (false);
+	}
+	if (!ft_argv_inside_range_intmin_intmax(argv))
+	{
+		ft_error_msg("5.User's input is outside limits of 32-bit system\n");
 		return (false);
 	}
 	return (true);
