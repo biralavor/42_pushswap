@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/26 13:47:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:46:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_sort_four_nbrs(t_stack **stack_a, t_stack **stack_b)
 	int	highest_pos_b;
 
 	ft_push_b_all_but_three(stack_a, stack_b);
-	ft_sort_three_nbrs(stack_a);
+	ft_sort_a_with_three_nbrs(stack_a);
 	highest_pos_b = ft_lst_map_highest_pos(*stack_b);
 	if ((*stack_b)->final_pos == highest_pos_b)
 	{
