@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 11:14:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:47:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -459,7 +459,7 @@ MU_TEST(test_3rd_miastep_get_cost)
 	actual_size = ft_lst_size(stack_a);
 	ft_lst_map_all_indexers(&stack_a);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
-	ft_sort_three_nbrs(&stack_a);
+	ft_sort_a_with_three_nbrs(&stack_a);
 	ft_lst_get_cost(&stack_a, &stack_b);
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
@@ -505,7 +505,7 @@ MU_TEST(test_3rd_miastep_map_get_target_position)
 	expected_target_pos = 2; // should be stack_b->target
 	actual_size = ft_lst_size(stack_a);
 	ft_push_b_all_but_three(&stack_a, &stack_b);
-	ft_sort_three_nbrs(&stack_a);
+	ft_sort_a_with_three_nbrs(&stack_a);
 	ft_lst_get_target_position(&stack_a, &stack_b);
 
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
@@ -815,7 +815,7 @@ MU_TEST(test_2nd_miastep_push_b_all_but3_sort_a)
 	actual_bottom_a_before_push = ft_lst_goto_end(stack_a)->nbr;
 
 	ft_push_b_all_but_three(&stack_a, &stack_b);
-	ft_sort_three_nbrs(&stack_a);
+	ft_sort_a_with_three_nbrs(&stack_a);
 
 	expected_top_a_after_push = ft_atoi(argv_simulation[6]);
 	expected_bottom_a_after_push = ft_atoi(argv_simulation[5]);
@@ -1021,7 +1021,7 @@ MU_TEST(test_sort_3_nbrs_already_sorted)
 	expected_sorted_bottom = ft_atoi(argv_simulation[3]);
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_all_indexers(&stack);
-	stack = ft_sort_three_nbrs(&stack);
+	stack = ft_sort_a_with_three_nbrs(&stack);
 	actual_size = ft_lst_size(stack);
 	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
@@ -1056,7 +1056,7 @@ MU_TEST(test_sort_3_nbrs_highest_last)
 	expected_sorted_bottom = ft_atoi(argv_simulation[3]);
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_all_indexers(&stack);
-	stack = ft_sort_three_nbrs(&stack);
+	stack = ft_sort_a_with_three_nbrs(&stack);
 	actual_size = ft_lst_size(stack);
 	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
@@ -1091,7 +1091,7 @@ MU_TEST(test_sort_3_nbrs_highest_first_v2)
 	expected_sorted_bottom = ft_atoi(argv_simulation[1]);
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_all_indexers(&stack);
-	stack = ft_sort_three_nbrs(&stack);
+	stack = ft_sort_a_with_three_nbrs(&stack);
 	actual_size = ft_lst_size(stack);
 	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
@@ -1126,7 +1126,7 @@ MU_TEST(test_sort_3_nbrs_highest_first)
 	expected_sorted_bottom = ft_atoi(argv_simulation[1]);
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_all_indexers(&stack);
-	stack = ft_sort_three_nbrs(&stack);
+	stack = ft_sort_a_with_three_nbrs(&stack);
 	actual_size = ft_lst_size(stack);
 	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
@@ -1161,7 +1161,7 @@ MU_TEST(test_sort_3_nbrs_highest_at_middle_v2)
 	expected_sorted_bottom = ft_atoi(argv_simulation[2]);
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_all_indexers(&stack);
-	stack = ft_sort_three_nbrs(&stack);
+	stack = ft_sort_a_with_three_nbrs(&stack);
 	actual_size = ft_lst_size(stack);
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;
 	stack = ft_lst_goto_head(stack);
@@ -1197,7 +1197,7 @@ MU_TEST(test_sort_3_nbrs_highest_at_middle)
 	expected_sorted_bottom = ft_atoi(argv_simulation[2]);
 	stack = ft_lts_buildstack_argv(&stack, argv_simulation);
 	ft_lst_map_all_indexers(&stack);
-	stack = ft_sort_three_nbrs(&stack);
+	stack = ft_sort_a_with_three_nbrs(&stack);
 	actual_size = ft_lst_size(stack);
 	actual_sorted_top = ft_lst_goto_head(stack)->nbr;
 	actual_sorted_bottom = ft_lst_goto_end(stack)->nbr;

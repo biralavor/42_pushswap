@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 17:20:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:46:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ bool		ft_is_sorted(t_stack *stack);
 int			ft_lst_map_highest_pos(t_stack *list);
 void		ft_do_sort(t_stack **stack_a, t_stack **stack_b);
 t_stack		*ft_sort_two_nbrs(t_stack **stack);
-t_stack		*ft_sort_three_nbrs(t_stack **stack);
+t_stack		*ft_sort_a_with_three_nbrs(t_stack **stack_a);
 /* sorting functions if list has until 3 numbers */
 
 void		ft_sort_four_nbrs(t_stack **stack_a, t_stack **stack_b);
