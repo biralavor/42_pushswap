@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 12:47:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:01:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,62 @@ int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
 
+MU_TEST(test_signs_at_end)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap -2 -42 -1 -4 -8 -5 -31 -27 -";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = false;
+	
+	actual_validation = ft_argv_valid_sign_and_not_alpha(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
+
+MU_TEST(test_signs_at_middle)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap -2 -42 -1 -4 8 - 5 31 -27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = false;
+	
+	actual_validation = ft_argv_valid_sign_and_not_alpha(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
+
+MU_TEST(test_signs_at_beginning)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap - 2 42 1 4 8 5 31 27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = false;
+	
+	actual_validation = ft_argv_valid_sign_and_not_alpha(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
 
 MU_TEST(test_non_nbr_two_nons_at_end)
 {
@@ -2231,6 +2287,9 @@ MU_TEST_SUITE(non_numbers_test)
 	MU_RUN_TEST(test_non_nbr_at_middle);
 	MU_RUN_TEST(test_non_nbr_at_end);
 	MU_RUN_TEST(test_non_nbr_two_nons_at_end);
+	MU_RUN_TEST(test_signs_at_beginning);
+	MU_RUN_TEST(test_signs_at_middle);
+	MU_RUN_TEST(test_signs_at_end);
 }
 
 int main(void)
