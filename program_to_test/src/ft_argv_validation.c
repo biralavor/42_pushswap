@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 10:39:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:11:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 bool	ft_argv_valid_sign_and_not_alpha(char **argv)
 {
 	int	index;
+	int	c_counter;
 
 	index = 0;
 	while (argv[++index] != NULL)
 	{
-		if (ft_isalpha(*(argv[index])))
-			return (false);
-		if (ft_is_sign(*(argv[index])) || ft_is_space(*(argv[index])))
+		c_counter = 0;
+		while (*(argv[index] + c_counter))
 		{
-			if (ft_is_sign(*(argv[index] + 1))
-				|| !ft_isdigit(*(argv[index] + 1)))
+			if (ft_isalpha(*(argv[index] + c_counter)))
 				return (false);
+			if (ft_is_sign(*(argv[index] + c_counter)))
+				if (ft_is_sign(*(argv[index] + c_counter + 1)))
+					return (false);
+			c_counter++;
 		}
 	}
 	return (true);
