@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 11:11:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:36:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ bool	ft_argv_valid_sign_and_not_alpha(char **argv)
 			if (ft_isalpha(*(argv[index] + c_counter)))
 				return (false);
 			if (ft_is_sign(*(argv[index] + c_counter)))
-				if (ft_is_sign(*(argv[index] + c_counter + 1)))
+			{
+				if (ft_is_sign(*(argv[index] + c_counter + 1))
+					|| (*(argv[index] + c_counter + 1) == '\0'))
 					return (false);
+			}
 			c_counter++;
 		}
 	}
