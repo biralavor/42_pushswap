@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:16:53 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/26 12:20:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:13:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	ft_rotate_b_with_cost(t_stack **stack_b, int *cost_b)
 	{
 		if (*cost_b > 0)
 		{
-			ft_do_rotate_a(stack_b);
+			ft_do_rotate_b(stack_b);
 			(*cost_b)--;
 		}
 		else if (*cost_b < 0)
 		{
-			ft_do_reverse_rotate_a(stack_b);
+			ft_do_reverse_rotate_b(stack_b);
 			(*cost_b)++;
 		}
 	}
