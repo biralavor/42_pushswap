@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 19:05:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 10:39:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ bool	ft_argv_only_nbrs_per_string(char **argv)
 	index = 0;
 	while (argv[++index] != NULL)
 	{
-		if (ft_is_sign(*(argv[index])) || ft_is_space(*(argv[index])))
-			continue ;
-		if (ft_isdigit(*(argv[index])))
-		{
+		if (ft_is_sign(*(argv[index])))
+			c_counter = 1;
+		else
 			c_counter = 0;
-			while (argv[index] && ft_isdigit(*(argv[index])))
+		if (ft_isdigit(*(argv[index] + c_counter)))
+		{
+			while (argv[index])
 			{
 				if (ft_is_space(*(argv[index] + c_counter))
 					|| (*(argv[index] + c_counter) == '\0'))
@@ -105,7 +106,7 @@ bool	ft_argv_validation(char **argv)
 {
 	if (!ft_argv_valid_sign_and_not_alpha(argv))
 	{
-		ft_error_msg("2..User's input must be numbers only\n");
+		ft_error_msg("2.User's input must be numbers only\n");
 		return (false);
 	}
 	if (!ft_argv_only_nbrs_per_string(argv))
