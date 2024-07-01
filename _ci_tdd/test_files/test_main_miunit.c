@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 15:07:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:57:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,82 @@ MU_TEST(test_3neg_min_at_thrid_pos)
 	ft_array_clear(argv_simulation, xpect_size);
 }
 
+MU_TEST(test_zero_numbers_pluszero)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap -2 0 -1 +0 -8 -5 -31 -27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = false;
+	
+	actual_validation = ft_argv_is_not_duplicated(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
+
+MU_TEST(test_zero_numbers_zerozero)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap -2 0 -1 00 -8 -5 -31 -27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = false;
+	
+	actual_validation = ft_argv_is_not_duplicated(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
+
+MU_TEST(test_signs_plus_at_double)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap -2 -42 -1 -4 ++8 -5 31 -27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = false;
+	
+	actual_validation = ft_argv_valid_sign_and_not_alpha(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
+
+MU_TEST(test_signs_plus_at_once)
+{
+	// ARRANGE
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	bool	expected_validation;
+	bool	actual_validation;
+
+	// ACT
+	userinput = "./push_swap -2 -42 -1 -4 +8 -5 31 -27";
+	argv_simulation = ft_split(userinput, ' ');
+	expected_validation = true;
+	
+	actual_validation = ft_argv_is_not_duplicated(argv_simulation);
+
+	// ASSERT
+	mu_assert_int_eq(expected_validation, actual_validation);
+}
+
 MU_TEST(test_signs_at_end)
 {
 	// ARRANGE
@@ -211,7 +287,7 @@ MU_TEST(test_signs_at_end)
 	bool	actual_validation;
 
 	// ACT
-	userinput = "./push_swap -2 -42 -1 -4 -8 -5 -31 -27 -";
+	userinput = "./push_swap -2 -42 -1 -4 8 -5 31 -27 -";
 	argv_simulation = ft_split(userinput, ' ');
 	expected_validation = false;
 	
@@ -2450,6 +2526,14 @@ MU_TEST_SUITE(non_numbers_test)
 	MU_RUN_TEST(test_signs_at_beginning);
 	MU_RUN_TEST(test_signs_at_middle);
 	MU_RUN_TEST(test_signs_at_end);
+	MU_RUN_TEST(test_signs_plus_at_once);
+	MU_RUN_TEST(test_signs_plus_at_double);
+}
+
+MU_TEST_SUITE(zero_tests)
+{
+	MU_RUN_TEST(test_zero_numbers_zerozero);
+	MU_RUN_TEST(test_zero_numbers_pluszero);
 }
 
 MU_TEST_SUITE(six_nbrs_tests)
@@ -2472,6 +2556,7 @@ int main(void)
 	MU_RUN_SUITE(miacombeau_3rd_step_tests);
 	MU_RUN_SUITE(negative_numbers_test);
 	MU_RUN_SUITE(non_numbers_test);
+	MU_RUN_SUITE(zero_tests);
 	MU_RUN_SUITE(six_nbrs_tests);
 	MU_REPORT();
 	return (0);
