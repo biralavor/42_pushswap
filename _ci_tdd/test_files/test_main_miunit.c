@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 14:01:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/01 15:07:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,171 @@
 // #include "minunit_utils.c"
 
 // TODO:
-// make test for a list with 8 or more numbers
+// optimize sorting method for more than 6 numbers
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
+
+
+MU_TEST(test_3neg_min_at_thrid_pos_big_nbrs_v02)
+{
+	// ARRANGE
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		xpect_size;
+	int		actual_size;
+	int		xpect_top_a;
+	int		xpect_second_a;
+	int		xpect_fith_a;
+	int		xpect_bottom_a;
+	int		xpect_sorted;
+	int		actual_top_a;
+	int		actual_second_a;
+	int		actual_fith_a;
+	int		actual_bottom_a;
+	int		actual_sorted;
+
+	// ACT
+	stack_a = NULL;
+	stack_b = NULL;
+	userinput = "./push_swap 1285205424 1433966465 -1748883138 324282304 1821881335 -881795666";
+	argv_simulation = ft_split(userinput, ' ');
+	xpect_size = ft_minunit_array_counter(argv_simulation);
+	xpect_top_a = ft_atoi(argv_simulation[3]);
+	xpect_second_a = ft_atoi(argv_simulation[6]);
+	xpect_fith_a = ft_atoi(argv_simulation[2]);
+	xpect_bottom_a = ft_atoi(argv_simulation[5]);
+	xpect_sorted = true;
+
+	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+	ft_lst_map_all_indexers(&stack_a);
+	ft_do_sort(&stack_a, &stack_b);
+	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+	actual_second_a = ft_lst_goto_head(stack_a)->next->nbr;
+	actual_fith_a = ft_lst_goto_before_end(stack_a)->nbr;
+	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+	actual_size = ft_lst_size(stack_a);
+	actual_sorted = ft_is_sorted(stack_a);
+
+	// ASSERT
+	mu_assert_int_eq(xpect_size, actual_size);
+	mu_assert_int_eq(xpect_top_a, actual_top_a);
+	mu_assert_int_eq(xpect_second_a, actual_second_a);
+	mu_assert_int_eq(xpect_fith_a, actual_fith_a);
+	mu_assert_int_eq(xpect_bottom_a, actual_bottom_a);
+	mu_assert_int_eq(xpect_sorted, actual_sorted);
+	ft_lstclear_single_ptr(stack_a);
+	ft_array_clear(argv_simulation, xpect_size);
+}
+
+MU_TEST(test_3neg_min_at_thrid_pos_big_nbrs_v01)
+{
+	// ARRANGE
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		xpect_size;
+	int		actual_size;
+	int		xpect_top_a;
+	int		xpect_second_a;
+	int		xpect_fith_a;
+	int		xpect_bottom_a;
+	int		xpect_sorted;
+	int		actual_top_a;
+	int		actual_second_a;
+	int		actual_fith_a;
+	int		actual_bottom_a;
+	int		actual_sorted;
+
+	// ACT
+	stack_a = NULL;
+	stack_b = NULL;
+	userinput = "./push_swap -585074721 371934173 -1486065689 -1039864857 1483818456 -1140871206";
+	argv_simulation = ft_split(userinput, ' ');
+	xpect_size = ft_minunit_array_counter(argv_simulation);
+	xpect_top_a = ft_atoi(argv_simulation[3]);
+	xpect_second_a = ft_atoi(argv_simulation[6]);
+	xpect_fith_a = ft_atoi(argv_simulation[2]);
+	xpect_bottom_a = ft_atoi(argv_simulation[5]);
+	xpect_sorted = true;
+
+	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+	ft_lst_map_all_indexers(&stack_a);
+	ft_do_sort(&stack_a, &stack_b);
+	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+	actual_second_a = ft_lst_goto_head(stack_a)->next->nbr;
+	actual_fith_a = ft_lst_goto_before_end(stack_a)->nbr;
+	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+	actual_size = ft_lst_size(stack_a);
+	actual_sorted = ft_is_sorted(stack_a);
+
+	// ASSERT
+	mu_assert_int_eq(xpect_size, actual_size);
+	mu_assert_int_eq(xpect_top_a, actual_top_a);
+	mu_assert_int_eq(xpect_second_a, actual_second_a);
+	mu_assert_int_eq(xpect_fith_a, actual_fith_a);
+	mu_assert_int_eq(xpect_bottom_a, actual_bottom_a);
+	mu_assert_int_eq(xpect_sorted, actual_sorted);
+	ft_lstclear_single_ptr(stack_a);
+	ft_array_clear(argv_simulation, xpect_size);
+}
+
+MU_TEST(test_3neg_min_at_thrid_pos)
+{
+	// ARRANGE
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**argv_simulation = NULL;
+	char	*userinput;
+	int		xpect_size;
+	int		actual_size;
+	int		xpect_top_a;
+	int		xpect_second_a;
+	int		xpect_fith_a;
+	int		xpect_bottom_a;
+	int		xpect_sorted;
+	int		actual_top_a;
+	int		actual_second_a;
+	int		actual_fith_a;
+	int		actual_bottom_a;
+	int		actual_sorted;
+
+	// ACT
+	stack_a = NULL;
+	stack_b = NULL;
+	userinput = "./push_swap 1 2 -3 -1 3 -2";
+	argv_simulation = ft_split(userinput, ' ');
+	xpect_size = ft_minunit_array_counter(argv_simulation);
+	xpect_top_a = ft_atoi(argv_simulation[3]);
+	xpect_second_a = ft_atoi(argv_simulation[6]);
+	xpect_fith_a = ft_atoi(argv_simulation[2]);
+	xpect_bottom_a = ft_atoi(argv_simulation[5]);
+	xpect_sorted = true;
+
+	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
+	ft_lst_map_all_indexers(&stack_a);
+	ft_do_sort(&stack_a, &stack_b);
+	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
+	actual_second_a = ft_lst_goto_head(stack_a)->next->nbr;
+	actual_fith_a = ft_lst_goto_before_end(stack_a)->nbr;
+	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
+	actual_size = ft_lst_size(stack_a);
+	actual_sorted = ft_is_sorted(stack_a);
+
+	// ASSERT
+	mu_assert_int_eq(xpect_size, actual_size);
+	mu_assert_int_eq(xpect_top_a, actual_top_a);
+	mu_assert_int_eq(xpect_second_a, actual_second_a);
+	mu_assert_int_eq(xpect_fith_a, actual_fith_a);
+	mu_assert_int_eq(xpect_bottom_a, actual_bottom_a);
+	mu_assert_int_eq(xpect_sorted, actual_sorted);
+	ft_lstclear_single_ptr(stack_a);
+	ft_array_clear(argv_simulation, xpect_size);
+}
 
 MU_TEST(test_signs_at_end)
 {
@@ -2292,6 +2452,13 @@ MU_TEST_SUITE(non_numbers_test)
 	MU_RUN_TEST(test_signs_at_end);
 }
 
+MU_TEST_SUITE(six_nbrs_tests)
+{
+	MU_RUN_TEST(test_3neg_min_at_thrid_pos);
+	MU_RUN_TEST(test_3neg_min_at_thrid_pos_big_nbrs_v01);
+	MU_RUN_TEST(test_3neg_min_at_thrid_pos_big_nbrs_v02);
+}
+
 int main(void)
 {
 	MU_RUN_SUITE(linked_list_tests);
@@ -2305,6 +2472,7 @@ int main(void)
 	MU_RUN_SUITE(miacombeau_3rd_step_tests);
 	MU_RUN_SUITE(negative_numbers_test);
 	MU_RUN_SUITE(non_numbers_test);
+	MU_RUN_SUITE(six_nbrs_tests);
 	MU_REPORT();
 	return (0);
 }
