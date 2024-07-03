@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 18:20:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/02 22:05:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b)
 		{
 			ft_do_push_b(stack_a, stack_b);
 			pushed++;
+			// if ((*stack_b)->next && (*stack_b)->final_pos < (*stack_b)->next->final_pos)
+			// 	ft_do_swap_b(stack_b);
 		}
 		else
 			ft_do_rotate_a(stack_a);
