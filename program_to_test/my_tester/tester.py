@@ -13,8 +13,8 @@ Se ele encontar um caso que não foi ordenado, ele irá mostrar na tela
 É necessário ter o `checker_linux` no mesmo lugar do `push_swap`
 """
 
-push_swap_path = "./push_swap"
-checker_path = "./checker_linux"
+push_swap_path = "../push_swap"
+checker_path = "../checker_linux"
 run_with_valgrind = False				# Mude para True se quiser rodar com o valgrind
 
 # Aqui você deve por por quais quantidade de número vc deseja testar
@@ -24,17 +24,19 @@ run_with_valgrind = False				# Mude para True se quiser rodar com o valgrind
 # E por fim, vários testes./p	 com 10 números
 # Pode por quantos números quiser
 # Mas na régua só será testado: [3, 5, 100, 500]
-test_groups = [3, 5, 8]
+test_groups = [3, 5, 10, 15, 100, 500]
 #test_groups = range(1, 5)
 
+# -7 -4 -1 -6 3 2 -5 -3 1 -2
+# 3 -5 -2 2 -6 1 4 -3 -4 -1
 
 # Aqui você deve por o range de números que deseja considerar ao fazer os testes
 # range_start - menor número
 # range_end - maior número
 range_start = -2**31
-#range_start = 0
+# range_start = 0
 range_end = 2**31 - 1
-#range_end = 1000
+# range_end = 1000
 
 
 # Aqui você deve por a quantidade de testes que você quer fazer com cada grupo de
