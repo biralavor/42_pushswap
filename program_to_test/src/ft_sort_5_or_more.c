@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 12:46:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:32:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 
-	temp_a = ft_lst_goto_head(*stack_a);
-	temp_b = ft_lst_goto_head(*stack_b);
+	temp_a = (*stack_a);
+	temp_b = (*stack_b);
 	size_a = ft_lst_size(temp_a);
 	size_b = ft_lst_size(temp_b);
 	ft_lst_map_actual_position(stack_a);
@@ -61,7 +61,7 @@ void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 	cheapest = INT_MAX;
 	ft_lst_map_actual_position(stack_a);
 	ft_lst_map_actual_position(stack_b);
-	temp_b = ft_lst_goto_head(*stack_b);
+	temp_b = (*stack_b);
 	while (temp_b)
 	{
 		if ((abs_nbr(temp_b->cost_a) + abs_nbr(temp_b->cost_b))
