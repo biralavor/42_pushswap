@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 17:57:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:03:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 #include "../../program_to_test/src/ft_sort_until3.c"
 #include "../../program_to_test/src/ft_sort_until4.c"
 #include "../../program_to_test/src/ft_sort_5_or_more.c"
-// #include "minunit_utils.c"
 
 // TODO:
 // optimize sorting method for more than 6 numbers
