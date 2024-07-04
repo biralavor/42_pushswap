@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:34:17 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/25 17:34:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/04 10:29:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_end_pos,
 {
 	t_stack	*temp_a;
 
-	temp_a = ft_lst_goto_head(*stack_a);
+	temp_a = *stack_a;
 	while (temp_a)
 	{
 		if (temp_a->final_pos > b_end_pos && temp_a->final_pos < target_end_pos)
@@ -78,7 +78,7 @@ int	ft_lst_get_target(t_stack **stack_a, int b_end_pos,
 	}
 	if (target_end_pos != INT_MAX)
 		return (target_pos);
-	temp_a = ft_lst_goto_head(*stack_a);
+	temp_a = *stack_a;
 	while (temp_a)
 	{
 		if (temp_a->final_pos < target_end_pos)
