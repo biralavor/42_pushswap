@@ -1,5 +1,5 @@
 # 42_pushswap
-WIP - push swap, a 42 school project about ordination algorithm.
+push swap, a 42 school project about ordination algorithm.
 
 # Efficiency vs Efficacy
 - What's the difference between them?
@@ -30,13 +30,13 @@ Without burning your brain, tires and fuel unnecessarily.
 Push Swap is about a program that **sort numbers** from user's input, but also:
 - has 2 stacks to store the given numbers;
 - has 11 basic functions to move the numbers between stacks;
-- calculates the total moviments to sort them;
-- .
-- .
-- .
+- calculates the cost of every number, with a given target
+- search for the cheapest moviment
+- do the moviments to sort the list;
+  
 
 # this README is still in WIP 
+![Screenshot from 2024-07-05 13-09-57](https://github.com/biralavor/42_pushswap/assets/80487147/1b0b9432-2f84-4c27-bd02-a483a9047c8d)
 
-![Screenshot from 2024-06-26 14-50-12](https://github.com/biralavor/42_pushswap/assets/80487147/6d9e8ca8-32b1-4929-b192-c59a0bbae4b4)
 
 
