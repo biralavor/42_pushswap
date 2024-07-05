@@ -10,6 +10,8 @@ Siga as instruções abaixo para executar
 Ele irá contar o número de instruções e verificar se foi ordenado
 Se ele encontar um caso que não foi ordenado, ele irá mostrar na tela
 
+Author: https://github.com/DanielSurf10
+
 É necessário ter o `checker_linux` no mesmo lugar do `push_swap`
 """
 
