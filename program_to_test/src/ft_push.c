@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 11:52:34 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/25 17:32:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:09:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*to_be_pushed;
 
-	if (NULL == *stack_b)
+	if (NULL == stack_b || NULL == *stack_b)
 		return ;
 	to_be_pushed = *stack_b;
 	*stack_b = (*stack_b)->next;
@@ -41,7 +41,7 @@ void	ft_push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*to_be_pushed;
 
-	if (NULL == *stack_a)
+	if (NULL == stack_a || NULL == *stack_a)
 		return ;
 	to_be_pushed = (*stack_a);
 	(*stack_a) = (*stack_a)->next;
