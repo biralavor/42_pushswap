@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:41:29 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/04 18:32:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:12:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_five_or_more_nbr(t_stack **stack_a, t_stack **stack_b)
+void	ft_sort_four_or_more_nbr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push_b_all_but_three(stack_a, stack_b);
 	ft_sort_a_with_three_nbrs(stack_a);
@@ -20,7 +20,7 @@ void	ft_sort_five_or_more_nbr(t_stack **stack_a, t_stack **stack_b)
 	{
 		ft_lst_get_target_position(stack_a, stack_b);
 		ft_lst_get_cost(stack_a, stack_b);
-		ft_lst_do_cheapest_move(stack_a, stack_b);
+		ft_lst_calc_cheapest_move(stack_a, stack_b);
 	}
 	if (!ft_is_sorted(*stack_a))
 		ft_lst_shift_stack(stack_a);
@@ -51,7 +51,7 @@ void	ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
+void	ft_lst_calc_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 {
 	int		cost_a;
 	int		cost_b;
