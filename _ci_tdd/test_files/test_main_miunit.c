@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/05 11:28:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:05:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@
 #include "../../program_to_test/src/ft_sort_4_or_more.c"
 #include "../../program_to_test/src/ft_sort_4_utils.c"
 
-// TODO:
-// optimize sorting method for more than 6 numbers
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
-
 
 MU_TEST(test_3neg_min_at_thrid_pos_big_nbrs_v02)
 {
