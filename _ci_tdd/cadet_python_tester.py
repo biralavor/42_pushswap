@@ -15,8 +15,8 @@ Author: https://github.com/DanielSurf10
 É necessário ter o `checker_linux` no mesmo lugar do `push_swap`
 """
 
-push_swap_path = "../push_swap"
-checker_path = "../checker_linux"
+push_swap_path = "../program_to_test/push_swap"
+checker_path = "../program_to_test/checker_linux"
 run_with_valgrind = False				# Mude para True se quiser rodar com o valgrind
 
 # Aqui você deve por por quais quantidade de número vc deseja testar
