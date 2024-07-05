@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 17:59:28 by umeneses          #+#    #+#              #
-#    Updated: 2024/07/05 11:28:52 by umeneses         ###   ########.fr        #
+#    Updated: 2024/07/05 13:07:12 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,8 +130,8 @@ define	project_title_bonus
 endef
 
 define					instructions
-						@echo "TODO: add instructions here"
-						@echo "Usage: ./$(NAME) <numbers_seq_to_sort>"
+						@echo "Usage: ./$(NAME) <sequence_numbers_with_spaces_to_sort>"
+						@echo "Example: ./$(NAME) 42 8 45 -2 50000 0"
 
 endef
 
