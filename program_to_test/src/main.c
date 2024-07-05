@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:34:31 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/05 13:09:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:01:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 
 	if (argc < 2)
-		ft_error_msg("1.Not enough arguments.");
+		ft_error_msg("\n");
 	if (argc == 2)
 	{
 		if (ft_argv_validation(argv) == true)
@@ -28,10 +28,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv);
 	ft_lst_map_all_indexers(&stack_a);
-	ft_lst_printf_data_content("original list", stack_a);
 	ft_do_sort(&stack_a, &stack_b);
-	ft_lst_printf_data_content("stack_a", stack_a);
-	ft_lst_printf_data_content("stack_b", stack_b);
 	ft_lstclear_single_ptr(stack_a);
 	return (0);
 }
