@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:48:11 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/05 10:56:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:57:16 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	ft_reverse_rotate(t_stack **stack)
 
 void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	if (NULL == stack_a || NULL == stack_b || *stack_a == NULL 
-		|| *stack_b == NULL || ft_lst_size(*stack_a) == 1 
+	if (NULL == stack_a || NULL == stack_b || *stack_a == NULL
+		|| *stack_b == NULL || ft_lst_size(*stack_a) == 1
 		|| ft_lst_size(*stack_b) == 1)
 		return ;
 	ft_reverse_rotate(stack_a);
