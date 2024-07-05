@@ -32,8 +32,8 @@ Push Swap is about a program that **sort numbers** from user's input, but also:
 - has 11 basic functions to move the numbers between stacks;
 - calculates the cost of every number, with a given target
 - search for the cheapest moviment
-- do the moviments to sort the list;
-  
+- do the moviments to sort the list
+Even with cost calculation, this program works only with **efficiency mode** (the goal, whatever it takes).
 
 ![Screenshot from 2024-07-05 13-24-06](https://github.com/biralavor/42_pushswap/assets/80487147/4c5fe75c-3006-4f0d-9fc2-27a555022c1f)
 
