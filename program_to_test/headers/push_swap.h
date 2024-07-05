@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:23:33 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/01 12:46:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:31:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_lstclear_single_ptr(t_stack *stack);
 void		ft_lst_printf_data_content(char *msg, t_stack *stack);
 t_stack		*ft_lts_buildstack_argv(t_stack **stack, char **argv);
 bool		ft_is_sign(int c);
-bool		ft_is_space(int c);
+bool		ft_is_blank(int c);
 bool		ft_argv_is_not_duplicated(char **argv);
 int			ft_argv_size(char **argv);
 bool		ft_argv_valid_sign_and_not_alpha(char **argv);
@@ -72,8 +72,7 @@ t_stack		*ft_sort_two_nbrs(t_stack **stack);
 t_stack		*ft_sort_a_with_three_nbrs(t_stack **stack_a);
 /* sorting functions if list has until 3 numbers */
 
-void		ft_sort_four_nbrs(t_stack **stack_a, t_stack **stack_b);
-void		ft_sort_five_or_more_nbr(t_stack **stack_a, t_stack **stack_b);
+void		ft_sort_four_or_more_nbr(t_stack **stack_a, t_stack **stack_b);
 void		ft_push_b_all_but_three(t_stack **stack_a, t_stack **stack_b);
 int			ft_lst_get_target(t_stack **stack_a, int b_end_pos,
 				int target_end_pos, int target_pos);
@@ -85,7 +84,7 @@ int			ft_lst_map_lowest_final_position(t_stack **stack);
 void		ft_lst_shift_stack(t_stack **stack_a);
 void		ft_lst_get_cost(t_stack **stack_a, t_stack **stack_b);
 int			abs_nbr(int nbr);
-void		ft_lst_do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
+void		ft_lst_calc_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 void		ft_do_move_after_cheapest(t_stack **stack_a, t_stack **stack_b,
 				int cost_a, int cost_b);
 /* sorting functions if list has 4 or more numbers */
@@ -103,7 +102,6 @@ void		ft_do_swap_b(t_stack **stack);
 void		ft_do_swap_ab(t_stack **stack_a, t_stack **stack_b);
 void		ft_do_push_a(t_stack **stack_a, t_stack **stack_b);
 void		ft_do_push_b(t_stack **stack_a, t_stack **stack_b);
-void		ft_push(t_stack **source, t_stack **destiny);
 void		ft_do_rotate_a(t_stack **stack);
 void		ft_do_rotate_b(t_stack **stack);
 void		ft_do_rotate_ab(t_stack **stack_a, t_stack **stack_b);

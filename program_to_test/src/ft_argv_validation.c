@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:43:20 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/04 18:28:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:33:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	ft_argv_only_nbrs_per_string(char **argv)
 		{
 			while (argv[index])
 			{
-				if (ft_is_space(*(argv[index] + c_counter))
+				if (ft_is_blank(*(argv[index] + c_counter))
 					|| (*(argv[index] + c_counter) == '\0'))
 					return (true);
 				if (!ft_isdigit(*(argv[index] + c_counter)))

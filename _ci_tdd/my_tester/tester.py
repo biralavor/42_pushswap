@@ -24,7 +24,8 @@ run_with_valgrind = False				# Mude para True se quiser rodar com o valgrind
 # E por fim, vários testes./p	 com 10 números
 # Pode por quantos números quiser
 # Mas na régua só será testado: [3, 5, 100, 500]
-test_groups = [3, 5, 10, 15, 100, 500]
+#test_groups = [3, 4, 5, 10, 15, 100, 500]
+test_groups = [3, 4, 5, 10, 15, 100, 500]
 #test_groups = range(1, 5)
 
 # -7 -4 -1 -6 3 2 -5 -3 1 -2
@@ -43,7 +44,7 @@ range_end = 2**31 - 1
 # números do `test_groups`
 # Se colocar muito, vai demorar demais para acabar
 # Padrão = 100
-test_num = 100
+test_num = 10
 
 
 # Daqui para baixo não precisa mexer

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:35:16 by umeneses          #+#    #+#             */
-/*   Updated: 2024/06/28 17:08:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:33:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_argv_size(char **argv)
 	size = 0;
 	while (argv[++size] != NULL)
 	{
-		if (ft_is_sign(*argv[size]) || ft_is_space(*argv[size]))
+		if (ft_is_sign(*argv[size]) || ft_is_blank(*argv[size]))
 			size++;
 	}
 	return (size - 1);
@@ -32,9 +32,9 @@ bool	ft_is_sign(int c)
 	return (false);
 }
 
-bool	ft_is_space(int c)
+bool	ft_is_blank(int c)
 {
-	if (c == ' ')
+	if (c == ' ' || c == '\t' || c == '\v')
 		return (true);
 	return (false);
 }

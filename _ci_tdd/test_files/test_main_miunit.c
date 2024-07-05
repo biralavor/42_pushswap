@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:06:12 by umeneses          #+#    #+#             */
-/*   Updated: 2024/07/04 19:03:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:05:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,13 @@
 #include "../../program_to_test/src/ft_do_sort.c"
 #include "../../program_to_test/src/ft_do_move_with_cost.c"
 #include "../../program_to_test/src/ft_sort_until3.c"
-#include "../../program_to_test/src/ft_sort_until4.c"
-#include "../../program_to_test/src/ft_sort_5_or_more.c"
+#include "../../program_to_test/src/ft_sort_4_or_more.c"
+#include "../../program_to_test/src/ft_sort_4_utils.c"
 
-// TODO:
-// optimize sorting method for more than 6 numbers
 
 int		ft_minunit_array_counter(char **array);
 void	ft_array_clear(char **array, int arr_size);
 void	ft_array_printer(char **array, int arr_size);
-
 
 MU_TEST(test_3neg_min_at_thrid_pos_big_nbrs_v02)
 {
@@ -905,7 +902,6 @@ MU_TEST(test_sort_four_nbrs_v05)
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	ft_array_clear(argv_simulation, expected_size);
 }
 
@@ -934,7 +930,7 @@ MU_TEST(test_sort_four_nbrs_v04)
 
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
 	ft_lst_map_all_indexers(&stack_a);
-	ft_sort_four_nbrs(&stack_a, &stack_b);
+	ft_sort_four_or_more_nbr(&stack_a, &stack_b);
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_size = ft_lst_size(stack_a);
@@ -944,7 +940,6 @@ MU_TEST(test_sort_four_nbrs_v04)
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	ft_array_clear(argv_simulation, expected_size);
 }
 
@@ -973,7 +968,7 @@ MU_TEST(test_sort_four_nbrs_v03)
 
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
 	ft_lst_map_all_indexers(&stack_a);
-	ft_sort_four_nbrs(&stack_a, &stack_b);
+	ft_sort_four_or_more_nbr(&stack_a, &stack_b);
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_size = ft_lst_size(stack_a);
@@ -983,7 +978,6 @@ MU_TEST(test_sort_four_nbrs_v03)
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	ft_array_clear(argv_simulation, expected_size);
 }
 
@@ -1012,7 +1006,7 @@ MU_TEST(test_sort_four_nbrs_v02)
 
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
 	ft_lst_map_all_indexers(&stack_a);
-	ft_sort_four_nbrs(&stack_a, &stack_b);
+	ft_sort_four_or_more_nbr(&stack_a, &stack_b);
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_size = ft_lst_size(stack_a);
@@ -1022,7 +1016,6 @@ MU_TEST(test_sort_four_nbrs_v02)
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	ft_array_clear(argv_simulation, expected_size);
 }
 
@@ -1051,7 +1044,7 @@ MU_TEST(test_sort_four_nbrs_v01)
 
 	stack_a = ft_lts_buildstack_argv(&stack_a, argv_simulation);
 	ft_lst_map_all_indexers(&stack_a);
-	ft_sort_four_nbrs(&stack_a, &stack_b);
+	ft_sort_four_or_more_nbr(&stack_a, &stack_b);
 	actual_top_a = ft_lst_goto_head(stack_a)->nbr;
 	actual_bottom_a = ft_lst_goto_end(stack_a)->nbr;
 	actual_size = ft_lst_size(stack_a);
@@ -1061,7 +1054,6 @@ MU_TEST(test_sort_four_nbrs_v01)
 	mu_assert_int_eq(expected_bottom_a, actual_bottom_a);
 	mu_assert_int_eq(expected_size, actual_size);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	ft_array_clear(argv_simulation, expected_size);
 }
 
@@ -1125,7 +1117,6 @@ MU_TEST(test_2nd_miastep_push_b_all_but3_sort_a)
 	mu_assert_int_eq(expected_top_a_before_push, actual_top_a_before_push);
 	mu_assert_int_eq(expected_bottom_a_before_push, actual_bottom_a_before_push);
 	ft_lstclear_single_ptr(stack_a);
-	ft_lstclear_single_ptr(stack_b);
 	ft_array_clear(argv_simulation, expected_size_before_push);
 }
 
