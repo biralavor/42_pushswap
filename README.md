@@ -34,6 +34,7 @@ Push Swap is about a program that **sort numbers** from user's input, but also:
 - search for the cheapest moviment
 - do the moviments to sort the list
 Even with cost calculation, this program works only with **efficiency mode** (the goal, whatever it takes).
+The project's algorithm was created by Mia Combeau: https://github.com/mcombeau/push_swap
 
 ![Screenshot from 2024-07-05 13-24-06](https://github.com/biralavor/42_pushswap/assets/80487147/4c5fe75c-3006-4f0d-9fc2-27a555022c1f)
 
