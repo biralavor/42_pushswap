@@ -1,3 +1,0 @@
-/nfs/homes/umeneses/bira/42_visualizer_pushswap/build/_deps/catch2-subbuild/CMakeFiles/rebuild_cache.dir
-/nfs/homes/umeneses/bira/42_visualizer_pushswap/build/_deps/catch2-subbuild/CMakeFiles/edit_cache.dir
-/nfs/homes/umeneses/bira/42_visualizer_pushswap/build/_deps/catch2-subbuild/CMakeFiles/catch2-populate.dir

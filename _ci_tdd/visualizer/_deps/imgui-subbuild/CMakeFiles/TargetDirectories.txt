@@ -1,3 +1,0 @@
-/nfs/homes/umeneses/bira/42_visualizer_pushswap/build/_deps/imgui-subbuild/CMakeFiles/rebuild_cache.dir
-/nfs/homes/umeneses/bira/42_visualizer_pushswap/build/_deps/imgui-subbuild/CMakeFiles/edit_cache.dir
-/nfs/homes/umeneses/bira/42_visualizer_pushswap/build/_deps/imgui-subbuild/CMakeFiles/imgui-populate.dir
