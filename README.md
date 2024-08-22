@@ -7,7 +7,10 @@ push swap, a 42 school project about ordination algorithm.
 > ![Screenshot from 2024-07-05 13-15-13](https://github.com/biralavor/42_pushswap/assets/80487147/e553f0a8-d8dd-48d3-966f-c462db1f5ba4)
 > 
 >  If you wanna try my tester, you should type:
-> ```cd _ci_tdd && make```
+> 
+> ```
+> cd _ci_tdd && make
+> ```
 
 # Efficiency vs Efficacy
 
