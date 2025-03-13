@@ -56,3 +56,4 @@ The project's algorithm was created by Mia Combeau: https://github.com/mcombeau/
 > make
 > ```
 
+> All 42 Badges -- the astronomer Human Coder -- were done by Larissa Cristina [@mewmewdevart](https://github.com/mewmewdevart/42Badges)
